@@ -1,0 +1,2 @@
+module tic.java {
+}

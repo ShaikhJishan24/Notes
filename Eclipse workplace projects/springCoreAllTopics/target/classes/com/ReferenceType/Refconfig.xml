@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+	<bean id="Add" class="com.ReferenceType.Address">  
+		<property name="city" value="mumbai"></property>
+		<property name="street" value="Bandra"></property>
+		<property name="country" value="India"></property>
+    </bean> 
+    
+    <bean id="Emp" class="com.ReferenceType.Employee">
+        <property name="id" value="1"></property>
+        <property name="name" value="Albert"></property>
+        <!-- this is for refernce type (dependency injection for that it uses setter)-->
+        <property name="add" ref="Add"></property>  <!--  setter injection -->
+        
+        <!-- 
+        	or we can write As
+        	
+        	<property name="account">    //setter of Accountbean as setaccount 
+				<ref bean="caccount" />
+			</property>
+         -->
+    </bean>
+ 
+</beans>

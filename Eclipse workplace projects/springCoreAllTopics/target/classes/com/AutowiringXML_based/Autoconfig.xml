@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+    <!-- Explicitly or normal Dependency Injection -->
+	<!-- <bean id="addressclass" class="com.AutowiringXML_based.Address">
+		<constructor-arg value="Rajstan"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	
+	<bean id="studentclass" class="com.AutowiringXML_based.student">
+	   <constructor-arg value="1" type="int"></constructor-arg>
+	   <constructor-arg value="Surbhi"></constructor-arg>
+	   <constructor-arg ref="addressclass"></constructor-arg>
+	</bean> -->
+	
+	
+	
+	<!-- Implicitly or Automatic Dependency Injection using Autowiring -->
+	<!-- Here id = "ad" jis naame se filed banaya hai Student class me Address class ka wohi id me dena hai -->
+	<bean id="ad" class="com.AutowiringXML_based.Address">
+	    <property name="city" value="Rajastan"></property>
+	    <property name="country" value="India"></property>
+    </bean>
+
+	<bean id="st" class="com.AutowiringXML_based.student" autowire="byName">
+	    <property name="Area" value="Government colony"></property>
+	</bean>
+
+</beans>
