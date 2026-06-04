@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventBubblingAndEventCapturing</title>
+    
+     <style>
+        body{
+            padding: 100px;
+            background-color: cornsilk;
+        }
+
+        #intro{
+            background-color: red;
+            height: 200px;
+            border-radius: 10px;
+            padding: 100px;
+        }
+        #btn{
+            height: 40px;
+            width: 100px;
+        }
+
+     </style>
+
+</head>
+
+<body>
+      <div id="intro">
+        <button id="btn">Submit</button>
+      </div>
+
+      <script>
+        let x = document.getElementById("intro");
+        let y = document.getElementById("btn");
+
+        x.addEventListener("click", divonClick);
+        y.addEventListener("click", btnonClick);
+
+        function divonClick(){
+            console.log("div was clicked");
+        }; 
+        
+        function btnonClick(){
+            console.log("btn was clicked");
+        }; 
+        
+        document.body.addEventListener("click", bodyonClick)
+        function bodyonClick(){
+            console.log("body was clicked");
+        }; 
+        
+
+      </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

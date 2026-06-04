@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsertAdjacacentHTML</title>
+</head>
+<body>
+      <!-- beforebegin -->
+      <div id = "demo">
+         <!-- afterbegin -->
+        <p>Welcome</p>
+        <p>Nice to Meet You</p>
+        <!-- beforeend -->
+      </div>
+      <!-- afterend -->
+
+      <script>
+        let ele = document.getElementById("demo");
+
+        let txt = "<h1>Hello</h1>";
+
+        ele.insertAdjacentHTML("beforebegin", txt);  // (position, new element or text)
+                                                       
+
+      </script>
+    
+</body>
+</html>

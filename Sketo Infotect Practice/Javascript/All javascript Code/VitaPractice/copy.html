@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy page</title>
+</head>
+
+<body>
+
+    <input type="text" id="a">
+
+    <input type=button onClick=copy() value="copy data">
+
+    <input  id="b">
+    
+    <input type="button" value="back" onclick="history.back()">
+
+    <script>
+        function copy() {
+            document.getElementById("b").value = document.getElementById("a").value
+        }
+    </script>
+</body>
+
+</html>

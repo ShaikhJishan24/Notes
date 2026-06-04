@@ -1,0 +1,10 @@
+body{
+    overflow-x: hidden;
+}
+
+.background{
+    background-image: url(./images/Background-Image.jpg);
+    height: 100vh;
+    width: 100%;
+    
+}

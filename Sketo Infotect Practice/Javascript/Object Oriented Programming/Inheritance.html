@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance </title>
+</head>
+
+<body>
+    <script>
+        class customer {
+
+            DisplayA() {
+                console.log("Display A")
+            };
+
+        }
+
+        class employee extends customer{
+
+            DisplayB() {
+                console.log("Display B")
+            };
+
+        }
+
+        let obj = new employee();
+        obj.DisplayA();
+        
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures </title>
+</head>
+
+<body>
+    <script>
+
+        function sum(a) { 
+            let b = 2;        // b = 2        // here b is lexical variable which also used in another function 
+
+            function inner(c) {
+                return a + b + c;
+            }
+        return inner;
+        }
+
+        // let result = sum(3);       // a = 3
+        // console.log(result(5));   // c = 5
+       
+        
+    </script>
+</body>
+
+</html>

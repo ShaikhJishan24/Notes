@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        #myform {
+            width: 300px;
+        }
+
+        body {
+            height: 550px;
+            justify-items: center;
+            align-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form id="myform" action="welcome.html" onsubmit="validate(event), reset()">
+        <label for="username">UserName : </label>
+        <input type="text" id="username"><br><br>
+
+        <label for="pwd"> Password : </label>
+        <input type="text" id="pwd"><br>
+
+        <span id="err" style="color: red;"></span><br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+        <button><a href="sign_up.html" style="text-decoration: none; color: black;">SignUp</a></button>
+    </form>
+
+    <script>
+
+        function validate(e) {
+
+            let username = document.getElementById("username").value;
+            let pwd = document.getElementById("pwd").value;
+
+            if (username == "Vita" && pwd == "vidya") {
+                localStorage.setItem("username", username);
+                window.location.href = "welcome.html";
+            }
+            else {
+                e.preventDefault();
+                let err = document.getElementById("err");
+                err.innerHTML = "Invalid username and password";
+            }
+        }
+
+        function reset() {
+            document.querySelector("myform").clear;
+        }
+
+    </script>
+</body>
+
+</html>

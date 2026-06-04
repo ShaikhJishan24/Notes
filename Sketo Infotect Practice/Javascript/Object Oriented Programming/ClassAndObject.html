@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class And Object </title>
+</head>
+
+<body>
+
+    <script>
+
+        class person {        // class
+
+            constructor(name, age) {
+                this.Name = name;
+                this.Age = age;
+            }
+            
+            // prototype method
+            // Method type1
+            sayHi() {                           
+                console.log("Hi....")
+            };
+            
+            // Method Type2
+            sayBy = function () {               
+                console.log("....By....")
+            }
+            
+            // This is Static function it is accociated with Class
+            static sayHello() {                 
+                console.log("Hello....")
+            };
+            
+            // method with Arguments
+            print(a, b){
+                let sum = a + b;
+                console.log(sum);
+            }
+
+            
+        }
+
+        let obj = new person("Kanal", 24);     // Object
+        
+        console.log(obj);
+        console.log(obj.Name);    
+        // console.log(obj.Age);
+
+        // obj.sayHi();
+        // obj.sayBy();
+
+        // person.sayHello();          // it is a static method we cannot call them with object
+        
+        // let obj1 = new person();
+        // obj1.print(10, 20);
+    </script>
+</body>
+
+</html>

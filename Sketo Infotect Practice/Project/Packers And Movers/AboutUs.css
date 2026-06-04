@@ -1,0 +1,218 @@
+/* html{
+    overflow-x: hidden;
+}
+body{
+    overflow-x: hidden;
+} */
+* {
+    padding: 0;
+    margin: 0;
+
+}
+.dropdown .dropdown-menu{
+    margin-left: -100px;
+    width: 300px;
+    background: rgb(241, 68, 68);
+}
+.dropdown .dropdown-menu .dropdown-item {
+    font-size: 18px;
+    /* border: 2px solid black; */
+    padding: 10px 0;
+    color: white;
+    font-weight: 500;
+}
+.dropdown .dropdown-menu .dropdown-item:hover{
+    background-color: #028DB4;
+}
+
+
+.navbar {
+    /* border: 2px solid red; */
+    /* background-color: rgb(202, 66, 66); */
+    /* background-image: linear-gradient(225deg, #028DB4 22%, #01137F 22%); */
+    height: 100px;
+}
+
+nav img {
+    height: 80px;
+    /* padding: 0 150px; */
+    margin: 0 200px;
+    border-radius: 6px;
+    border: 2px solid black;
+    width: 200px;
+}
+
+nav ul {
+    margin: auto;
+
+}
+
+nav ul li {
+    list-style-type: none;
+
+    display: inline-block;
+    /* padding: 0 30px; */
+    margin: 0 30px;
+
+}
+
+.navitem {
+    /* border: 2px solid green; */
+    /* padding: 20px; */
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 500;
+    color:white;
+}
+
+.checkbtn {
+    font-size: 35px;
+    color: black;
+    float: right;
+    /* line-height: 80px; */
+    margin-right: 40px;
+    /* its is used to set button at right side; */
+    cursor: pointer;
+    /* border: 2px solid red; */
+    display: none;
+}
+
+/* sticky navbar */
+/* .stiky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+} */
+
+@media (max-width: 900px) {
+    .navbar {
+        /* border : 2px solid blue ; */
+        width: 100%;
+        /* position: relative; */
+
+    }
+
+    nav img {
+        width: 200px;
+        padding: 0;
+        margin-left: 3px;
+        /* border: 2px solid black; */
+    }
+
+    nav ul li {
+        /* margin: 0 10px; */
+        margin-left: -30px;
+        margin-right: -1px;
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+        /* border: 2px solid black; */
+        
+        
+    }
+    nav ul li:hover{
+        background-color: #028DB4;
+      
+    }
+    nav ul li a {
+        font-size: 19px;
+    }
+
+
+    .navitem {
+        /* display: none; */
+
+        width: 35%;
+        height: 300px;
+        background-color: white;
+        position: absolute;
+        top: 100px;
+
+        /* border: 2px solid red; */
+
+        transform: translateX(-250px);
+        transition: all 0.5s linear ;         /*property, duration, timing-function, delay */
+        opacity: 0;
+
+        /* visibility: hidden; */
+        pointer-events: none;
+
+    } 
+
+    
+
+    .checkbtn {
+        display: block;
+        border: 3px solid #212529;
+        color: #212529;
+        z-index: 999;
+        border-radius: 4px;
+
+    }
+    
+    /* active class lagao  navitem ko  navbar pe*/
+    .active .navitem {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;        /*  #028DB4 */
+        pointer-events: auto;
+        background-color: rgb(241, 68, 68) ; 
+        
+    }
+    
+    /* .active #checkbtn{
+        display: none;
+    }
+    .active #closebtn{
+        display: block; 
+        
+    }  */
+
+    .dropdown .dropdown-menu{
+        margin-left: 230px;
+        width: 300px;     
+        z-index: 2;
+       
+    }
+    .dropdown .dropdown-menu .dropdown-item{
+       padding: 0;
+    }
+    
+    
+    
+    
+
+
+
+}
+
+@media (max-width : 600px) {
+    nav img {
+        width: 150px;
+    }
+
+    .checkbtn {
+        margin-right: 20px;
+        position: absolute;
+        left: 320px;
+
+    }
+
+    .navitem{
+        width: 45%;
+    }
+
+    .dropdown .dropdown-menu{
+        margin-left: 50px;
+        width: 300px;     
+        z-index: 1;
+    }
+    .dropdown .dropdown-menu .dropdown-item{
+        font-size: 18px;
+        padding: 0;
+    }
+
+}

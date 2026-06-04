@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Constructor</title>
+</head>
+<body>
+     <script>
+
+       function Student(Fname, Lname, Age, sal){
+            this.Firstname = Fname ;
+            this.Lastname = Lname ;
+            this.Age = Age;
+            this.salary = sal
+       };
+
+     //   let obj = new Student("Jishan", "Khan", 21, "25,000");  // object 1
+     //   console.log(obj);
+    //     console.log(obj.Age);
+    
+    // Adding a property To an Object 
+    //    let obj1 = new Student("Moin", "Shah", 25, "20,000");  // object 2
+    //    obj1.Nationality = "indian";
+    //    console.log(obj1.Nationality);
+
+    
+    // Adding a Method To an Object 
+    // let obj1 = new Student("Moin", "Shah", 25, "20,000");
+
+    // obj1.Fullname = function(){
+    //     console.log(this.Firstname + " " + this.Lastname);
+    // }
+
+    // obj1.Fullname();
+
+    // Prototype Method is used to Add property And method to an Object Constructor 
+    // let obj = new Student("Jishan", "Khan", 21, "25,000"); 
+    // Student.prototype.Nationality = "indian ";
+    // console.log(obj);
+
+     </script> 
+
+</body>
+</html>

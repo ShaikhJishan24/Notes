@@ -1,0 +1,5 @@
+.container{
+    height: 750px;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(229, 36, 36, 0.6) 0, rgba(201, 233, 18, 0), url(guru.jpg) );
+}

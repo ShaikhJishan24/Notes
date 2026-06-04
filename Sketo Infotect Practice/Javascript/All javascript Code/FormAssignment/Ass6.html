@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6</title>
+<!-- Create text box name, password , Address. Create a submit button. Ensure that name has 
+minimum length 2 character and maximum 15 character. -->
+</head>
+<body>
+    
+    <form action="" onsubmit= "return validate()">
+        <input type="text" id="name" placeholder="Entr the Name"> <span id="nmerr" style="color:red"></span><br><br>
+
+        <input type="text" id="pwd" placeholder="Enter the password"> <span id="pwderr" style="color:red"></span><br><br>
+
+        <input type="text" id="add" placeholder="Enter the Address"> <span id="adderr" style="color:red"></span><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+
+        function validate(){
+            let name = document.getElementById("name");
+            let pwd = document.getElementById("pwd");
+            let add = document.getElementById("add");
+
+
+            let nmerr = document.getElementById("nmerr");
+            let pwderr = document.getElementById("pwderr");
+            let adderr = document.getElementById("adderr");
+
+            let namelen = name.value.length;
+            let pwdlen = pwd.value.length;
+            let addlen = add.value.length;
+
+            var valid = true;
+            // validation for name 
+            if(namelen < 2){
+                nmerr.innerHTML = "name should be greater than 2 characters";
+                name.value = "";
+                valid = false;
+            }
+            else{
+                nmerr.innerHTML = "name should be less than 15 characters only";
+                name.value = "";
+                valid = false;
+            }
+
+            // validation for password
+            // Password must have minimum length 8 character maximum 15 character.
+            if(pwdlen < 8 || pwdlen > 15){
+                pwderr.innerHTML = "minimum length 8 character maximum 15 character";
+                pwd.value = "";
+                valid = false;
+            }
+
+            // Address must have minimum 10 character.
+            if(addlen < 10){
+                adderr.innerHTML = "Address must have minimum 10 character";
+                add.value = "";
+                valid = false;
+            }
+            
+            return valid;      
+        }
+
+    </script>
+
+</body>
+</html>

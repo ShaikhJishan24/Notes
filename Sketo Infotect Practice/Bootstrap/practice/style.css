@@ -1,0 +1,11 @@
+.box{
+    height: 300px;
+    width: 250px;
+    background-color: red;
+    transition: all 400ms;
+}
+
+.box:hover{
+    width: 350px;
+    background-color: aqua;
+}

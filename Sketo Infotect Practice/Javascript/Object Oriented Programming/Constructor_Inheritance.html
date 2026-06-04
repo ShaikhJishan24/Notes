@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor IN Inheritance</title>
+</head>
+<body>
+    <script>
+
+        // class A{
+        //     constructor(){
+        //         console.log("...Heyy...");
+        //     }
+        // }
+        
+        // class B extends A{
+        //     constructor(){
+        //         // super()         // It calls the constructor function of class A
+        //         console.log("...Bye...");
+        //     }
+        // }
+
+        // let obj = new B();
+        
+
+       
+        // Constructor Inheritance with Arguments
+
+        class A{
+            constructor(name){
+                this.Name = name;
+            }
+        }
+        
+        class B extends A{
+            constructor(name, age){
+               super(name)         // It calls the constructor function of class A            
+               this.Age = age;
+            }
+        }
+
+        let obj1 = new B("Kanal", 24);
+        
+        console.log(obj1)
+
+
+    </script>
+</body>
+</html>

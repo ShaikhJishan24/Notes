@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date object</title>
+</head>
+<body> 
+    <Script>
+        let d = new Date();
+        console.log("Current date : " + d);
+        console.log("Date : " + d.getDate());
+
+        // d.setDate(24);
+        // console.log("set Date : " + d);
+
+        // d.setFullYear(2024);
+        // console.log("set Fullyear : " + d);
+
+        console.log("To local String : " + d.toLocaleString());
+        
+
+        d.setDate(d.getDate() + 50);
+        console.log("Date after Adding 50 in currunt Date : " + d);
+
+    </Script>
+</body>
+</html>

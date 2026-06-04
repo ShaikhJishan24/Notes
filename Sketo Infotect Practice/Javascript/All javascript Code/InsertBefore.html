@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsertBefore </title>
+</head>
+<body>
+     <ul id = "demo">   
+        <li>List 1</li>    <!-- position -->
+        <li>List 2</li>
+        <li>List 3</li>
+        <li>List 4</li>
+     </ul>
+
+
+     <script>
+           
+           let parent = document.getElementById("demo");
+
+           let item = document.createElement("li");
+           item.textContent = "New List 5" ; 
+
+           let position = parent.firstElementChild;
+         //   let position = parent.firstElementChild.nextElementSibling.nextElementSibling; // to select eleements
+          
+           parent.insertBefore(item, position) ;      // (new Element, position before we have to insert New element)
+           
+
+        // Example 
+        // Add element to the body before ul 
+        // let parent = document.body;
+
+        // let item = document.createElement("h1");
+        // item.textContent = "Welcome To my youtube Channel" ; 
+
+        // let pos = document.getElementById("demo");
+
+        // parent.insertBefore(item , pos) ;
+
+     </script>
+</body>
+</html>

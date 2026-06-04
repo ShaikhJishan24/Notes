@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traversing HTML</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body> 
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <span>Item 1</span>
+                </li>
+                <li> 
+                    <span>Item 2</span>
+                </li>
+                <li> 
+                    <span>Item 3</span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span>Item 1</span>
+                </li>
+                <li> 
+                    <span>Item 2</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <script>
+        // Anchestor -->
+        // parent()
+        // $(document).ready(function(){
+        //     let ans = $("span").parent();
+        //     console.log(ans);
+        // })
+        
+        // parents()
+        // $(document).ready(function(){
+        //     let ans = $("span").parents();
+        //     console.log(ans);
+        // })
+        
+        // parents() with optional parameter
+        // $(document).ready(function(){
+        //     let ans = $("span").parents("header");
+        //     console.log(ans);
+        // })
+        
+        // parentsUntil("parent name ")
+        // $(document).ready(function(){
+        //     let ans = $("span").parentsUntil("header");
+        //     console.log(ans);
+        // })
+        
+        // Descendants -->
+        // Childern()
+        // $(document).ready(function(){
+        //     let ans = $("li").children("span.list1");
+        //     console.log(ans);
+        // })
+
+        // childern() with specified elements
+        // $(document).ready(function(){
+        //     let ans = $("li").children("span.list1");
+        //     console.log(ans);
+        // })
+        
+        // Find()
+        // $(document).ready(function(){
+        //     let ans = $("nav").find("li");
+        //     console.log(ans);
+        // })
+
+        // Siblings -->
+        // $(document).ready(function(){
+        //     let ans = $("ul").siblings();
+        //     console.log(ans);
+        // })
+        
+        // next()
+        // $(document).ready(function(){
+        //     let ans = $("ul").next();
+        //     console.log(ans);
+        // })
+        
+        // nextAll()
+        // $(document).ready(function(){
+        //     let ans = $("li").nextAll();
+        //     console.log(ans);
+        // })
+        
+        // nextUntil()
+        // $(document).ready(function(){
+        //     let ans = $("li").nextUntil();
+        //     console.log(ans);
+        // })
+
+
+
+    </script>
+</body>
+</html>

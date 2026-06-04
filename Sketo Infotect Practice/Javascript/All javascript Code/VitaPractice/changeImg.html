@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onLoad="changebg()">
+
+    <input type="button" onclick="stopclock()" value="stop">
+    <img src="img/1.jpeg" alt="" id="1">
+
+    <script>
+        var tt;
+
+        function changebg() {
+            var col = new Array("img/feature-3.png", "img/feature-4.png")
+            l = col.length
+            var rnd_no = Math.floor(l * Math.random()); //it will generate any number between  [0 to 2] 
+
+            // document.body.bgColor = col[rnd_no];
+            let img = document.getElementById("1");
+            img.src = col[rnd_no];
+
+            tt = setTimeout('changebg()', 500)
+
+        }
+        function stopclock() {
+            clearTimeout(tt)
+        }
+    </script>
+</body>
+
+</html>

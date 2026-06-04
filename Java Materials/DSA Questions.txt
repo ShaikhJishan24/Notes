@@ -1,0 +1,85 @@
+## Number System 
+- Add two numbers using the recursion
+- Binary to decimal
+- Palindrome number 
+- Decimal To Binary
+- Factorial of number
+- factorial using recursion
+- Fibonacci series
+- Perfect Number
+- Power of number
+- prime Number
+- Prime Number in a given range
+- Reverse A number
+- Special Number 
+- Armstrong Numbers
+
+## Sorting
+- Bubble Sort
+- Insertion sort
+- Selection sort
+- Merge Sort
+- Quick Sort
+- Linear Search
+- Binary search
+
+
+## Array (Please refer from the day 5 of foundation batch)
+- swap alternate element of an array
+- Average of Array
+- Count frequency of element using and without using the inbuilt method
+- Find Duplicates
+- Remove Duplicates
+- find kth largest element
+- find kth Smallest element
+- Find Max and min
+- Merge Array
+- Merge Two sorted Array
+- Merge Two Unsorted Array
+- Remove Duplicates from Sorted array
+- Remove Duplicates from UnSorted array
+- Reverse An array
+- Second Smallest Element
+- Sort An Array
+- Intersection of two arrays
+- pair sum
+- sort 0 and 1 either to start and end 
+- Peak in a mounted array
+- pivot element in an rotated sorted array
+- Search element in an rotated sorted array
+- Left and Right Rotating of an array
+
+
+## String 
+- Anagram
+- Check palindrome or not
+- Count frequency of Characters with and without using the inbuilt method or collections
+- count Highest Frequency occurrence character
+- Count Words
+- Delete Character
+- Find Duplicates Character with and without using the collections
+- Find Nonrepeating Character
+- Remove Nonrepeating Char
+- Find Occurrence Of Element
+- Remove Duplicates Character In A String Using Set
+- Remove Duplicates Character In A String Using StringBuilder
+- Remove Spaces
+- Remove Vowels
+- Reverse A String
+- Vowels Consonant Spaces
+- Count occurrence of letter ‘A’ with Big O(1)
+- Retrieves the value for key "A" in O(1).
+
+
+## Patterns problems
+
+
+
+
+
+
+
+
+
+
+

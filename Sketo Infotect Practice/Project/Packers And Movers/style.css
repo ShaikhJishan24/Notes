@@ -1,0 +1,216 @@
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(255 255 255);
+  font-weight: 600;
+  font-size: 22px;
+  /* border: 2px solid black; */
+ 
+}        
+
+/* 
+.carousel-inner{
+  text-align: start;
+}  */
+
+.posit {
+  /* We make posit class for giving position and below carousel-Indicators*/
+
+  position: absolute;
+  top: 250px;
+  /* left: 170px; */
+
+
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 550px;
+
+} 
+
+.carousel-item img{
+   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+.carousel-caption{
+  z-index: 6;
+}
+
+.navbar{
+  /* height: 100px; */
+  
+}
+.navbar-nav{
+  padding: 15px;
+}
+
+.navbar-nav .nav-item{
+  margin-right: 25px;
+  position: relative;        /* This is for link hover effect */
+}
+
+.nav-item a::before{
+  content: "";
+  position: absolute;       /* ye karne ke vajese line dikh raha hai */
+  left: 0;
+  top: 90%;
+  width: 0;
+  height: 4px;
+  background-color: black;
+  transition: all 0.4s linear;
+  border-radius: 6px;
+}
+.nav-item a:hover:before{
+  width: 100%;
+}
+
+.dropdown-menu .dropdown-item{
+  padding: 10px;
+  
+}
+.dropdown-menu .dropdown-item:hover{
+   background-color: #007cba;
+   color: white;
+}
+
+.heading{
+  font-size: 40px;
+  font-weight: 700;
+  color: darkblue;
+}
+
+
+.box{
+  border-radius: 6px; 
+  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2);
+  transition: all 400ms;
+  z-index: 1;
+}
+
+.box:hover{
+  background: #007cba;
+  transition: all 400ms;
+  color: white;
+  transform: translateY(-6px);
+}
+
+.box h4{
+  font-size: 25px;
+  font-weight: 700;
+  /* color: rgb(22, 127, 162); */
+}
+
+.box p{
+  font-size: 17px;
+  font-weight: 500;
+  overflow-x: none;
+}
+
+.Assurance{
+  border-radius: 10px; 
+  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.3);
+  transition: all 400ms;
+  z-index: 1;
+}
+/* .Assurance:hover{
+  background-color: aqua;
+} */
+
+.our_team{
+  padding:  30px ;
+
+}
+.our_team h5{
+  color: rgb(22, 127, 162);
+  font-size: 18px;
+}
+
+.our_team h1{
+  color: darkblue;
+  font-weight: 700;
+}
+
+.our_team .btn{
+  font-size: 18px;
+  font-weight: 600;
+  /* color: white; */
+
+}
+.our_team .btn1{
+  background: darkblue;
+  color: white;
+}
+
+.our_team .btn1:hover{
+   background-color:rgb(22, 127, 162) ;
+   color: white;
+}
+
+.our_team .btn2{
+  background: rgb(22, 127, 162);
+  color: white;
+}
+
+.our_team .btn2:hover{
+  background-color: darkblue ;
+  color: white;
+}
+
+.demo .col-lg-3:hover{
+  background-color: #007cba;
+  transition: all 400ms;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  /* .navbar{
+      border: 2px solid blue;
+  } */
+
+  /*  it is for menu baar
+  .navbar-brand img {
+    display: none;
+  } 
+
+  .navbar-toggler{
+    margin: auto;
+    
+  } 
+
+  .navbar-toggler::after{
+    content: "Menu"; 
+    font-weight: 600; 
+  } 
+  */
+  
+  
+  
+  
+}
+
+@media only screen and (max-width: 400px) {
+  
+   .our_team{
+     padding: 2px;
+   }
+   
+   .box{
+    padding-bottom: 20px;
+   }
+   
+   .demo{
+      display: block;
+      border: 2px solid red;
+   }
+   
+   
+   
+}
+
+
+
+
+
+
+

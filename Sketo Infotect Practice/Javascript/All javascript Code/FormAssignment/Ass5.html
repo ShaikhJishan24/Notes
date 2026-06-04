@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 5</title>
+<!-- Create dropdown with option Jain/Veg/Non-Veg. on change display selected value in a text box. -->
+</head>
+<body>
+    
+    <input type="text" id="txt"> 
+
+    <select id="menu" onchange="getmenu()">
+        <option value="Menu">Menu</option>
+        <option value="jain">Jain</option>
+        <option value="veg">Veg</option>
+        <option value="Non-Veg">Non-Veg</option>
+    </select>
+
+
+    <script>
+
+       function getmenu(){
+            let option = document.getElementById("menu").value;
+            let txt = document.getElementById("txt");
+            txt.value = option;      
+       }
+
+ 
+    </script>
+</body>
+</html>

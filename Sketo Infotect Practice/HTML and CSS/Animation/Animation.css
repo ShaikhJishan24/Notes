@@ -1,0 +1,21 @@
+@keyframes lefttoright{
+    0%{
+        width: 150px;
+    }
+    50%{
+        width: 300px;
+    }
+    100%{
+        width: 150px;
+    }
+}
+
+.box{
+    height: 150px;
+    width: 150px;
+    background-color: blue;
+    animation-name: lefttoright;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+

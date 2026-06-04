@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3</title>
+</head>
+
+<!-- <body> -->
+
+    <!-- <select name="sl" id="sl" onchange="readradio()">
+        <option value="0">dance</option>
+        <option value="1">music</option>
+        <option value="2">sports</option>
+    </select>
+
+    <script>
+        function readradio(){
+            let selectedValue = document.getElementById("sl").value;
+             alert(selectedValue);
+        }
+    </script> -->
+
+    <style>
+        .err {
+            color: red
+        }
+    </style>
+    <script>
+        function check() {
+            var tobj = document.frm.nm //textbox
+            data = tobj.value //value of textbox
+            var len = data.length
+            let sobj = document.getElementById("ter");
+            //required
+            if (len == 0) {
+                sobj.innerHTML = "password can not be blank"
+                document.frm.nm.focus()
+                return false
+            }
+            else if (len < 8 || len > 16) {
+                sobj.innerHTML = "minimum 8 character required and can not exceed 15";
+                tobj.value = " ";
+                return false;
+            }
+            else{
+                sobj.innerHTML = "";
+            }
+
+            
+        }
+
+        function setcur() {//autofocus
+            var tobj = document.frm.nm
+            tobj.focus()
+        }
+        
+       
+
+    </script>
+
+
+    </head>
+
+    <body onLoad="setcur()">
+
+        <form name="frm" action="blur.html"  onsubmit="return check()">
+
+            <label>Password</label>
+
+            <input type="text" name="nm" >
+            <span id="ter" class="err"></span>
+
+            <input type="submit" value="submit" >
+
+        </form>
+
+    </body>
+
+</html>

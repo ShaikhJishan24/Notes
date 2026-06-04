@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myform{
+            border : 2px solid red;
+            height: 200px;
+            width: 300px;
+        }
+
+        body{
+            height: 674px;
+            justify-items: center;
+            align-content: center;
+        }    
+    </style>
+</head>
+<body>
+    
+    <!-- <div id="divtag">
+        <form action="" id="myform">
+        </form>
+    </div> -->
+    
+    <!-- <div style="justify-items: center;">
+        <h1>Hello  jishan</h1>
+    </div> -->
+
+    <div id="divtag" class="mycolor" onclick="myfunc()">
+        div tag
+    </div>
+
+    <script>
+
+        function myfunc(){
+            let ele = document.getElementById("divtag")
+            ele.classList.add("newdemo");
+            document.writeln(ele.classList + "</br>");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events on P tag</title>
+
+</head>
+
+<body>
+
+  <h1>Javascript Tutorial by TechGun</h1>
+  <button id="demo" onclick="myfun()">Click Menu</button>
+
+  <p id="intro"></p>
+  
+  <script>
+
+    let ele = document.getElementById("intro");
+
+    function myfun() {
+      ele.innerHTML = Date();
+    }      
+  </script>
+
+
+
+
+</body>
+
+</html>

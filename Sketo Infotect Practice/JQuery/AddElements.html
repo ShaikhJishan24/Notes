@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get and print text </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+      
+    <p id="test">Welcome to Youtube channel....</p>
+    <p id="test2">Hello World....</p>
+    
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li id="list3">Item 3</li>
+    </ol>
+
+      <button id="btn1">Append Text</button>
+      <button id="btn2">Prepend Text</button>
+      <button id="btn3">append/prepend List</button>
+      <!-- <button id="btn3">set Value</button> -->
+      <button id="btn4">remove Element</button>
+
+     <script>
+      $(document).ready(function(){
+        $("#btn1").click(function(){
+            $("#test").append("Tech Gun");
+        })
+      });
+
+      $(document).ready(function(){
+        $("#btn2").click(function(){
+            $("#test2").prepend("Tech Gun");
+        })
+      });
+      
+      $(document).ready(function(){
+        $("#btn3").click(function(){
+            $("ol").append("<li>Item 4 </li>");
+        })
+      });
+
+      $(document).ready(function(){
+        $("#btn3").click(function(){
+            $("ol").prepend("<li>Item 4 </li>");
+        })
+      });
+
+      $(document).ready(function(){
+        $("#btn1").click(function(){
+            $("ol").after("<li>Item 4 </li>");
+        })
+      });
+        
+
+      $(document).ready(function(){
+        $("#btn4").click(function(){
+            $("li").remove("#list3");
+        })
+      });
+
+
+      // $(document).ready(function(){
+      //   $("#btn4").click(function(){
+      //       $("li").empty("#list3");
+      //   })
+      // });
+
+
+     </script>
+
+
+
+
+
+</body>
+</html>

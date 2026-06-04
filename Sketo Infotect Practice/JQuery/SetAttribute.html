@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get and print text </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+      
+    <p id="test">Welcome to <b>Tech Gun</b> Youtube channel</p>
+    <p id="test2">Hello World....</p>
+    <input type="text" value="moin" id="demo"><br><br>
+
+      <button id="btn1">set Text</button>
+      <button id="btn2">set HTML</button>
+      <button id="btn3">set Value</button>
+     <script>
+
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#test").text("welcome....");
+            })
+        });
+
+        $(document).ready(function(){
+            $("#btn2").click(function(){
+                $("#test2").html("<b>Heyy..</b>")
+            })
+        });
+
+        $(document).ready(function(){
+            $("#btn3").click(function(){
+                $("#demo").val("Rahul");
+            })
+        })
+
+
+
+     </script>
+
+
+
+
+
+</body>
+</html>

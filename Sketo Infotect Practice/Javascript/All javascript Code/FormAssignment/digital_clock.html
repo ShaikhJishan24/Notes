@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        body{
+            background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+        }
+    </style>
+</head>
+<body onload="myfunc()">
+    
+    <div id="div"> </div>
+
+    <script>
+
+    function myfunc(){
+
+        let date = new Date();
+
+        let h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+
+        h = checktime(h);
+        m = checktime(m);
+        s = checktime(s);
+
+        let ele = document.getElementById("div");
+        ele.innerHTML = h + ":" + m + ":" + s ;
+
+        t = setTimeout("myfunc()", 500);
+
+        function checktime(i){
+            if(i < 10){
+                i = '0' + i;
+            }
+            return i;
+        }
+    }
+
+    </script>
+</body>
+</html>

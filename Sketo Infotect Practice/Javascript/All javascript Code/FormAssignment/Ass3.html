@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+<!-- Create a text box , create 2 radio button displaying color red and blue on click of radio button it should 
+change colour of text in a text box -->
+<body>
+    
+    <input type="text" id="inp"><br><br>
+
+    
+    <input type="radio" name="choose" id="1" onclick="changecolor()" value="red">Red
+    <input type="radio" name="choose" id="2" onclick="changecolor()" value="blue">Blue
+   
+    
+    <script>
+        
+        function changecolor(){
+            let ele = document.querySelector("input[name='choose']:checked").value;
+            
+            let val = document.getElementById("inp");
+            
+            if(ele == "red"){
+               val.style.cssText = "color : red";           
+            }
+            else{
+                val.style.cssText = "color : blue";
+            }
+        }
+    
+    </script>
+</body>
+</html>

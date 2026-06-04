@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation Bar</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/path/to/cdn/jquery.min.js"></script>
+    <script src="/path/to/extm.min.js"></script>
+</head>
+
+<body>
+
+    <img class="example" src="download.jpeg" />
+    <script>
+        $('.example').extm({
+            zoomElement: false,
+            imageSrc: $(this).attr('src'),
+            squareOverlay: false,
+            position: false,
+            rightPad: 0,
+            lazy: false,
+            zoomLevel: 1,
+            zoomSize: false,
+            loadingText: false,
+            loadingImage: false,
+        });
+    </script>
+
+</body>
+
+</html>

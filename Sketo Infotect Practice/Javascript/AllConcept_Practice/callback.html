@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+
+<body>
+
+
+    <script>
+        // let foo = function myfunc(val){
+        //     console.log("Myfunc" + val);
+        // }
+        // foo(500);
+
+        // -----------------------
+        // function greet(num, Callback){
+        //     console.log(num);
+        //     Callback();
+        // }
+
+        // function myfunc(val){
+        //     console.log("Myfunc" + val);
+        // }
+        // greet(200, myfunc(800));
+
+        // -----------------------------------
+        // function greet(num, Callback){
+        //     console.log(num);
+        //     Callback();
+        // }
+        // greet(200, (val) => {console.log(500)});
+
+        // --------------------
+        // function greet(num, Callback){
+        //     console.log(num);
+        //     Callback();
+        // }
+        // greet(500, ()=>{console.log("demo func")});
+
+
+        // -------------------------------
+        // same as below code of it
+        // let p = new Promise((resolve, reject) => {
+        //     setTimeout(() => { resolve("Task Completed!");}, 2000);
+        // });
+        // p.then(res => {console.log(res);});
+
+        // --------------------
+        // function greet(Callback){
+        //     setTimeout(() => { Callback("hello") }, 1000);
+        // }
+        // greet((res)=>{console.log(res)});
+
+//         ----------- Explanation of above code
+        //         Step - by - Step FLOW
+        // ⏳ Step 1
+
+        // Promise created → state = pending
+
+        //         p = Pending Promise
+
+        // ⏳ Step 2
+
+        // JavaScript starts the setTimeout(asynchronous)
+
+        // Promise still pending, JavaScript continues running other code.
+
+        // ⏳ Step 3
+
+        // After 2 seconds → setTimeout finishes → resolve("Task Completed!") is called.
+
+        // Promise state changes to:
+
+        //         fulfilled
+        //         value = "Task Completed!"
+
+        // ⭐ Step 4 — then() gets triggered
+
+        // The callback in then() runs:
+
+        //         result => {
+        //             console.log(result);
+        //         }
+
+
+        //         Here:
+
+        // result will be "Task Completed!"
+
+        //         So:
+
+        // Task Completed!
+
+        // let p = new Promise((resolve, reject) => {
+        //     // setTimeout(() => { resolve("Task Completed!");}, 2000);
+        //     // resolve("Task Completed!");
+        //     reject(new Error("something went wrong..........."))
+        // });
+
+        // then chaining
+        // p.then(res => console.log(res))
+        // .then(val => console.log(val)); // undefined
+
+        // p.then(res => {console.log(res); return 10 * 2})
+        // .then(val => console.log(val)); // 20
+
+        // p.then(res => {console.log(res);}, (err) => {console.log(err);});
+        
+        // finally 
+        // let p = new Promise((resolve, reject) => {
+        //     resolve("Task Completed!");
+        //     reject(new Error("something went wrong..........."))
+        // });
+        // p.finally(() => console.log("finally......."))
+        // .then(res => {console.log(res);}, (err) => {console.log(err);});
+
+        // with or without catch 
+        // let p = new Promise((resolve, reject) => {
+        //     // resolve("Task Completed!");
+        //     reject(new Error("something went wrong..........."))
+        // });
+
+
+        // p.then(res => {console.log(res);})  // not handle the excrption
+        // p.then(res => {console.log(res);}, null); // not handle the exception same above
+
+        // p.then((err) => {console.log(err);}); // even if you give this it not handled the excption you have to write the null as 1st argument
+        // p.then(null, (err) => {console.log(err);}); // now handled the exception  // sortant for catch
+        // .then(null, (err) => {console.log(err);});
+
+        // p.then(res => console.log("data........."), (err) => {console.log(err);})
+        // .catch((err) => {console.log(err);});
+
+
+    </script>
+</body>
+
+</html>

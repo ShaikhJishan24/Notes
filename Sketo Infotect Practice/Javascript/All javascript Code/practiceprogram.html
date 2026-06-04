@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Programs</title>
+</head>
+<body>
+      
+    <!-- <button id="btn" onclick="myfun()">Click Me</button>
+    <p id="demo"></p> -->
+
+
+    <script>
+    // 1)   Leap year or not -->
+    // let year = prompt("Enter an year");
+
+    // if(year % 4 == 0){
+    //     document.write("this ia a leap year");
+    // }
+    // else{
+    //     document.write("this ia Not a leap year");
+    // }
+
+
+    // 2) postive , Negative or Zero
+
+    // let num = prompt("Enter the number");
+
+    // if (num == 0){
+    //     document.write("The Number is Zero");
+    // }
+    // else if (num > 0){
+    //     document.write("The Number is Positive");
+    // }
+    // else{
+    //     document.write("The Number is Negative");
+    // }
+        
+
+    // 3) Alphabet or Not
+
+    // let ch = prompt("Enter an Character");
+
+    // if ( (ch >= "a" && ch <= "z") || (ch >= "A" && ch <= "Z")){
+    //  document.write("The character is an alphabet");
+    // }
+    // else{
+    //  document.write("The character is Not an alphabet");
+    // }
+     
+
+    // 4)  Prime number or Not 
+    
+    // let num = prompt("Enter a Number");
+    //     i = 2;
+    // while(i <= num){
+    //     if(num % i == 0){
+    //         document.write("The number is Not  a prime for : ", i + "<br>");
+    //     }
+    //     else{
+    //         document.write("The number is  a prime for : ", i + "<br>");
+    //     }
+
+    //     i++;
+    // }
+    
+    
+    // 5) print sum of natural number
+    
+    // let num = prompt("Enter a Number");  
+    // let sum = 0;
+    // for(let i = 0; i <= num; i++){
+    //     sum = sum + i;
+    // }
+        
+    // document.write("The Sum of Natural Number is : ", sum);
+
+    
+    // 6) print 1 to N number
+
+    // let num = prompt("Enter a Number");  
+    // for(let i = 1; i <= num; i++){
+    //     document.write(i + "<br>");
+    // }
+   
+
+    // 7)  factorial of Number
+
+    // let num = prompt("Enter a Number");
+    // let fact = 1;
+    // // using for loop -->
+    // for(let i = 1; i <= num; i++){
+    //     fact = fact * i;
+    // }
+    // document.write("The factorial of a number is : ", fact);
+
+    // Using while loop -->
+    // let i = 1;
+    // while(i <= num){
+    //     fact = fact * i;
+    //     i++;
+    // }
+    // document.write("The factorial of a number is : ", fact);
+    
+    
+    // using template Litrate
+    // let a = 10;
+    // let b = `This is number ${a}` ;
+    // document.write(b);
+
+
+    // Functions   // Here is a Doubth in this quetion
+   
+    // function Sum_of_two_num(a, b){
+    //    document.write(a + b);
+    // };
+    
+    // let x = prompt("enter the X");
+    // let y = prompt("enter the Y");
+
+    // let sum = Sum_of_two_num(x, y);
+    // document.write(sum);
+
+    
+    // Array -->
+    // let num = [10, 20, 30, 40];
+    // for (let i = 0; i < num.length; i++){
+    //     document.write(num[i], "<br>");
+    // }
+
+
+    // continue statements 
+    // let i = 0;
+    // while(i < 10){
+    //     if (i == 5){
+    //         continue
+    //     }
+    //     document.write(i);
+    //     i++;
+    // };
+
+    // Factorial of Numbers using Functions
+    
+    //     function factorial(num){
+    //         let fact = 1;
+    //         for(let i = 1; i <= num; i++){
+    //              fact = fact * i;
+    //         }
+    //         return fact;
+    //     };
+    //    let x = prompt("Enter the Number");
+    //    document.write(factorial(x));
+
+    // Switch case 
+     
+    // let Age = prompt("Enter your Age");
+    // switch(Age){
+
+    //     case (Age < 10) : 
+    //         document.write("You Are a Child");
+    //         document.write("You Dont evean think of driving ");
+    //         break
+    //     case (Age >= 10) : 
+    //         document.write("You Are Eligible for Leraning Licence");
+    //         break
+    //     case (Age >= 18) :
+    //         document.write("You are Eligible for Permenant Licence");
+    //         break
+    //     default :
+    //         document.write("Please Enter the valid Age");
+    // }
+    
+    
+    // Terenory operator
+    
+    // let age = 28;
+    // age >= 18 ? document.write("You can Vote") : document.write("you can not Vote");
+
+    // random Number generator 
+    // function random(min, max){
+    //   return  Math.floor(Math.random() * (max - min)) + min ;
+    // };
+    // document.write(random(15, 25));
+    
+    // Date Object
+    // let x = new Date();
+    // document.write(x) 
+
+    // Gate Method  
+    // let y = new Date();
+    // document.write(y.getDate());
+
+    // Set Method 
+    // let z = new Date();
+    // z.setDate(10);
+    // document.write(z);
+
+    // Example when we use this 
+
+    //   let a = new Date();
+    //   a.setDate(a.getDate() + 50) ;
+    //   document.write(a);
+
+//     const person = {
+//    Name : "Dhanno",
+//    Age : 25,
+//    personalInfo : {
+//      PhoneNo : 9842675428,
+//      Address : {
+//        street : "Govt Colony",
+//        city : "Mumbai",
+//        Country : "India",
+//      },
+//    },
+// };
+
+// document.write(person.personalInfo);
+
+
+// let ele = document.getElementById("btn") 
+// function myfun(){
+//     document.getElementById("demo").innerHTML = Date() ;
+// };
+ 
+
+// Nested For Loop
+// for(let i = 0; i < 5; i++){
+
+//     for(let j = i; j <= 5; j++){
+//         console.log(i + " " + j);
+//     }
+
+// };
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particles javascript library</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        nav{
+            height: 100px;
+            width: 100%;
+            background-color: mediumseagreen;
+            border-radius: 8px; 
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+        }
+
+        ul{
+            list-style: none;
+            /* border: 2px solid red; */
+            display: flex;
+            width: 300px;
+            margin: auto;
+        }
+
+        ul li{
+           /* border: 2px solid black; */
+           padding: 15px;
+           font-size: 25px;
+           margin: 0 10px;
+           font-weight: 600;
+           position: relative;
+        }
+
+        ul li a:before{
+            content: "";
+            width: 0px;
+            height: 4px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 0px;
+            top: 85%;
+            border-radius: 12px;
+            transition: all .2s linear;
+        }
+        
+        li a:hover::before{
+            width: 100%;
+        }
+        .heading{
+            height: 83vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+    
+    <!-- particles.js   -->
+    
+</head>
+ 
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a>About</a></li>
+                <li><a>Services</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="particles-js"></div>
+    
+
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+</html>

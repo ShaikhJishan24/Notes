@@ -1,0 +1,52 @@
+.outer_box {
+    height: 500px;
+    width: 70%;
+    border: 16px solid black;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.inner_box{
+    width: 93%;
+    height: 430px;
+    border: 8px solid red;
+    margin-top: 25px;
+   
+}
+
+.inner_box p{
+      margin-top: 6px;
+      font-size: 25px;
+      color: black;
+      font-style: uppercase;
+      font-family:'Times New Roman', Times, serif;
+}
+
+.stand{
+      height: 70px;
+      width: 35px;
+      border: 2px solid white;
+      background-color: black;
+      
+      
+}
+
+.lower_stand{
+      height: 20px;
+      width: 200px;
+      border: 2px solid white;
+      background-color: black;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

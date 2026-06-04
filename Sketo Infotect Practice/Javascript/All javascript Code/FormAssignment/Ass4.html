@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+</head>
+<!-- Create 2 text box as password and re-eneter password. On change of password check if both 
+text box has same value or not. If it has same value print valid in div tag else print invalid -->
+<body>
+    
+    <label for="">Password :</label> <input type="text" id="pwd" ><br><br>
+    
+    <label for="">Re-Enter Password :</label> <input type="text" id="rpwd" onblur="check()">
+    
+    <div id="div"></div>
+
+    <script>
+        
+        function check(){
+            
+            let pwd = document.getElementById("pwd").value;
+            let rpwd = document.getElementById("rpwd").value;
+            let getdiv = document.getElementById("div");
+
+            if(pwd == rpwd){
+                getdiv.innerHTML = "Valid";
+            }
+            else{
+                getdiv.innerHTML = "InValid";
+            }
+        }
+
+    </script>
+</body>
+</html>

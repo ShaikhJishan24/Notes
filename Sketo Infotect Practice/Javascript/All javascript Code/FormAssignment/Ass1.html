@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+</head>
+
+<body>
+    
+    <textarea name="st" id="str" onblur="myfunc()"></textarea>
+    <div id="d" style="background-color: aqua; color: black;"></div>
+
+
+    <script>
+        
+        let ele = document.getElementById("d");
+        
+        function myfunc(){     
+            let val = document.getElementById("str").value;
+            ele.innerHTML = val.trim().length;
+        }
+        
+    </script>
+    
+</body>
+
+
+</html>

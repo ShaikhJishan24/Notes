@@ -1,0 +1,93 @@
+.container{
+    height: 200px;
+    width: 20%;
+    border: 2px solid red;
+    cursor: pointer;
+    /* outline: crimson; */
+}
+
+.container2{
+    display: inline-block;
+    height: 200px;
+    width: 20%;
+    border: 2px solid red;
+    cursor: pointer;
+    /* outline: crimson; */
+}
+ /* .container3{
+    display: inline-block;
+    height: 200px;
+    width: 20%;
+    border: 2px solid red;
+    cursor: pointer;
+    /* outline: crimson; */
+}
+  */
+
+
+
+.list ul{            
+                      /* ul is a parent of li  */
+    display: flex;
+}
+/* body{
+       height: 800px;
+} */
+
+
+/* position:fixed     position fix hota hai */
+.Box1{
+    position: static;
+    height: 150px;
+    width: 20%;
+    border: 2px solid red;
+    background: aqua;
+    text-align: center;
+    float: left;
+    /* position: fixed; */
+    
+}
+
+
+ 
+/* position: relative     uske jagah se hi hile ga wo */
+.Box2{
+    height: 150px;
+    width: 20%;
+    border: 2px solid red;
+    background: aqua;
+    text-align: center;
+    float: left;
+    /* position: relative;
+    margin-top: 150px; */
+    
+}
+
+/* Position : absolute    goes to its parent element and then moves */
+.Box3{
+    height: 150px;
+    width: 20%;
+    border: 2px solid red;
+    background: aqua;
+    text-align: center;
+    float: left;
+    /* position: absolute; */  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

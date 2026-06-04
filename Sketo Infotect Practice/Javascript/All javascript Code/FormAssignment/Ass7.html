@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 7</title>
+<!-- Create 4 checkbox having details of books Eg. C 200   ,  C# 500   , React 550
+ Create a text box. On change it should display total of selected book
+ -->
+</head>
+<body>
+
+    <input type="checkbox" onchange="getprice()" value="200" id="C">C 200
+    <input type="checkbox" onchange="getprice()" value="500" id="C#">C# 500
+    <input type="checkbox" onchange="getprice()" value="500" id="React">React 500
+    <input type="checkbox" onchange="getprice()" value="300" id="Java">Java 300
+    <br><br>
+
+    <input type="text" id="inp">
+
+    <script>
+
+        function getprice(){
+
+            let c = document.getElementById("C");
+            let csharp = document.getElementById("C#");
+            let React = document.getElementById("React");
+            let java = document.getElementById("Java");
+
+            let inp = document.getElementById("inp");
+
+            let total = 0;
+
+            if(c.checked){
+                total += +c.value;           
+            }
+
+            if(csharp.checked){
+                total += +csharp.value;
+            }
+
+            if(React.checked){
+                total += +React.value;
+            }
+
+            if(java.checked){
+                total += +java.value;
+            }
+            
+            inp.value = total;
+        }
+
+    </script>
+    
+</body>
+</html>

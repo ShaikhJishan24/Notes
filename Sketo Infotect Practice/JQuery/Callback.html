@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Function</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body> 
+     <p>HIDE</p>
+     <button class="btn">click me </button>
+     <script>
+         $(document).ready(function(){
+            $(".btn").click(function(){
+                $("p").hide("slow", function(){
+                    alert("After Hiding element")
+                })
+            })
+         })
+     </script>
+       
+</body>
+</html>

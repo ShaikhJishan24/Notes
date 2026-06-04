@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Destructing</title>
+</head>
+
+<body>
+    <script>
+        // const book = {
+        //     name : "Advance js",
+        //     pages : 200,
+        //     price : 150
+        // };
+
+        // let {name  : title , pages, price} = book;
+
+        // document.write(title) ;
+
+        // ----------------------------------------
+        // assign different values using destructuring
+        // let node = {
+        //     type: "Identifier",
+        //     name: "foo"
+        // },
+        // type = "Literal",
+        // name = 5;
+
+        // ({ type, name } = node);
+        // console.log(type);      // "Identifier"
+        // console.log(name);      
+
+        // -------------------------------
+        // variable default value
+        // let node = {
+        //     type: "Identifier",
+        //     name: "foo"
+        // };
+
+        // let { type, name, value = "ello"} = node;
+        // console.log(value);
+
+        // -------------------------------
+        // Another name for variable
+        // let node = {
+        //     type: "Identifier",
+        //     name: "foo"
+        // };
+
+        // let { type, name : newname} = node;
+        // console.log(newname);
+
+        // ----------------------------
+        // nested object
+        // let node = {
+        //     type: "Identifier",
+        //     name: "foo",
+        //     loc: {
+        //         start: {
+        //             line: 1,
+        //             column: 1
+        //         },
+        //         end: {
+        //             line: 1,
+        //             column: 4
+        //         }
+        //     }
+        // };
+        // let {loc : {start : {column}}} = node;
+    </script>
+</body>
+
+</html>
