@@ -1,0 +1,61 @@
+class User {
+
+    private String name;
+    private int age;
+    private String email;
+    private String phone;
+
+    private User(UserBuilder builder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.email = builder.email;
+        this.phone = builder.phone;
+    }
+
+    public static class UserBuilder {
+
+        private String name;
+        private int age;
+        private String email;
+        private String phone;
+
+        public UserBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public UserBuilder setAge(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public UserBuilder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserBuilder setPhone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        User user = new User.UserBuilder()
+                .setName("Jishan")
+                .setAge(24)
+                .setEmail("jishan@gmail.com")
+                .setPhone("9876543210")
+                .build();
+
+        System.out.println(user);
+    }
+}

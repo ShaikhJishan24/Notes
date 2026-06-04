@@ -1,0 +1,9 @@
+services: 
+ vita-web:
+  image: httpd
+  ports: 
+   - "8080:80"
+ vita-db: 
+  image: redis
+
+

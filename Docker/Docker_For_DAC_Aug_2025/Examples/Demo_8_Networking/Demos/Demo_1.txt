@@ -1,0 +1,210 @@
+docker network ls
+	shows how many networks are available
+
+by default every container created is connected with "Bridge" network.
+
+
+docker network inspect bridge
+
+output:
+
+
+[
+    {
+        "Name": "bridge",
+        "Id": "71318231717dd007e51bfadf198b12f4ee05fde847f940ebcab3ce320d109254",
+        "Created": "2023-07-22T06:45:45.5526253Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+
+notice in the above output "containers" section, it's empty as we haven't yet created any container.
+
+
+let's create first container
+
+		docker run --name vita-web -d httpd
+output:
+e73a3413ff0b89113fa2b6d817eb5e05c2772a6c86beec74ea5259ed1a225c3a
+
+
+
+docker network inspect bridge
+
+output:
+
+[
+    {
+        "Name": "bridge",
+        "Id": "71318231717dd007e51bfadf198b12f4ee05fde847f940ebcab3ce320d109254",
+        "Created": "2023-07-22T06:45:45.5526253Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "e73a3413ff0b89113fa2b6d817eb5e05c2772a6c86beec74ea5259ed1a225c3a": {
+                "Name": "vita-web",
+                "EndpointID": "90eab6c96ab7d52f5b274716e7d0475b388a52bf5d3d3aa888cfc052dc7e0ada",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+
+notice in the above output "containers" section, we can see the container which we've created. Also notice its
+	"IPv4Address": "172.17.0.2/16",
+
+
+now let's create one more container
+
+docker run --name vita-db -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0.33
+
+	[ -e MYSQL_ROOT_PASSWORD=root: Sets the root password for MySQL inside the container.
+-d: Runs the container in detached mode. ]
+
+	you'll get output something like this:
+
+
+Unable to find image 'mysql:8.0.33' locally
+8.0.33: Pulling from library/mysql
+49bb46380f8c: Pull complete
+aab3066bbf8f: Pull complete
+d6eef8c26cf9: Pull complete
+0e908b1dcba2: Pull complete
+480c3912a2fd: Pull complete
+89a648ecb3cf: Pull complete
+6313eed00780: Pull complete
+668fe2d98404: Pull complete
+d3f8a843b813: Pull complete
+c80ab9fc8db5: Pull complete
+1b8b6b073273: Pull complete
+Digest: sha256:ea68e51ffe9b96fef6076f1218af11301aeaf13c6201e0ec9aaef5791d5ddc5d
+Status: Downloaded newer image for mysql:8.0.33
+8e971fa4714150da67b5a47de6fec13be35ee8b02a8bdcc84d44179423e08093
+
+
+	now let's check again
+
+
+docker network inspect bridge
+
+you'll get the following output:
+
+[
+    {
+        "Name": "bridge",
+        "Id": "71318231717dd007e51bfadf198b12f4ee05fde847f940ebcab3ce320d109254",
+        "Created": "2023-07-22T06:45:45.5526253Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "8e971fa4714150da67b5a47de6fec13be35ee8b02a8bdcc84d44179423e08093": {
+                "Name": "vita-db",
+                "EndpointID": "359cf6a381aaea14ab8a32f96be4b1895b5963e9b264bf22fa7c17be499db12f",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "e73a3413ff0b89113fa2b6d817eb5e05c2772a6c86beec74ea5259ed1a225c3a": {
+                "Name": "vita-web",
+                "EndpointID": "90eab6c96ab7d52f5b274716e7d0475b388a52bf5d3d3aa888cfc052dc7e0ada",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+	notice the "containers" section. You will find two containers and their 
+
+ "Name": "vita-web",    "IPv4Address": "172.17.0.2/16"
+
+ "Name": "vita-db"	 "IPv4Address": "172.17.0.3/16"
+

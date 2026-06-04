@@ -1,0 +1,60 @@
+create "Parent table" or "Referenced table"
+
+mysql> create table company(id varchar(4) primary key,name varchar(30),location varchar(30));
+Query OK, 0 rows affected (0.52 sec)
+
+
+mysql> insert into company values('c1','Capgemini','Banglore');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into company values('c2','Smartstream','Mumbai');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from company;
++----+-------------+----------+
+| id | name        | location |
++----+-------------+----------+
+| c1 | Capgemini   | Banglore |
+| c2 | Smartstream | Mumbai   |
++----+-------------+----------+
+2 rows in set (0.00 sec)
+
+
+create "Child table" or "Referencing table"
+
+
+mysql> create table employee(empid int(4) primary key,name varchar(30),salary decimal(9,2),cid varchar(4),foreign key(cid) references company(id));
+Query OK, 0 rows affected, 1 warning (0.82 sec)
+
+mysql> insert into employee values(1,'Anil',80000,'c1');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into employee values(2,'Sachin',90000,'c1');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into employee values(3,'Rahul',80000,'c1');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into employee values(4,'Saurav',70000,'c2');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from company;
++----+-------------+----------+
+| id | name        | location |
++----+-------------+----------+
+| c1 | Capgemini   | Banglore |
+| c2 | Smartstream | Mumbai   |
++----+-------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+----------+------+
+| empid | name   | salary   | cid  |
++-------+--------+----------+------+
+|     1 | Anil   | 80000.00 | c1   |
+|     2 | Sachin | 90000.00 | c1   |
+|     3 | Rahul  | 80000.00 | c1   |
+|     4 | Saurav | 70000.00 | c2   |
++-------+--------+----------+------+
+4 rows in set (0.00 sec)
+

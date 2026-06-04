@@ -1,0 +1,3 @@
+all messages.properties files must be kept inside
+
+		src/main/resources

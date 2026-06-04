@@ -1,0 +1,7 @@
+In Java (especially in Spring / Spring Boot web applications), MultipartFile is used to handle file uploads sent from a client (browser, Postman, frontend app) using multipart/form-data requests.
+
+What exactly is MultipartFile?
+
+MultipartFile is an interface provided by Spring Framework (org.springframework.web.multipart.MultipartFile) that represents an uploaded file received in an HTTP request.
+
+When a user uploads a file via a form or API, Spring automatically converts that file into a MultipartFile object.

@@ -1,0 +1,63 @@
+- From Where To learn this topics
+Book 3 - B3
+Book 4 - B4
+
+✔️ Enum Pro   -- B3
+
+✔️ GC_method_Info  -- shifted folder in Day2 B4
+
+✔️ ImmutableDemo -- B3
+
+✔️ MutableDemo -- B3
+
+✔️ String_Folder  only revised this Concept
+
+✔️ StringBuilderDemo -- B3
+ 
+✔️ StringBuilder class usage -- B3
+
+✔️ innerclass_info -- B4
+
+✔️ Wrapper classes -- B4
+	Wrapper classes in java
+	Why Wrapper classes were introduced
+	autoboxing, unboxing
+	How to pass primitive to a method which has Object as  a parameter  JDK5 onwards
+
+✔️ varargs -- B3
+
+✔️ overloading_info_with_widening_and boxing
+
+✔️ CommandLineDemo -- B3
+
+✔️ Bridge Methods in Java -- B3
+
+	BridgeDemo
+
+✔️ Imp_Info_Protected
+
+
+
+
+
+
+
+
+A protected member is accessible:
+
+	Within the same package
+	outside the package In subclasses through Inheritance 
+        However, in a different package, they cannot be accessed using a parent class reference — only through the subclass itself.
+	
+
+-- parent inherited method is not Accessible through child class object if child does not override that method
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+- Introduction to Java,
+
+	• Introduction to java 
+	• Features of java 
+	• JVM Architecture 
+	• JDK and its usage 
+	• Structure of java class 
+	• Working with data types: Primitive data types 
+
+- JVM Architecture,
+
+Primitive data types,
+OOP Concepts using Java,
+Interfaces,
+Arrays,
+Garbage collection,
+Inner Class,
+Wrapper Classes and String Class,
+Exception Handling,
+java.io & java.nio Package,
+Object Class & java.util Package,
+Collections,
+MultiThreading,
+Synchronization,
+Lambada Expression,
+Generics and Reflection API,
+Java 8 Stream API
+
+
+
+
+
+
+
+-- order in which you have to Learn or revise
+
+DAy 12 
+
+	NIO ✔️
+	Stream API ✔️
+	
+Day 11
+
+	First, interface info do first ✔️
+	All ✔️
+
+Day 10
+
+	Generics ✔️
+	Collection
+
+Day 9
+
+	JVM architecture
+	File handling  ✔️
+	Synchronization   ✔️
+
+day 8
+
+	Normal Multithreading  ✔️
+
+Day 7
+
+	Reflection API ✔️
+	
+	
+Day 6
+	Exception Handling ✔️
+
+
+
+String class and intern method must do 
+
+
+
+
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,179 @@
+create an empty folder "trial" inside "d:\\"
+
+
+
+run Docker Desktop  first
+
+create a simple spring boot project inside your workspace folder (d:\\MySTS  in my case) using STS
+
+file
+	new
+		spring starter project
+			For_Docker
+
+	location:-  D:\MySTS\For_Docker
+
+
+maven			jar
+17			java
+
+spring boot version
+		3.08
+
+dependencies to be added
+
+	Spring Web
+
+
+after project gets created add one java class inside "com.example.demo"
+
+
+
+package com.example.demo;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@RestController
+public class TestController 
+{
+	@GetMapping(value = "/getValues")
+	public Map<String,Object> getValues()
+	{
+		Map<String,Object> data=new HashMap<String,Object>();
+		data.put("message","Java API is working fine");
+		data.put("languages","Java,Python,Javascript");
+		data.put("code", "2345");
+		return data;
+	}
+}
+
+
+
+go to "application.properties" file and change the port no.
+
+server.port=9595
+
+now run the spring boot application 
+
+go to the browser and type
+
+http://localhost:9595/getValues
+
+and check if it's working properly or not
+
+you should get the output
+
+{"code":"2345","languages":"Java,Python,Javascript","message":"Java API is working fine"}
+
+
+now let's create a jar file of this project
+
+close the server from STS.
+
+File
+	run as
+		maven build 6
+
+Goals   -    package
+
+  make sure "skip test" is not selected.
+
+once u get "Build Successfull" message
+
+check inside "D:\MySTS\For_Docker\target" folder, you should get
+"For_Docker-0.0.1-SNAPSHOT.jar" as an executable jar file.
+
+
+now first you have to check whether this is a perfect jar file for your spring boot application.
+
+so go to CMD
+
+D:\MyDocker\For_Docker\target>java -jar For_Docker-0.0.1-SNAPSHOT.jar
+
+make sure server starts
+
+now go to browser and type
+
+http://localhost:9595/getValues
+
+and check if it's working properly or not
+
+you should get the output
+
+{"code":"2345","languages":"Java,Python,Javascript","message":"Java API is working fine"}
+
+
+now go to "d:\trial" and create a folder "spring-boot-project" inside it.
+
+copy "For_Docker-0.0.1-SNAPSHOT.jar" inside "spring-boot-project" folder.
+
+let's create Dockerfile inside "d:\\trial\\spring-boot-project" folder.
+
+
+FROM eclipse-temurin17-jdk-alpine
+WORKDIR usr/src/myapp
+COPY . /usr/src/myapp/
+CMD [ "java","-jar","For_Docker-0.0.1-SNAPSHOT.jar"]
+
+
+save it
+
+let's build the image now
+
+open terminal and give following command:
+
+PS D:\trial\spring-boot-project> docker build -t springbootimage1 .
+
+make sure above command builds your image
+
+check it with the following command
+
+docker images
+
+make sure you get 
+
+
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+springbootimage1            latest    905b408e705f   27 seconds ago   490MB
+
+
+
+now let's run this image so that container will get created
+
+
+docker run --name bootcontainerr1 -p8002:9595  springbootimage1
+
+
+	[ above command sends a request to http://localhost:8002 to Docker which is
+set up to "listen" for traffic on port 8002 of the host.
+Docker forwards the request to port 9595 inside the container where the Spring Boot application is running. ]
+
+
+9595 → Port on which Spring Boot runs inside the container
+
+8002 → Port exposed on your laptop (host machine)
+
+	 Inside container → Spring Boot listens on 9595
+	 Outside (browser / Postman) → You access using 8002
+
+
+go to the browser and type:
+
+http://localhost:8002/getValues
+	
+	make sure you get the output
+you should get the output
+
+
+
+{"code":"2345","languages":"Java,Python,Javascript","message":"Java API is working fine"}
+
+
+
+
+
+

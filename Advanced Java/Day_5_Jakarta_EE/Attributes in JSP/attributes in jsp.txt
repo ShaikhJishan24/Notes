@@ -1,0 +1,26 @@
+
+
+different scopes in jsp
+
+there are 4 scopes or attributes in jsp
+
+	page,request,session and application.
+
+scope/attribute    	object to represent (represented by)
+
+page			pageContext
+request			request
+session			session
+application		application
+
+
+
+page object is of that jsp page (jaise hi jsp page load hoga to page object banaega aur jsp page ke baad wo khatam ho jayega.
+
+page is differ in case of forward only W.R.T request
+in case of include page is not over
+
+pageContext.getAttribute("name");
+
+
+		

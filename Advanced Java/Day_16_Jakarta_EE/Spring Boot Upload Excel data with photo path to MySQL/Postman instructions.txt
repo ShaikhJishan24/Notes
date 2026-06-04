@@ -1,0 +1,26 @@
+Steps to upload a file using Postman (multipart/form-data)
+
+Open Postman
+
+Select POST method
+
+Enter URL:
+
+http://localhost:8080/api/students/upload
+
+
+Click on Body
+
+Select form-data
+
+In the key-value table:
+
+Under Key, type: file
+
+In that row, under Type, change from Text to File
+
+In the Value column, attach your file: students.xlsx
+
+Postman will now automatically send:
+
+Content-Type: multipart/form-data

@@ -1,0 +1,59 @@
+class A
+{
+	public A()
+	{
+		System.out.println("inside A constructor");
+	}
+	static
+	{
+		System.out.println("Inside A static block");
+	}
+}
+class B
+{
+	public B()
+	{
+		System.out.println("inside B constructor");
+	}
+}
+class Parent
+{
+	public Parent()
+	{
+		System.out.println("inside Parent constructor");
+	}
+}
+class Child extends Parent   // is-a
+{
+	private B ob1=new B();     // has-a
+	static 
+	{
+		System.out.println("in Child first static block");
+	}
+	private static A ob2=new A();     // has-a
+	static
+	{
+		System.out.println("in Child second static block");
+	}
+
+	public Child()
+	{
+		System.out.println("inside Child constructor");
+	}
+}
+public class Example_3 {
+	public static void main(String args[])
+	{
+		new Child();
+	}
+
+
+}
+
+// child first static
+// A static 
+// A constru
+// second static block
+// inside parent 
+// inside B cont
+// child constru

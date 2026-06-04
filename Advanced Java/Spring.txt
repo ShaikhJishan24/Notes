@@ -1,0 +1,221 @@
+-------------------------------------------- Spring -------------------------------------------
+27/12/2025
+IOC container ==> simple class
+
+- why lightweight 
+	coz we dont have to used All the modules(AOP, DAO) if you dont need 
+	- Spring is light weight. If Developers do not need to use all of its services, they should be allowed to choose the ones they desire to use and 
+	  implement.
+
+- loosely couple
+	main is tightly couple hence we used spring IOC which avoid it in (main)
+
+- wiring 
+	[creating associations between application components(beans)]
+
+
+- spring Bean configuration file (xml file)
+	here we configure bean or pojo of our Application
+	
+
+- This is IOC class
+	
+	for XML based Configuration
+		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("account1.xml");
+
+	for Java based Configuration
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+
+- Two ways To create the spring Bean configuration
+	1. XML based
+	2. Java based
+
+- if we have same type field then what is order to configure them in XML
+	for that we used the ** index ** attribute in <constructor-arg> or <property/> 
+
+
+- Bean or pojo class Scope(Accessibility)
+  - scope of reference of bean class object
+
+	1. singleton (by default)  - Returns a single bean instance of bean object per Spring IoC container.
+		one instance of bean object when we invoke getBean()
+
+		in this container is Eager
+	2. prototype  - Returns a new bean instance of bean object each time when requested.
+		new instance of bean object every time when we invoke getBean()
+
+		in this case here container is lazy coz when we invoke the getBean() then only constructor or object is created
+
+	3. Session 
+		same as servlet
+
+	4. request
+		same as servlet
+
+	5. global session
+		portlet application
+
+	it is an attribute of bean
+	<bean id="a1" class="mypack.MyClass" scope="singleton"/>
+  
+
+- IOC 
+	by default Eager loading coz soon as you provide xml file to container it calls the constructor or create the object 
+
+
+- Eager vs Lazy
+	1) Eager 
+		by default Eager loading coz as soon as you provide xml file to container it calls the constructor or create the object 
+
+	2) Lazy 
+		container is lazy coz when we invoke the getBean() then only constructor or object is created 
+		
+		two ways :
+			1. using scope prototype
+				<bean id="a1" class="mypack.MyClass" scope="prototype"/>
+
+			2. using tag
+				<bean id="a2" class="mypack.AnotherBean" lazy-init="true"> </bean>
+				but here not in lazy way coz we haven't uses scope 
+
+- Autowire
+	By default "autowire" is "no".
+
+	but we would like use "autowire", it is of 4 types:
+
+		1)  no  [ by default ]
+		2)  byName  -- id or field should be match (setter injection)
+		3)  byType   -- based on class Type (setter injection)
+		4)  constructor -- 
+				<bean id="x" class="mypack.MyClass2" autowire="constructor"/>
+				internally it is byType only 
+
+
+- no qualifying beans wxception means 
+	when we provide more than one Qualified bean
+
+
+Stereotype Annotation
+- Auto Scanning
+
+	@Component - it indicates bean class
+		used on those classes that class you have to make the Bean class
+		without value then class name is id for that Bean	
+	
+	@Component(value="mybook")
+		same as above but here we give the custom name for reference of the Bean class (Id => mybook)
+
+	in xml file
+		<context:component-scan base-package="com.StereoTypeAnnotation"></context:component-scan>
+
+
+	@AutoWired 
+	same as ref of property
+	by default it is also byType
+
+	it calls setter method of same class coz we use on setter 
+	if used on constructor of same class then constructor injection
+	also used on property or field
+		we can used it on field only if we use @Component on That Bean class 
+
+
+
+       @Qualifier("reference")
+       it is used when we have more than one Qualifier bean for the Same Property to inject so at that time we used @Qualifier and 
+       specify the Qualifier bean name just like above 
+       used when we using Autowired
+       
+
+- Method level Bean (2nd way of Spring Bean configuration)
+
+
+	@Configuration (To indicate this is my Spring configuration file)
+		- used when we have java based configuration of Spring Bean
+		- Spring @Bean Annotation is applied on a method to specify that it returns a bean to be managed by Spring context. 
+		  Spring Bean annotation is usually declared in Configuration classes methods.
+
+	@Configuration with method level Bean 
+		To indicate the bean class
+
+	@Configuration without the method level Bean 
+		then we want the @Component on Bean
+
+	@ComponentScan(basePackages="pckage name");
+
+- @Value("") 
+	alternative for Property tag to give the value to the field
+
+
+How to specify the Bean class
+1. Without Java Configuration
+	@Component on That class
+
+2. with Java Configuration
+	@Bean on method (method level bean)
+
+
+
+
+28/12/2025
+Observer design pattern
+Design principle 
+	- SRP - High cohesion
+	- open-closed principle 
+		open for extension closed for modification
+
+	- Liskov Substitution principle
+	- 
+	- DI
+		high level module (Container class)
+		low level module (Contain class)		
+
+- AOP (Aspect-oriented programming)
+
+     - Why used AOP
+       		- Even if you write the separated class but then also we have to called the methods of that class in Your class hence we used AOP
+
+     - Cross-cutting concerns (Additional logic)
+		- code other than the business logic that called Cross-cutting concerns
+		- Aspect-Oriented Programming [AOP] helps separate these cross-cutting concerns from the business logic
+
+     - Aspect 
+		name of cross-cutting concerns
+
+     - Advice
+		implementation of Aspect
+	
+     - Join point
+		- A join point is a well-defined location within the primary code where a concern will crosscut the application. Join points 		  can be method calls, constructor invocations, exception handlers, or other points in the execution of a program.
+		- Location (Setters, constructor) where we are doing the Cross cutting concerns
+
+     - Point cut
+		Short cut to give the Location (Join cut)	
+
+
+    1. Before Advice
+	before method parameters
+		method - method being invoked (e.g. here "multiply")
+    		os - arguments to the method ( arg which will be passed to "multiply" method.
+    		o - target of the method invocation (object by which "multiply" method has been invoked). May be null ( in case of static 		method)
+
+    2. After returning Advice
+	public class LogAfterReturning implements AfterReturningAdvice{
+    		public void afterReturning(Object o, Method method, Object[] os, Object o1) throws Throwable {
+        		System.out.println("After Normal Return from a method");
+		}
+	}
+
+	/*
+
+	Parameters:
+    		o - the value returned by the method, if any
+    		method - method being invoked
+    		os - arguments to the method
+    		o1 - target of the method invocation. May be null.
+
+	*/
+
+- JDBC Template 
+	- it is used to avoid the try catch block from JDBC code we used JDBC template it internally avoid try catch block using the 
+  	  DataAccessException
+

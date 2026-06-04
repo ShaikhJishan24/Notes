@@ -1,0 +1,4 @@
+2018-03-25 14:16:17 ERROR HelloExample2:17 - Sorry, something wrong!
+java.lang.ArithmeticException: / by zero
+	at HelloExample2.divide(HelloExample2.java:25)
+	at HelloExample2.main(HelloExample2.java:13)

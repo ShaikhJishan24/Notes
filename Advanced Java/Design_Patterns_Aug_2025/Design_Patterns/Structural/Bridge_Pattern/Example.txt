@@ -1,0 +1,45 @@
+interface Device {   // Bridge
+    void turnOn();
+}
+
+
+class TV implements Device {    // Implementation
+
+    public void turnOn() {
+        System.out.println("TV turned ON");
+    }
+
+}
+
+class Radio implements Device {   // Implementation
+
+    public void turnOn() {
+        System.out.println("Radio turned ON");
+    }
+
+}
+
+class Remote {   // Abstraction
+
+    protected Device device;
+
+    Remote(Device device) {
+        this.device = device;
+    }
+
+    void power() {
+        device.turnOn();
+    }
+}
+
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        Device tv = new TV();
+        Remote remote = new Remote(tv);
+
+        remote.power();
+    }
+}

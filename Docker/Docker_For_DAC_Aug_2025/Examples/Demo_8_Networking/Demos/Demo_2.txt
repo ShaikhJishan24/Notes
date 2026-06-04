@@ -1,0 +1,67 @@
+The bridge network is the default network for containers when no other network is specified.
+
+Containers on the default bridge network can communicate using IP addresses but not by container names (unlike custom bridge networks or Docker Compose networks).
+
+Container Communication Using Bridge Network
+
+Create Two Containers
+
+Run two containers in the default bridge network.
+
+docker run -dit --name container1 alpine sh
+
+docker run -dit --name container2 alpine sh
+
+-dit: Run the container in detached mode, interactive, and with a terminal.
+--name: Assigns names (container1 and container2) for easier reference.
+alpine: A lightweight Linux image.
+The sh at the end of the command specifies the command to execute inside the container when it starts. In this case, sh refers to the shell provided by the Alpine Linux image
+[ What Happens Internally?
+	If alpine is not available locally:
+	Docker pulls the alpine:latest image from Docker Hub.
+	You do not need to create the image manually unless you require a custom image.
+	If alpine is already available:
+	Docker uses the locally cached image without pulling it again.
+]
+
+give following command
+
+docker exec -it container1 sh
+	[ docker exec is used to interact with or run commands in an already running container. ]
+
+	give following command inside container1 shell
+		ping  -c 4    172.17.0.6
+
+			[ here we are trying to connect to or communicate to the other container i.e. container2 which has got IP address 172.17.0.6 and we are sending 4 packets]
+
+If the communication is successful we'll get following message:
+
+
+PING 172.17.0.6 (172.17.0.6): 56 data bytes
+64 bytes from 172.17.0.6: seq=0 ttl=64 time=0.092 ms
+64 bytes from 172.17.0.6: seq=1 ttl=64 time=0.110 ms
+64 bytes from 172.17.0.6: seq=2 ttl=64 time=0.102 ms
+64 bytes from 172.17.0.6: seq=3 ttl=64 time=0.102 ms
+
+--- 172.17.0.6 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.092/0.101/0.110 ms
+
+
+
+inside container1, try pinging container2 by its name:
+
+	ping container2
+
+it will give  "ping: bad address 'container2' " error message. It is because the default bridge network does not support DNS-based name resolution between containers. In the default bridge network containers can communicate using IP addresses only.
+
+For containers to communicate using "names", you need to use a custom bridge network which we will see in "Demo_3".
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+start "I18NApplication"
+
+go to POSTMAN
+
+type 
+	http://localhost:8080/greeting
+
+GET
+
+click on send 
+
+make sure you get following output:
+
+	Hello, welcome to our API!
+
+This is because we haven't set any language header, so by default it is English- US
+
+
+
+now in order to apply different languages:
+
+type
+
+http://localhost:8080/greeting
+
+GET
+
+select "header"  option 
+
+key					value
+Accept-language        			 fr
+
+click on "Send"
+
+make sure you get response in french language.
+

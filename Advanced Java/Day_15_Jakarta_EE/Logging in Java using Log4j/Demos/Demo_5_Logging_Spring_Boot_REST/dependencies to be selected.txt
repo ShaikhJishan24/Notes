@@ -1,0 +1,4 @@
+spring web
+spring boot devtools
+spring data jpa
+MySQL driver

@@ -1,0 +1,6 @@
+inside generated java file you will find
+	import javax.persistence
+
+	replace this line with
+
+	import Jakarta.persistence

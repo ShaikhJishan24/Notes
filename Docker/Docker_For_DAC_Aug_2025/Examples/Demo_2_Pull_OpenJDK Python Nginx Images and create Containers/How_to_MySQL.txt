@@ -1,0 +1,44 @@
+go to "docker hub"
+	hub.docker.com
+type "mysql" in the search bar
+
+inside the terminal , type
+
+docker pull mysql
+
+after the successful completion , type following command:
+
+docker images
+
+make sure you get to see "mysql" image
+
+let's create container of this image by giving following command on the terminal
+
+docker run --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+[ here this means that by default user name is "root" and we have given password as "root".  if we want to give some other password we can say
+MYSQL_ROOT_PASSWORD=someotherpassword ]
+
+
+
+let's inspect this container
+
+docker inspect mysqlcontainer
+
+make sure it works
+
+let's go inside the container by giving following command:
+
+	docker exec -it mysqlcontainer bash
+
+type "mysql -p"  in mysql command prompt
+give the password , make sure it works
+
+create database
+	create database bashdb
+
+open your database e.g.
+	use bashdb
+
+create tables
+	create table etc.

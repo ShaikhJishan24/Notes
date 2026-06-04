@@ -1,0 +1,96 @@
+start  Docker Desktop
+
+create a folder "For_Docker_Volume" inside "d:\\"
+
+go to "d:\For_Docker_Volume" folder
+	create a folder "without_volume"
+
+go inside "without_volume"
+
+right click
+	open in terminal
+
+PS D:\For_Docker_Volume\without_volume>
+
+give following command
+
+		docker pull nginx
+
+make sure you get the following output:
+
+Using default tag: latest
+latest: Pulling from library/nginx
+2f44b7a888fa: Pull complete
+8b7dd3ed1dc3: Pull complete
+35497dd96569: Pull complete
+36664b6ce66b: Pull complete
+2d455521f76c: Pull complete
+dc9c4fdb83d6: Pull complete
+8056d2bcf3b6: Pull complete
+Digest: sha256:4c0fdaa8b6341bfdeca5f18f7837462c80cff90527ee35ef185571e1c327beac
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+
+
+now create a container
+
+		docker run --name myngnx -d -p1000:80 nginx
+
+make sure it creates the container successfully.
+
+
+now go to browser and type
+	http://localhost:1000
+
+make sure u get the following output
+	
+	Welcome to nginx!
+
+
+now on the terminal , give following command:
+
+	 docker exec -it myngnx bash  [ interactive mode ]
+
+give following command
+	cd /usr/share/nginx/html
+inside 
+	/usr/share/nginx/html
+
+give following command
+	ls
+you will find "50x.html"  "index.html" files
+
+
+now let's remove "50x.html" and "index.html" 
+	rm 50x.html
+	rm index.html
+
+	ls
+you won't find the files now
+	let's create two files:
+		touch index.html
+		touch contact.html
+
+	ls
+you'll find two files
+
+let's come out of the bash
+	exit
+
+now the thing is that whatever you've done inside the container (first removed "index.html" and then created "index.html" and "contact.html") , is limited to this container only. Once you remove the container , files you created also will be removed.
+
+ let's remove the container
+
+	go to 
+d:\MyDocker\without_volume> docker rm -f myngnx
+
+make sure container gets removed successfully.
+
+
+
+
+The purpose of using Docker volumes is to persist data outside the container so it can be backed up or shared.
+	i.e. host machine files can be shared inside the container and you can share the files inside the host machine filesystem through the container.
+
+in the next demo, we'll see how we can do it.
+

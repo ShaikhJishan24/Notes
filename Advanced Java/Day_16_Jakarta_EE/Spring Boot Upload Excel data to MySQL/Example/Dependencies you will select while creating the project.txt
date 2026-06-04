@@ -1,0 +1,18 @@
+Spring boot devtools
+spring data jpa
+MySQL driver
+spring web
+
+
+in addition to the above ,
+
+in the generated pom.xml file add the following dependency:
+
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>5.2.3</version>
+</dependency>
+
+
+This is required for reading .xlsx Excel files.

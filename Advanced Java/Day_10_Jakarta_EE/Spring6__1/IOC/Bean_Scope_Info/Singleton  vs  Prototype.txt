@@ -1,0 +1,19 @@
+1) singleton: Returns a single bean instance per Spring IoC container.
+
+ClassPathXMLApplicationContext appContext=new ClassPathXMLApplicationContext("account.xml");
+
+AccountBean ab1=(AccountBean) appContext.getBean("a1");
+
+AccountBean ab2=(AccountBean) appContext.getBean("a1");
+
+	S.o.p(a1==a2);   // true
+
+
+
+2) prototype: Returns a new bean instance each time when requested.
+
+AccountBean ab1=(AccountBean) appContext.getBean("a1");
+
+AccountBean ab2=(AccountBean) appContext.getBean("a1");
+
+	S.o.p(a1==a2);   // false

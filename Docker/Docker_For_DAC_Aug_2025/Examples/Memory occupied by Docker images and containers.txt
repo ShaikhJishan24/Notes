@@ -1,0 +1,5 @@
+Docker images and containers occupy storage on your system.
+
+To check how much memory has been occupied by Docker images and containers give following command on CMD:
+
+docker system  df

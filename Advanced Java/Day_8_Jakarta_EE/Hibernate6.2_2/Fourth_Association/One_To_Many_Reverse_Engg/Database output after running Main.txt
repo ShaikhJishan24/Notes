@@ -1,0 +1,22 @@
+mysql> select * from company;
++----+-------------+-----------+
+| id | name        | location  |
++----+-------------+-----------+
+| C1 | Capgemini   | Banglore  |
+| C2 | SmartStream | Mumbai    |
+| C4 | TCS         | Hyderabad |
++----+-------------+-----------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from employee;
++-------+--------+----------+------+
+| empid | name   | salary   | cid  |
++-------+--------+----------+------+
+|     1 | Anil   | 80000.00 | C1   |
+|     2 | Sachin | 90000.00 | C1   |
+|     3 | Rahul  | 85000.00 | C1   |
+|     4 | Saurav | 60000.00 | C2   |
+|    20 | Akash  | 90000.00 | C4   |
+|    21 | Priya  | 95000.00 | C4   |
++-------+--------+----------+------+

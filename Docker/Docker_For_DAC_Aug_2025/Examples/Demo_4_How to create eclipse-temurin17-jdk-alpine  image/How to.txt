@@ -1,0 +1,67 @@
+go to "D:\MyDocker" and create a folder
+"java-project"
+
+
+create "Test.java" file inside "java-project" .
+
+
+public class Test
+{
+    public static void main(String[] args) 
+    {
+        System.out.println("Java Program started");
+    }
+}
+
+
+create Dockerfile inside "java-project" folder.
+	type - no extension
+
+and type the following contents:
+
+
+
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR usr/src/myapp
+COPY . /usr/src/myapp 
+RUN javac Test.java
+CMD [ "java","Test" ]
+
+
+that's it.
+
+
+let's build an image
+
+go to terminal
+
+PS D:\MyDocker\java-project>
+
+and give following command
+	docker build -t myjavaimage .
+
+while building this image notice the following things:
+
+=> [2/4] WORKDIR usr/src/myapp                                                                                                                                 2.1s 
+ => [3/4] COPY . /usr/src/myapp                                                                                                                                    2.4s 
+ => [4/4] RUN javac Test.java  
+
+
+check the image by giving the following command:
+
+docker images
+
+you will find the following:
+
+REPOSITORY                 TAG       IMAGE ID       CREATED             SIZE
+myjavaimage                latest    083ba40d2616   9 minutes ago       471MB
+
+now let's run this image so that the container can be created
+
+docker run --name myjavacontainer1 myjavaimage
+
+make sure you get the following output:
+
+		Java Program started
+
+

@@ -1,0 +1,77 @@
+			JDBC
+
+		java database Connectivity
+
+using jdbc, java application can connect to any database such as MySQL,Oracle,SQLServer etc.
+jdbc provides two things:
+
+a) jdbc API [classes and interfaces] which remains same no matter which database you use.
+b) jdbc drivers
+	driver is a software used to connect to database
+
+There are 4 types of drivers in jdbc:
+
+	Type 1 (JDBC-ODBC Bridge Driver)  
+              - which requires ODBC to be installed on a machine. It has almost become  obsolete.
+
+	Type 2 (Native-API)  
+             - which requires database client library to be installed on client machine. cannot be used for internet purpose.
+
+	Type 3 (Network-protocol)  
+             - which requires middleware (Application server) to get connected to database.
+
+	Type 4 (Thin Driver or Native protocol Driver ) that we mostly used 
+             - which is the fastest driver as it directly connects to the database.
+
+Steps required for jdbc application:
+a) load and register the driver with DriverManager.
+b) get connection with database
+c) communicate with database with the help of JDBC API.
+
+
+
+
+-- Type 4 Driver for MySQL
+   - Thin Driver - com.mysql.cj.jdbc.Driver
+
+
+
+-- Database URl Info
+
+jdbc:mysql://localhost:3306/mydb
+
+	jdbc  - main protocol
+
+	mysql -  sub protocol - depends on database
+
+	//localhost  - machine on which mysql database is running
+
+	3306  -  port no. for mysql
+
+	mydb -  it's a database which u use
+
+
+-- How To used MySQL
+
+create database mydb;
+
+use mydb;
+
+
+create table dept(deptno int(3),dname varchar(30),loc varchar(30));
+
+insert into dept values(1,'acc','mumbai');
+
+insert into dept values(2,'mktg','delhi');
+
+insert into dept values(3,'trg','banglore');
+
+
+select * from dept;
+
+
+
+
+
+
+

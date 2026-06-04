@@ -1,0 +1,6 @@
+when you run spring boot application, just observe the console
+
+server port no. depends on the port no. given inside the specific properties file [ whichever profile is active ]
+
+you can also see the message of active profile inside the console window.
+

@@ -1,0 +1,16 @@
+create table user(id bigint primary key auto_increment,username varchar(255),password varchar(255));
+
+
+insert into user(username,password) values('admin','$2a$10$cwGJN733AiwS48raMOLLUeGsdXkr8VsUGS8abGtO9Ej7dpLy9q5Ee');
+
+
+Note:- password should be encrypted inside the database.
+
+How have we encrypted the password ?
+
+
+System.out.println(new BCryptPasswordEncoder().encode("admin123"));
+
+$2a$10$BBwDRxh7hzPszYIKwk8fo.7.fDihHC2OEfHtoD59zHng/Em0N6mn6
+
+$2a$10$cwGJN733AiwS48raMOLLUeGsdXkr8VsUGS8abGtO9Ej7dpLy9q5Ee 

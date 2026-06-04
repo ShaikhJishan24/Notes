@@ -1,0 +1,22 @@
+Application Flow – Step-by-Step
+
+Let’s say you open:
+
+ http://localhost:8080/secure (in browser or Postman)
+
+ Behind the scenes:
+
+o	Spring Security checks: is user logged in?
+o	Not logged in → redirects to login page (form-based login).
+3.	Login page appears
+o	You enter admin and admin123 as username and password respectively.
+4.	Spring Security calls:
+MyUserDetailsService.loadUserByUsername("john")
+→ Fetches user from DB.
+5.	Spring checks password
+o	Compares input password (after encoding) with DB value using BCryptPasswordEncoder.
+6.	 If matched:
+o		Authenticated.
+o		/secure endpoint returns: "You are authenticated!"
+7.	If not:
+o		Login page shows error.

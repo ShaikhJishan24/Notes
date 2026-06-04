@@ -1,0 +1,9 @@
+ofNullable
+ifPresent
+filter
+orElse
+isPresent
+
+
+map
+flatmap

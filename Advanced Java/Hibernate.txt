@@ -1,0 +1,412 @@
+Hibernate General :
+NOTE - - add config file in src/main/resources folder in normal java project
+       - for Dynamic web project - add in src/main/java  or   src/main/resources
+       - session is not same as httpsession 
+       - A Entity class must have @Entity annotation and one Primary key(@Id)
+
+       - dialect : it handles the database differences of the other databases. used to generate database specific queries 
+       - <property name="hbm2ddl.auto">update</property>   // create the table Automatically
+       - <mapping class="Entities.Employee"/> // map Entity class
+
+
+# Steps to create the Hibernate project
+
+  
+-- pure Hibernate code
+1) XML based (new)
+1. Entity class
+2. configuration file (config.xml) (based on xml or Java based)
+		
+		<hibernate-configuration>
+
+      <session-factory>
+      		
+      		<property name="connection.driver_Clas">com.mysql.cj.jdbc.Driver</property>
+      		<property name="connection.url">jdbc:mysql://localhost:3306/SpringBootHibernate</property>
+      		<property name="connection.username">root</property>
+      		<property name="connection.password">Jishan@9136</property>
+      		
+      		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+      		<property name="hbm2ddl.auto">update</property>   
+      		<property name="show_sql">true</property>
+      		<property name="format_Sql">true</property>
+      		
+      		<mapping class="Entities.Employee"/>
+      		
+      </session-factory>
+      
+	</hibernate-configuration>
+   
+3. Main.java
+
+		Configuration cfg=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		SessionFactory factory=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		Transaction tr=session.beginTransaction();
+        
+4. pom.xml (add dependency)
+  
+   
+
+
+
+
+2) java based
+1. Entity class
+2. config.java
+
+		private static SessionFactory sessionFactory;
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration();
+
+                // Hibernate settings equivalent to hibernate.cfg.xml's properties
+                Properties settings = new Properties();
+                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hiber");
+                settings.put(Environment.USER, "root");
+                settings.put(Environment.PASS, "root");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+
+                settings.put(Environment.SHOW_SQL, "true");
+
+                settings.put(Environment.HBM2DDL_AUTO, "update");
+
+                configuration.setProperties(settings);
+
+                configuration.addAnnotatedClass(Employee.class);
+                sessionFactory=configuration.buildSessionFactory();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sessionFactory;
+    }
+
+3. Main.java
+	
+		SessionFactory factory=MyConfig.getSessionFactory();
+		Session session=factory.openSession();
+		Transaction tr=session.beginTransaction();
+
+
+cache concept
+when retrieve data from cache then query not fires hence objects is not create 
+but when query fires then that comes from database hence new object is create
+
+
+
+Kind of objects
+1. transient 
+		when we instantiate the Entity class 
+
+2. persistence
+		When we invoke persist or save method
+
+3. detach 
+		objects becomes detach when :
+			session(not http session) is close ex session.close()
+				or 
+			that object is evicted (removed) from session ex session.evict()
+
+-- Refresh()
+
+session.refresh(p);  // using it in memory object(object in java class) state(data) refresh with the database state(data)
+
+                    // we can do vise verca
+
+-- merge()  (before hibernate 6 session.update(p));
+
+detach object changes not reflect in database
+
+merge() when invoked , it re-associates the detached object to the new Session and informs Hibernate to treat that object as dirty. Hibernate propagates the modifications to the database when “trans.commit()” is invoked.
+Note - only used when object is detach()
+
+
+-- Dirty checking
+   dirty-object
+
+
+Note : After Every commit() we have to open the transaction()
+
+
+
+
+-- session.get(Employee.class, e1.getEmpid())
+- it returns the object 
+
+Employee.class tells Hibernate which entity type (table) it should load data from and how to map the database row to a Java object.
+Hibernate supports many entities, so you must specify which one.
+
+//  get give object but which object so we have to write Emlopyee.class
+
+
+
+25/12/2025
+Adapter pattern
+HQL (first, second, third)
+cache
+Association
+
+
+-- HQL
+The only difference is that SQL operates on relations, whereas HQL operates on objects
+HQL is an extremely powerful query language and is considered the most preferred way.
+
+SQL deals with
+	table and columns
+HQL deals with 
+	java class and instance members
+        that means HQL is case sensitive for java class And instance members
+
+
+SQL
+select * from dept;
+	tabular data of all the records
+
+HQL
+from list
+	list consist of all the Dept object with matching records in the database
+
+
+Query<?> query=session.createQuery("from Person",Person.class);
+List<?> mylist1=(List<?>) query.list();  // it retrieve the data in tabular form then convert it into person objects and store it in the list
+har columns ka ek object Banega and har ek object me uske column ka data hoga
+
+
+// Native SQL query
+		Query<Person> query = session.createNativeQuery("SELECT * FROM person", Person.class);
+		List<Person> mylist1 = query.getResultList();
+
+
+		SelectionQuery<?> query1=session.createSelectionQuery("select c.name from Person c"); // name is an instance member of Person.class
+		List<?> mylist2=(List<?>) query1.list();
+
+
+//
+			System.out.println(mylist2);	
+			SelectionQuery<?> query2=session.createSelectionQuery("select c.name,c.age from Person c");  // it returns array of object consisting in list
+			List<?>mylist3=(List<?>) query2.list();
+			
+			for(int i=0;i<mylist3.size();i++)
+        		{
+		            Object str[]=(Object[])mylist3.get(i);
+		            for(int j=0;j<str.length;j++)
+		            {
+		                System.out.print(str[j]+"\t");
+		            }
+		            System.out.println();
+		          
+		        }
+
+	it returns :
+	[
+  		Object[]{ "Rahul", 25 },
+  		Object[]{ "Amit", 30 }
+	]
+
+// 
+int k=query1.executeUpdate(); // how many field can be modified
+
+
+// 
+MutationQuery query2=session.createMutationQuery("update Person p set p.name=:str");  // named parameter
+			  query2.setParameter("str","vishal"); 
+			  k=query2.executeUpdate(); 
+			  tr.commit(); 
+
+
+-- cache
+		Employee e1 = session.get(Employee.class, 1);
+		Employee e2 = session.get(Employee.class, 1);
+		// Not creates the new object here
+
+
+		session.close();
+		Session session2 = factory.openSession();
+		Employee e3 = session2.get(Employee.class, 1);
+		// now new object is create coz we close the session
+
+
+Caching is widely used for optimizing database applications. A cache is designed to reduce traffic between your application and the database by conserving data already loaded from the database
+
+The application may need to empty (invalidate) the cache from time to time if the database is updated or modified in some way by externally, because it has no way of knowing whether the cache is up to date.
+
+
+Hibernate Caching
+	Hibernate uses three different caches for objects: 
+			first-level cache (session cache) , 
+			second-level cache  (it is of Sessionfactory cache)
+			Query cache. ()
+
+
+-- first Level cache (session cache)  ( for it no need to do any configuraton) its is bydefault
+
+					** sessions are different **
+done in case of :
+		session.evict(p)    // Only that specific object p is removed from the session. Session is still open
+		       or 
+		session.close()    // Entire session is closed. First-level cache is destroyed
+
+session.persist(p);    // data goes in to the session cache (first-level cache)
+Product ref2 = (Product) session.get(Product.class, 1);  // here also data goes in to the session cache (first - level cache)
+
+How data is stored :
+			entire object/s are stored
+
+
+-- second level cache (session factory cache) explicit cache  (it needs extra configuration)
+					** session factory is only one per context **
+
+   - shared by all the session
+
+   - How data is stored :
+			
+			key         	    value
+			primary key	    [set of all the other members]
+
+  - done changes in :
+		Entity
+		cfg.xml
+		maven dependencies
+
+  - EhcacheCachingProvider -> easy hibernate cache 3rd party provider
+
+  - <property name="hibernate.generate_statistics">true</property>  // to know did we visit second cache or not
+
+
+  - add extra dependency 
+            <artifactId>hibernate-jcache</artifactId>
+            <artifactId>ehcache</artifactId>
+            And Annotation dependency (hibernate annotations)
+
+  - in this data stored in first(session) and second level cache both
+		Product emp3 = (Product) session2.get(Product.class, 1);
+
+
+  - in this first check in second level then first level
+
+
+   Note : first check in first level then second level if data not there then get the data from database and   
+	  stored it in first and second level cache in both
+
+	  hitcount : only when you get the data from that cache
+
+-- query cache   (it needs extra configuration)
+
+	
+    - used to cache the query along with its parameters and result so that the same Query with the same parameter/s 
+	  can be given without hitting database
+
+    - means same Query with same parameter/s again and again
+
+    - query.setCacheable(true);   // same as getSession(true). it retrieve the query along with resultset from query 
+                                     cache if data is available 
+                                     otherwise(data not available) stored the query along with resultset (data) in query               
+				     cache.
+
+    - add one query dependencies
+      
+  
+-- Association
+   1) one to one 
+      1.1) Unidirectional 
+
+	@OneToOne(cascade = CascadeType.ALL)   // Account bhi add honge company ke sath
+	public Account getAcc() {
+		return acc;
+	}
+ 	
+	@OneToOne is on Association object or Entity class. (company has Account)
+
+	company -> account
+
+      1.2) Bidirectional
+
+
+
+
+   2) One To Many
+      student -> phone numbers
+
+      2.1) One To Many and Many To one
+      		student -> phone numbers
+      		phone numbers -> student
+	
+   
+   3) Many To One
+		
+   
+   4) many To Many
+      
+		new Association 3rd table is generated in many to many
+	
+
+mappedBy="question"  // owning side konsi hai ye batata hai hence owning side me foreign key hongi
+
+
+
+
+26/12/2025
+composite design pattern
+
+Decorator pattern
+
+	decorate one object with the Another object
+
+facade pattern
+	Facade pattern hides the complexities of the system and provides an interface to the client using which the client can access the system
+        just like the agent, tours planners, event planners
+
+Lazy and Eager loading
+HCQL 
+DAO layer
+	used to separate the persistent logic(database logic, CRUD) from the business logic of the Application
+	it means :
+		business logic (servlet) -> DAO -> persistent logic(database, file code)
+
+
+-- Lazy and Eager loading ( Lazy and Eager are ONLY about loading data, not saving or deleting.)
+1) Lazy Loading (by default in hibernate)
+
+	- if you load(retrieve) company(parent) then don't load(retrieve) its children(Employee)
+		to retrieve the children then invoke get for child
+	- increase performance
+
+
+2) Eager loading
+	- if you load(retrieve) company(parent) then it also load(retrieve) its children(Employee)	
+  	- hence we are encounter n + 1 problem First level cache
+		Query fires :
+			n times for 10 employees and 1 time for company
+	
+   
+	fetch = fetchType.Eager
+	ex 
+		@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name = "sid", referencedColumnName="STUDENT_ID")
+		public Set<Phone> getStudentPhoneNumbers() {
+			return this.studentPhoneNumbers;
+		}
+
+
+	- lazyInitialization Exception
+
+
+
+-- Hibernate criteria Query language (HCQL)
+
+	- it deal with pure object oriented code without any Query
+	- The Hibernate Criteria Query Language (HCQL) is used to fetch the records based on the specific criteria
+        - Root<Employee> root = criteria1.from(Employee.class);  // used for filteration to specify which field do you want
+
+
+-- old API 
+hibernate 5
+	save, load
+hibernate 6
+	persists, get()
+
+

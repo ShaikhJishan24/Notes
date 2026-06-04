@@ -1,0 +1,24 @@
+Tells Spring Security:
+
+o	What URLs are public.
+o	How to log in.
+o	Where to load users from.
+o	How passwords are encoded.
+
+Important methods:
+
+ filterChain(HttpSecurity http)
+	Secures endpoints.
+.requestMatchers("/public").permitAll()
+ 	/public is open for everyone.
+
+.anyRequest().authenticated()
+	 All other URLs require login.
+
+.formLogin()
+	 Shows Spring's default login form if not logged in.
+
+ authenticationManager()
+	Tells Spring how to authenticate a user.
+ passwordEncoder()
+•	Uses BCrypt to securely store and compare passwords.

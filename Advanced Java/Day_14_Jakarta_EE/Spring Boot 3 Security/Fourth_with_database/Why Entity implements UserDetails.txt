@@ -1,0 +1,36 @@
+User class implements UserDetails so that Spring Security can use it for authentication.
+
+
+Why implement UserDetails?
+
+Spring Security needs to know:
+•	username
+•	password
+•	account status (expired, locked, enabled, etc.)
+•	roles/authorities (optional)
+
+
+By implementing UserDetails, we provide this info directly from our database model.
+
+Key methods:
+
+getUsername()	
+	Returns the login name
+
+getPassword()	
+	Returns the (encoded) password
+
+getAuthorities()	
+	Returns roles (we return empty list here)
+
+isAccountNonLocked()	
+	Returns if account is locked
+
+isEnabled()	
+	Returns if account is enabled
+
+isAccountNonExpired()	
+	Returns if account is expired
+
+isCredentialsNonExpired()	
+	Returns if password is expired

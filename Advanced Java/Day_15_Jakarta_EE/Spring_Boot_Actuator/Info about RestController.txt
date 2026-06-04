@@ -1,0 +1,1 @@
+No need to create any kind of RestController as "actuator dependency" makes it possible to get every information we need.

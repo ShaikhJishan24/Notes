@@ -1,0 +1,9 @@
+Meaning of formLogin(Customizer.withDefaults())
+
+This line:
+
+.formLogin(Customizer.withDefaults());
+	is the modern, non-deprecated way to tell Spring Security:
+
+"Use the default form-based login behavior, just like before — I'm not customizing anything right now. i.e. I am not going to create any custom html page for login"
+

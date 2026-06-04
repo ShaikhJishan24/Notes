@@ -1,0 +1,60 @@
+Mixing Generic and Non-generic Collections
+
+
+import java.util.*;
+public class trial 
+{
+	 void disp(List mylist)
+	{
+		Iterator it = mylist.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+	}
+	public static void main(String args[])
+	{
+		List<Integer>m=new ArrayList<Integer>();
+		m.add(20);
+		m.add(40);
+		trial t=new trial();
+		t.disp(m);
+
+
+	}
+}
+
+
+The above code works fine, but if u try to add "non-Integer" to the list inside "disp" that can be risky.
+
+e.g.
+
+import java.util.*;
+public class Trial 
+{
+	 void disp(List mylist)
+	{
+		 mylist.add("hello");
+		Iterator it=mylist.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}	
+	}
+	public static void main(String args[])
+	{
+		List<Integer>m=new ArrayList<Integer>();
+		m.add(20);
+		m.add(40);
+		Trial t=new Trial();
+		t.disp(m);
+		System.out.println("after returning");
+		Integer ob=m.get(2); // this is risky
+		System.out.println(ob);
+
+
+	}
+}
+
+that is , u can pass a generic collection into a method that takes a non-generic collection, but that is risky. The compiler can't stop the method from inserting the wrong type into the previously type safe collection.
+

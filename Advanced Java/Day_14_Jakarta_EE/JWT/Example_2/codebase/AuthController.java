@@ -1,0 +1,83 @@
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    private final JwtUtil jwtUtil;
+
+    public AuthController(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
+    @PostMapping("/login")
+    public TokenResponse login(@RequestBody LoginRequest request) {
+
+    	System.out.println("inside login method");
+        // Hard-coded user check for demo
+        if (request.getUsername().equals("Abc") &&
+            request.getPassword().equals("123")) {
+
+            String access = jwtUtil.generateAccessToken(request.getUsername());
+            String refresh = jwtUtil.generateRefreshToken(request.getUsername());
+
+            return new TokenResponse(access, refresh);
+        }
+
+        return new TokenResponse("INVALID", "INVALID");
+    }
+
+
+    // ---------------------------------------------------------
+    // REFRESH TOKEN ENDPOINT
+    // ---------------------------------------------------------
+    // Ye endpoint tab use hota hai jab access token expire ho jaye
+    @PostMapping("/refresh")
+    public TokenResponse refresh(@RequestBody RefreshRequest req) {
+
+        String refreshToken = req.getRefreshToken();
+
+        if (!jwtUtil.isValid(refreshToken)) {
+            return new TokenResponse("INVALID_REFRESH_TOKEN", null);
+        }
+
+        String username = jwtUtil.extractUsername(refreshToken);
+
+        String newAccessToken = jwtUtil.generateAccessToken(username);
+
+        return new TokenResponse(newAccessToken, refreshToken);
+    }
+}
+
+
+// ------------------- Request & Response Models -------------------
+
+class LoginRequest {
+    private String username;
+    private String password;
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
+
+class RefreshRequest {
+    private String refreshToken;
+    public String getRefreshToken() { return refreshToken; }
+    public void setRefreshToken(String refreshToken) { this.refreshToken = refreshToken; }
+}
+
+class TokenResponse {
+    private String accessToken;
+    private String refreshToken;
+
+    public TokenResponse(String accessToken, String refreshToken) {
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+    }
+    public String getAccessToken() { return accessToken; }
+    public String getRefreshToken() { return refreshToken; }
+}
+

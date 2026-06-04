@@ -1,0 +1,3 @@
+A base image in Docker is the starting point for building your own Docker image. It's like the foundation of a house—you build on top of it. A base image is typically a minimal operating system or runtime environment that you can add your software and configurations to.
+
+A base image in a Dockerfile saves time by providing a pre-configured foundation with essential tools, libraries, and operating system components, so you don’t have to build everything from scratch. 

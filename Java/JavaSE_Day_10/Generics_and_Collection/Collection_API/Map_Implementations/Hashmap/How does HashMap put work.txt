@@ -1,0 +1,18 @@
+put operation
+
+
+hashCode() is invoked on the key to determine the bucket for placing.
+
+hashcode  - key of the first entry
+
+	subsequent entries
+
+	or
+
+hashcode - if different - different bucket
+
+	   if same  then[ hash collision case] occuresed
+		==  - true - overwrite the value
+		      false
+			 equals - true - overwrite the value
+				false - linked list will be formed within a bucket i.e. same bucket having different Entries [Entry]

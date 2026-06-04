@@ -1,0 +1,6 @@
+@OneToMany(mappedBy = "cid", cascade = CascadeType.ALL)
+private Set<Employee> employees = new LinkedHashSet<>();
+
+
+cascade = CascadeType.ALL   is needed to ensure that when we persist company, all its employees also are added inside the database.
+

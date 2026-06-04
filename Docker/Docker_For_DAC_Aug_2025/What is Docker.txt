@@ -1,0 +1,10 @@
+Docker is an open platform for developing, shipping and running application.
+Docker is a platform which packages an application and all its dependencies together in the form of containers.
+
+What problems Docker solves?
+
+docker allows you to package your project so that you can carry it from one place to another. here package means which will contain not only your application but also its dependencies including software/s required also.
+
+ 
+
+

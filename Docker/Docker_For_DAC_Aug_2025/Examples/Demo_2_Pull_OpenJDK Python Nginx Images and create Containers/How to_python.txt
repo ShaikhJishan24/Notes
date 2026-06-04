@@ -1,0 +1,42 @@
+Go to "https://hub.docker.com/"
+	and search "python"
+
+click one of the python images, you will get the following command
+
+	docker pull python
+
+copy it and try to run it on cmd.
+
+	docker pull python
+
+make sure it pulls an image for "python" ( check it inside "Docker Desktop" also )
+
+check with
+	docker images
+
+let's now create a container from python image and also open it in an interactive mode.
+
+	docker run --name mypythoncontainer -it python
+
+[ This command does the following:
+
+Runs the Python image (python).
+The -it flag allows you to interact with the container’s terminal, so when the container starts, you'll be inside an interactive Python shell.
+
+The --name mypythoncontainer gives the container a specific name (mypythoncontainer), which you can later reference to manage or stop it.
+]
+
+make sure it displays
+
+>>>
+as python prompt
+
+try issuing following command 
+
+print("welcome python")
+
+make sure it works.
+
+come out of it by giving following command
+	exit()
+

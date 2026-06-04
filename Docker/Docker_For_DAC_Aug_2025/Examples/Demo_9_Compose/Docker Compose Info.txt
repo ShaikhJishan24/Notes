@@ -1,0 +1,8 @@
+Docker Compose is a tool that makes it easier to create and run multi-container applications. It automates the process of managing several Docker containers simultaneously, such as a website frontend, API, and database service
+Docker Compose allows you to define your application’s containers as code inside a YAML file you can commit to your source repository. Once you’ve created your file (normally named docker-compose.yml), you can start all your containers (called “services”) with a single Compose command.
+
+Compared with manually starting and linking containers, Compose is quicker, easier, and more repeatable. Your containers will run with the same configuration every time—there’s no risk of forgetting to include an important docker run flag.
+
+Compose automatically creates a Docker network for your project, ensuring your containers can communicate with each other. It also manages your Docker storage volumes, automatically reattaching them after a service is restarted or replaced.
+
+Lastly Docker compose automatically uses "Network" by default it uses bridge network so that containers can communicate with each other.

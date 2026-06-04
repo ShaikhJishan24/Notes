@@ -1,0 +1,5 @@
+spring web
+spring boot devtools
+spring data JPA
+MySQL driver
+spring security

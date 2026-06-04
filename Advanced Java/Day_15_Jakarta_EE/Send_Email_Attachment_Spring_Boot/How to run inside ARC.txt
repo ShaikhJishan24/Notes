@@ -1,0 +1,19 @@
+http://localhost:8080/email
+
+	method:  POST
+Body
+
+	form-data
+
+
+subject  	First Spring Boot message
+
+file     d:/trial
+
+
+message    All the best to you
+
+
+click on "send"
+
+make sure email along with an attachment is sent to the destination.

@@ -1,0 +1,88 @@
+start Docker Desktop
+
+create a folder "Compose_1" inside "d:\\".
+
+
+go to "Compose_1" folder and create "yml" file inside "docker-compose" folder
+
+	"docker-compose.yml"
+
+make sure your "docker-compose.yml" file looks like this:
+
+services: 
+ vita-web:
+  image: httpd
+  ports: 
+   - "8080:80"
+ vita-db: 
+  image: redis
+
+
+
+
+save the above file and go to the command prompt i.e.
+	d:\\Compose_1\\docker-compose>
+
+now before we run composer, let's check the syntaxes of "docker-compose.yml"
+For that give following command:
+
+	docker-compose config
+
+make sure you don't get any error.
+
+now let's run docker compose by giving following command:
+	docker-compose up -d
+[ this command runs all the containers we have mentioned inside "docker-compose.yml" in a detached mode ]
+
+make sure it works perfectly
+
+go to "Docker Desktop" and make sure both the containers are running under "docker-desktop" ( they're "up")
+
+from the command prompt also you can check
+
+	D:\MyDocker\docker-compose>docker container ls -a
+
+make sure u get the following output:
+
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                  NAMES
+62fd5fbb0b94   httpd     "httpd-foreground"       6 minutes ago   Up 6 minutes   0.0.0.0:8080->80/tcp   docker-compose-vita-web-1
+64062799f8b0   redis     "docker-entrypoint.s…"   6 minutes ago   Up 6 minutes   6379/tcp               docker-compose-vita-db-1
+
+
+
+
+now let's "down" them
+
+		D:\MyDocker\docker-compose>docker-compose down
+
+make sure you get the following output:
+
+[+] Running 3/3
+ ✔ Container docker-compose-vita-web-1  Rem...                                       7.9s
+ ✔ Container docker-compose-vita-db-1   Remo...                                      8.1s
+ ✔ Network docker-compose_default       Removed                                      0.6s
+
+
+
+how to create more than one container for a particular image say e.g.
+
+for "vita-db" we would like to have 5 containers i.e. we need to have 5 servers for "vita-db". In such case we need to scale up "vita-db". for this give following command:
+
+	docker-compose up -d --scale vita-db=5
+
+make sure above command works i.e.
+now you can see for "redis" , there are 5 containers running ( as we've scalled it) whereas for "http" , there is only one container (as we haven't scalled it).
+
+so what we have seen here is how to scale up container/s.
+
+let's us down them.
+
+	docker-compose down
+
+make sure above command works properly.
+
+
+
+
+

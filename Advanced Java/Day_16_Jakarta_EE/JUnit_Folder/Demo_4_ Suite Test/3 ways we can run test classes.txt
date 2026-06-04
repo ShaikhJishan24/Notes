@@ -1,0 +1,21 @@
+1) test class	
+	right click
+		run as
+			JUnit test
+
+2) test class, test class1
+   standalone application
+		JUnitCore.runclasses(test class,test class1)
+
+
+3) test class1
+   test class2
+
+
+   
+   Suite class [ @Suite.SuiteClasses({
+   TestTarget1.class,
+   TestTarget2.class}) ]
+	
+   standalone application
+		JunitCore.runClasses(Suite class)

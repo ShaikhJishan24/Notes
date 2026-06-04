@@ -1,0 +1,1 @@
+It's because of networks ,Containers can communicate with each other using their own IP addresses and DNS names. They also have access to your host’s network, so they can reach the internet and your LAN.

@@ -1,0 +1,1 @@
+any configuration which you want it to be common for all the environments i.e. "dev" or "prod" or "test", needs to be mentioned inside "application.properties"  file.

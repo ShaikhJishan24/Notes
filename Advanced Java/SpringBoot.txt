@@ -1,0 +1,660 @@
+--------------------------------------------------- Spring Boot ---------------------------------------------------------
+29/12/2025
+Spring MVC
+
+-- Spring Boot dependency starter (It just groups related dependencies together)
+
+	Spring Boot Starter is a predefined dependency package.
+
+	It provides:
+
+		Required libraries
+		Compatible versions
+		Auto-configuration support
+
+	- It Is In Which Dependency
+		spring-boot-starter-parent
+
+	- spring-boot-starter-web
+
+		It includes:
+
+			spring-web
+			spring-webmvc
+			jackson (JSON)
+			validation
+			embedded Tomcat
+			spring-boot-starter
+
+	- spring-boot-starter-data-jpa
+
+		Includes:
+
+			spring-data-jpa
+			hibernate
+			spring-orm
+			transaction
+			spring-boot-starter
+
+	- spring-boot-starter-security
+
+		Includes:
+
+			spring-security-core
+			spring-security-web
+			spring-security-config
+
+
+
+-- in Spring Boot always Jar file is created even if it is a web Application
+   using the jar we can run our spring boot project
+
+-- @RequestMapping("/HomeController")
+	
+		it is class or controller level Annotation to indicate the main controller path
+		different for different controller 	
+
+-- why Spring MVC 
+   - Gives Advantage of Reusability, maintenance
+
+   - u have so many forms, JavaBeans and view components (jsp's), your controller will become overburdened. Moreover if in future application workflow i
+     changed will face the problem of maintenance in controller.
+
+   - How these frameworks will solve your problem?
+
+	They will provide u a Controller (DispatcherServlet) and that Controller will work according to Application Workflow u have mentioned inside some xml 	configuration file or through annotation.
+
+-- Spring MVC  (Redirection, Exception handling and Interceptor is Pending)
+
+   - DispatcherServlet - also called FrontController
+
+   - ModelAndView 
+	Model - data
+	View -  name (Which JSP page) 
+
+   - Handler mapping
+	XML or annotation configuration
+
+   - ViewResolver 
+	that tell which View page
+
+   - It can be Written As
+	Without Spring boot
+		DispatcherServlet and ViewResolver configuration in DD
+        
+  	With Spring Boot 	  
+
+
+-- Spring Boot (not a Framework it is Top layer tool on Spring )
+   
+        - Tool built on top of Spring Framework
+	- Creates stand-alone, production-ready applications
+	- Reduces manual configuration
+	- Focus on business logic
+	- Applications can be directly run
+
+-- What Spring Boot actually is ?
+
+Spring Boot is a tool / platform / extension built on top of the Spring Framework.
+Spring Framework → the core framework
+Spring Boot → a helper layer that:
+Simplifies configuration
+Automates setup
+Improves packaging and deployment
+Spring Boot uses Spring Framework internally
+
+
+-- Spring Boot has the main method but also it is Web project
+   it uses the Jar file 
+   To run project we have to only run the jar File
+   
+
+-- 
+	- Devtools - To reload the server
+
+	- SpringBootApplication class is the same as @Configuration class
+
+	- @Controller To indicates the controller
+
+ 	- spring.mvc.view.prefix=/
+          spring.mvc.view.suffix=.html
+
+	  where 
+	       / means Template folder
+	      .html is view pages 
+			now it becomes the /pageName.html
+
+	- @CoponentScan(basePackage =" controllerName") 
+	  	it say Spring boot to search for the Controller in this package
+
+
+	- SpringBootApplication 
+		- This is the main entry point of the application. Configure Spring automatically, scan components, and bootstrap the app
+
+  	 	- @SpringBootApplication is a convenience annotation that combines @SpringBootConfiguration, @EnableAutoConfiguration, and @ComponentScan to bootstrap a Spring Boot 			  application with auto-configuration and component scanning.
+
+		- It is a combination of three annotations:
+
+			@Configuration
+			@EnableAutoConfiguration
+			@ComponentScan
+
+		- 1️⃣ @Configuration => Marks the class as a source of Spring bean definitions.
+
+		- 2️⃣ @EnableAutoConfiguration => Tells Spring Boot to automatically configure beans based on dependencies present in the classpath.
+
+		- 3️⃣ @ComponentScan => Scans the package and sub-packages to detect components like @Controller, @Service, @Repository, etc.
+  
+	- @Repository make the Interface As Repository Interface
+
+	- @Transactionl - it Enables Autocommit
+
+ 	- CrudRepository<User, Integer> 
+
+	  	where Integer is Primary key Type
+
+
+-- When @Repository And @Transactional Are Required
+
+   	When you write a custom implementation of a repository (i.e., not just extending JpaRepository), then:
+
+		- @Repository is required on the implementation class. When We have JPARepository + our Custom methods
+
+		- @Transactional may be needed to ensure that your custom logic runs in a transactional context
+
+
+-- Boot with AOP
+	
+	- @EnableAspectJAutoProxy(proxyTargetClass=true)  
+		on Main method to indicates the Proxy class
+
+
+-- Exception Handling 
+
+	1) @ControllerAdvice - creates other package and class 
+                     - class-level annotations
+		     - Also creates methods that we create in @ExceptionHandler method
+
+		- @ControllerAdvice is a global exception handling annotation. It allows you to handle exceptions across all controllers in one place.
+
+		- You create one separate class:
+
+			@ControllerAdvice
+			public class GlobalExceptionHandler {
+
+    				@ExceptionHandler(NullPointerException.class)
+				public String handleNull(NullPointerException ex) {
+    					return "nullError";
+				}
+			}
+
+		  -- Now all controllers automatically use this handler. Whenever NullPointerException occurs in any controller → this method runs.
+
+		- For RestAPI used
+	
+			@RestControllerAdvice
+
+	2) @ExceptionHandler(ExceptionName.class) - create method for each exception handling or Exception.class for All exception
+
+
+-- Spring boot also called as the opinionated
+	
+	- Spring Boot is opinionated because it makes decisions for us so that we don’t have to configure everything manually.
+
+-- EntityManager
+
+	jakarta.persistence.EntityManager
+
+	- EntityManager is a JPA interface that manages the lifecycle of entity objects and handles database operations.
+       
+ 	- it is used to perform the Crud Operations
+
+	- In Spring Boot
+		Normally we don’t create it manually.
+
+		We inject it:
+
+			@PersistenceContext
+			private EntityManager entityManager;
+
+		Spring provides it automatically.
+
+	- using it we can do 
+		
+		entityManager.persist(employee);
+		
+		Employee emp = entityManager.find(Employee.class, 1);
+
+		entityManager.remove(emp);
+		
+		entityManager.merge(emp);
+
+		entityManager.createQuery("FROM Employee", Employee.class);
+
+
+----------------- Rest API ---------------------------------
+30/12/2025
+
+-- How To run Spring Boot project using jar file
+
+	Right click project -> run as maven build 5 -> Inside Goals write package then apply and run -> After build success -> jar file is created in target 	folder -> now go to project target folder -> open the cmd in same folder -> run command java -jar FirstSTSPro-0.0.1-SNAPSHOT.jar 
+
+-- What is REST? 
+
+	- It is Stateless
+
+	- REST (Representational State Transfer) is a design architecture used for building web services. A REST API allows different systems (often web-	  based) to communicate over HTTP using stateless operations like GET, POST, PUT, and DELETE
+
+	- Stateless – Server does not remember client state between requests
+	  JSON is the most common data format
+
+
+-- RestAPI Annotations 
+
+	- Controller is the one which returns control to "View" i.e. JSP.
+	  That's why Controller's method can either return "ModelAndView" or "String".  Both ModelAndView and String consist of JSP name.
+
+	- RestController 
+
+		- its is the one which returns the response directly to the client in the form of JSON,Html,XML etc.
+	
+	  	- @RestController - @Controller + @ResponseBody
+		
+	- @RequestBody - user jo data provide karega usko enitity class ke sath mapped kardega according to request body(means forms). used in restAPI
+			 JSON data Ek object me ata hai as Body then mapped it to the Entity class
+
+	- @ResponseBody - used on method to say it returns the json data not a view name . used in restAPI mostly
+
+
+-- @CrossOrigin(localhost:4000)
+
+	to enable the cross-origin resource sharing
+
+
+-- safe and idempotent methods
+
+	- Safe methods
+		which do not change any state on the server. e.g. "GET" method
+
+	- Unsafe methods
+		which do change state on the server
+		e.g. "POST","PUT" and "DELETE"
+
+
+	- Idempotent methods
+		first time they change the state on the server , but if you call them again and again they don't change anything on the server. e.g. "PUT" 		and "DELETE".
+
+	- Non-Idempotent methods
+		every time you call them they will change the state on the server. e.g. "POST"
+
+		{
+			"name":"Sachin",
+			"age":48
+		}
+
+		with this JSON body if you click "POST" again and again , it will insert new record every time with the same data.
+
+-- Simple JPA flow
+
+	Controller communicate with Repository layer(Dao)
+	Controller -> Repository
+
+-- Service layer or called as Manager also
+
+	it is used to communicate between the Controller and Repository layer(DAO) 
+        Controller -> Service layer -> Repository layer(database)
+
+	This method implementation is Not provided by any
+
+-- Repository layer
+	
+	- JAP Repository provided methods and our custom methods implementation is provided by the JPA but if you follow the method naming conventions or 	  used @Query Annotation to write the Query
+
+	-- Custom Query 
+
+		1. custom method without sql Query or @Query
+			
+			only Declare them by following the Naming convention
+				Entity instance members name first letter is Capital in method name  
+
+		2. custom Query method
+				
+			only declare method with Sql Query
+	
+	- Spring Data JPA automatically generates the implementation of repository methods at runtime, based on method naming conventions or @Query.
+
+	- All Implementation is provide by the JPA you have to only define them 
+
+
+-- Difference Between the RequestParam and Param 
+
+	1. @RequestParam
+		
+		- is used to extract query parameters or form data from an HTTP request and bind them to method parameters in a controller.
+
+		- public String getUser(@RequestParam("id") int id) {
+
+
+	2. (@Param() String name) - used With JPA only
+		
+		- it is Used to bind method parameters to JPQL or SQL query parameters.
+
+		- @Query("SELECT u FROM User u WHERE u.fName = :name")
+		  List<User> findByName(@Param("name") String name);
+
+	3. @PathVariable
+	
+		- It is used to extract values from the URL path and bind them to method parameters in a controller
+
+			@GetMapping("/user/{id}")
+			public String getUser(@PathVariable("id") int id) {
+    				return "User ID: " + id;
+			}
+
+		- @RequestParam			@PathVariable
+		  Query parameter		URL path
+		  /user?id=10			/user/10
+
+-- JPQL (java Persistence Query Language) And DTO example
+	
+	- @Query("select new com.example.dtos.NameState(s.name,a.statename) from  Student s join s.address a")
+	  public List<NameState> getNameState();
+
+
+-- Application flow
+
+	Browser
+  	  ↓	
+     DispatcherServlet
+  	  ↓
+       Controller
+  	  ↓
+	Service
+  	  ↓
+      Repository
+  	  ↓
+       Database
+  	  ↑
+      JSON Response
+
+
+-- Produces and consumes 
+	
+	- controller Either produces the Json or xml data the client(Postman) will accept or used it
+	
+	- Client(postman) gives json or xml data then controller has to consumes that data
+
+		ex. @PostMapping(value="/xml",consumes={MediaType.APPLICATION_XML_VALUE})
+		    //@PostMapping(value = "/xml", consumes = {"application/xml"})
+		    public void consumeXMLRequest(@RequestBody Student s)
+    		    {
+        		System.out.println("**Received XML request**");
+        		System.out.println(" Name : "+s.getName());
+        		System.out.println(" Age  : "+s.getAge());
+    		    }
+
+
+----------------------- Spring Security ----------------------------
+31/12/2025
+
+- it uses the filters they run before the DispatcherServlet
+
+- Spring Security always intercepts the request before controllers.
+
+	this happens coz
+		@EnableWebSecurity
+
+- ResponseEntity<String>
+	
+	- To Send the Status code 
+	- it has many method
+
+- Methods
+	
+	- .anyRequest().authenticated()  // Login is compulsory
+	
+	- .PermitAll() // Anyone Can access the Page without login
+
+        - httpBasic() // Basic Auth
+
+	- .requestMatchers("/home/admin").hasRole("ADMIN") 
+
+			User must be logged in And must have role: ROLE_Admin
+
+	- .formLogin() // form based login
+		
+	- hasRole()
+
+		It checks two things, not just one:
+
+		1) Is the user authenticated (logged in)?
+			If user is not logged in →  access denied (401)
+
+		2) Does the authenticated user have role ROLE_NORMAL?
+			If role exists →  access allowed
+
+			If role missing →  access denied (403)
+
+SecurityFilterChain is a chain of multiple security filters in Spring Security that intercepts every HTTP request to perform authentication and authorization before the request reaches the controller.
+
+- Ways of Security
+ 
+	- Default Security 
+			Only Add Security Dependency
+
+	- In Memory Basic
+	- In Memory Using form
+	- Role Based
+
+1) Default Security 
+			Only Add Security Dependency
+
+
+2) In Memory Basic
+
+	- ADD Dependency
+	- Create SecurityConfig package 
+
+		config file (Configuration class which has method level bean)
+		  Write 	
+			1. PasswordEncoder
+				
+					Password Encoder
+
+			2. UserDetailsService - 
+
+					keep a track of username and password for each Role
+
+			3. SecurityFilterChain	
+				
+					Route protection and login mechanism
+					Detecting Terms
+					Which path should be allowed or Authenicate
+
+3) In Memory Form-login Based
+
+	- .formLogin(withDefaults())
+		
+		- So, when you write .formLogin(withDefaults()), you're telling Spring: “Use the default configuration for form-based login — I don’t want to customize it right now
+	
+		  Default login page at /login
+		  Default processing URL at /login
+		  Username field name = username
+		  Password field name = password
+		  Redirect to:
+				/login?error on login failure
+				/ on successful login
+
+	- If you want a custom login page, you must replace it with:
+	 .formLogin(form -> form
+	 	.loginPage("/my-login")
+	 	.defaultSuccessUrl("/dashboard")
+	 	.permitAll()
+	 )
+
+	
+
+4) with login Database 
+
+-- UserDetails And UserDetailsService 
+	
+	- Both Are Interfaces
+	
+1) UersDetails
+		
+		- Interface	
+		- Represents one user	
+		- Holds user info	
+		- Called by Spring Security
+
+
+		- it Represents a User
+			It describes:
+				username
+				password
+				roles / authorities
+				account status
+
+
+                - public class CustomUserDetails implements UserDetails {
+
+    private User user;
+
+    public CustomUserDetails(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return true; }
+}
+
+
+
+2) UserDeatilsService
+		
+		- it Loads the User
+			This is responsible for:
+
+				Fetching user info
+				Finding user by username
+				Returning a UserDetails object
+
+                - This class connects database → security.
+
+		- @Autowired
+    		  private UserRepository repo;
+
+   		 @Override
+    		 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        		User user = repo.findByUsername(username)
+                		    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        		return new CustomUserDetails(user);
+    			}
+		 }
+
+
+-- this is Your custom Authentication logic 
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
+	}
+
+
+-- Flow
+   Browser → /login → Security Filters → Controller → login.html → POST /login → AuthenticationFilter → AuthenticationManager → DaoAuthenticationProvider →            
+   UserDetailsService → PasswordEncoder → Authentication Success → SecurityContext → Redirect → /home/public
+
+-- Authorization is Pending (Role-based Authorization)
+
+-- in Which Annotations spring will creates the object
+	
+@Component
+@Service
+@Repository
+@Controller
+@RestController
+@Configuration
+@Bean
+
+
+
+-- @SpringBootAnnotation 
+	
+	it consists of 
+		@Configuration	Java-based config
+		@EnableAutoConfiguration	Auto setup
+		@ComponentScan	Bean scanning
+
+
+
+-- What is CommadLine Runner
+
+	- CommandLineRunner is a Spring Boot interface used to run some code automatically after the Spring application has started.
+
+		In simple words:
+
+			- It runs code once, immediately after the application context is loaded.
+
+	- @SpringBootApplication
+	  public class DemoApplication implements CommandLineRunner {
+
+    		@Override
+    		public void run(String... args) throws Exception {
+        		System.out.println("Application started successfully");
+    		}
+
+    		public static void main(String[] args) {
+        		SpringApplication.run(DemoApplication.class, args);
+    		}
+	}
+
+
+-- RestTemplate
+	
+	- RestTemplate is a Spring class used to call REST APIs (HTTP services) from a Spring application.
+
+	  In simple words:
+
+		- It helps one Spring application talk to another application over HTTP.
+
+
+	-it can perform all HTTP operations:
+
+HTTP Method	RestTemplate Method
+GET	getForObject()
+POST	postForObject()
+PUT	put()
+DELETE	delete()
+EXCHANGE	exchange()
+
+
+
+
+	- If you want to get it in a JSON object form, you need to refer "JSON_Object_output" folder.
+

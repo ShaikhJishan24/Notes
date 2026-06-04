@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Your JWT Token</h2>
+
+<textarea rows="6" cols="80" th:text="${jwt}"></textarea>
+
+<br><br>
+
+<form action="/validate" method="post">
+    <input type="hidden" name="token" th:value="${jwt}">
+    <button type="submit">Validate Token</button>
+</form>
+
+</body>
+</html>

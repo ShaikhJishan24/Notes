@@ -1,0 +1,5 @@
+1) create a dockerfile
+2) add instructions in the docker file to create docker image
+3) run docker file to create docker image
+4) run docker image to create docker container
+5) access the application running inside docker container

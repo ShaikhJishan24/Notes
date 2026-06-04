@@ -1,0 +1,8 @@
+Spring Boot Actuator provides special feature to monitor and manage your application when you push it to production [ deployment ]
+e.g. you want to check “health” of your application,  info about your application such as how many beans are there in your application, what are their mappings etc. Actuator also provides you some endpoints or URLs  in order to perform some specific tasks like heap dump, shutdown the application etc.
+How do you enable Spring Boot Actuator?
+We just need to add the following dependency:
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>

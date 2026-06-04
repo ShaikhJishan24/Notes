@@ -1,0 +1,127 @@
+	go to docker hub
+
+https://hub.docker.com/
+
+and type "openjdk" in docker hub search box
+
+	let's pull the first image i.e.  "OpenJDK"
+if you click on its name, on the right side you will see the command to pull it  i.e.  "docker pull openjdk"
+
+now go to cmd and type
+	
+	docker pull openjdk
+
+you might get error, as this image is not available on docker hub
+
+
+
+Correct replacement (RECOMMENDED)
+
+	For JDK 17 (most common for Spring Boot):
+
+		docker pull eclipse-temurin:17-jdk
+
+
+	Lightweight version (preferred for production):
+
+		docker pull eclipse-temurin:17-jdk-jammy
+
+	or
+
+		docker pull eclipse-temurin:17-jdk-alpine
+
+
+e.g
+
+if you try
+		docker pull eclipse-temurin:17-jdk
+
+make sure there is no error and image gets pulled successfully, also check on the docker desktop.
+
+Status: Downloaded newer image for eclipse-temurin:17-jdk
+docker.io/library/eclipse-temurin:17-jdk
+
+
+how to view all the images from our system?
+	docker images
+
+make sure it gives following output:
+
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+eclipse-temurin:17-jdk   7995efb7f927        637MB          201MB
+hello-world:latest       d4aaab6242e0       25.9kB         9.52kB    U
+
+
+
+now run this image by giving following command:
+
+	docker run -it eclipse-temurin:17-jdk
+
+this will run "eclipse-temurin:17-jdk" in an interactive mode:
+
+just try following command:
+
+jshell> System.out.println("hello there");
+
+	make sure it prints "hello there"
+  
+To view the container/s give following command:
+	
+	docker ps -a
+
+make sure it gives you following output ( assuming we've created only one container so far)
+
+CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS                   PORTS     NAMES
+ad0802d8931e   eclipse-temurin:17-jdk   "/__cacert_entrypoin…"   2 hours ago   Up 2 hours                         amazing_pike
+9e69cd58dc46   hello-world              "/hello"                 3 hours ago   Exited (0) 3 hours ago             confident_austin
+
+
+
+go to "Docker Desktop" and check your image and container for "eclipse-temurin:17-jdk"
+
+
+Let's run this "eclipse-temurin:17-jdk" image
+
+we can give container name also while running a particular image 
+
+e.g.
+	docker run --name myjavacontainer -it eclipse-temurin:17-jdk
+
+with this command , you can see following prompt on the cmd :
+
+jshell>
+
+type "System.out.println("hello");" and press enter. make sure u get the output.
+
+or type 
+
+jshell> for(int i=0;i<3;i++)
+   ...> {
+   ...>     System.out.println("how are you");
+   ...> }
+and press enter
+
+make sure you get "how are you" 3 times.
+
+exit by typing
+
+/exit
+
+	it prints "GoodBye" and comes out.
+
+alternatively you can go and check on "Docker Desktop" whether "myjavacontainer" container has stopped or not. You will find its status as "Exited".
+
+let's once again open the above container (myjavacontainer) from the command prompt. Go to cmd and type
+
+docker start -i myjavacontainer
+
+	make sure u get
+jshell>
+
+prompt where you can execute any java statement. go and check "Docker Desktop". You will get its status as "Running".
+
+now exit from it by typing
+/exit
+
+make sure u exit from "myjavacontainer".
+

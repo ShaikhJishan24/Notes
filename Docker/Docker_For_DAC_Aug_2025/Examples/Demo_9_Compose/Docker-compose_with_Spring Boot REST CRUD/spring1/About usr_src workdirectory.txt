@@ -1,0 +1,12 @@
+/usr/src/myapp is a directory INSIDE the container, not on your laptop.
+
+It is just a normal Linux folder path created inside the Docker image.
+
+What does WORKDIR do?
+
+WORKDIR means:
+
+“From now on, all commands will run inside this directory.”
+
+If the directory does not exist:
+	 Docker creates it automatically.

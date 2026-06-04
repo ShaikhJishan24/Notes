@@ -1,0 +1,38 @@
+Google Disabling Allow Less Secure Apps Option - Alternative Solution
+
+allow less secure apps -ON
+	has been disabled from 30th June 2020
+
+You have to generate app password. For that you must follow these steps: 
+
+
+1) login to your mail account from which you want to send the mail.
+2) click on your "profile icon" [ on the right side top]
+3) click on "manage your Google Account"
+4) new page will appear. in that go to "security"
+5) scroll down the screen. you will see an option "2-steps verification" which is by default "off". 
+6) in order to Turn it "on", click it.
+7) you will get a page "Protect your account with 3 steps verification"
+8) click on "Get started"
+9) you will be asked to either enter your gmail password (which u use normally) or your phone number.
+10) how do you want to get codes generated?
+	Text Only
+11) wait for some time and check whether you have received text message with the code.
+12) enter the code which you have received 
+13) you will get a message "it worked, turn on 2-step verification"
+14) click on "turn on"
+15) the next step is to generate "google app password"
+16) click on your "profile icon" [ on the right side top]
+click on "manage your Google Account"
+17) click on "security"
+18) scroll down the screen, you will get an option of "app password"
+   click on this option.
+19) now you will see a window with following options:
+	select app			select device
+			generate
+
+20) click on "select app" and type "My Application"
+21) click on "generate", you will get "google app password"
+22) save this password and use it inside your java application from which you want to send the email.
+ 
+

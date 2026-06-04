@@ -1,0 +1,68 @@
+class Product {
+
+    public void getProductDetails() {
+        System.out.println("Product details fetched");
+    }
+}
+
+
+class Payment {
+
+    public void makePayment() {
+        System.out.println("Payment processed");
+    }
+}
+
+
+class Invoice {
+
+    public void generateInvoice() {
+        System.out.println("Invoice generated");
+    }
+}
+
+
+class OrderFacade {
+
+    private Product product;
+    private Payment payment;
+    private Invoice invoice;
+
+    public OrderFacade() {
+        product = new Product();
+        payment = new Payment();
+        invoice = new Invoice();
+    }
+
+    public void placeOrder() {
+
+        product.getProductDetails();
+        payment.makePayment();
+        invoice.generateInvoice();
+
+        System.out.println("Order placed successfully");
+    }
+}
+
+// main class with facade 
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        OrderFacade order = new OrderFacade();
+        order.placeOrder();
+    }
+}
+
+
+// main class without facade 
+
+Product p = new Product();
+p.getProductDetails();
+
+Payment pay = new Payment();
+pay.makePayment();
+
+Invoice inv = new Invoice();
+inv.generateInvoice();

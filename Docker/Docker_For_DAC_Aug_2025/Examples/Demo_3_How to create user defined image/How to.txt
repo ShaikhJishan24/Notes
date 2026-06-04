@@ -1,0 +1,84 @@
+it's a concept of docker file.
+
+let's create "ubuntu-image" folder inside
+d:\MyDocker folder.
+
+go to
+
+d:\MyDocker\ubuntu_image
+
+	
+inside this folder create a file
+Dockerfile
+	type - no extension
+
+
+now go inside "Dockerfile"
+
+first we have to specify "parent image"
+
+FROM ubuntu
+	[ ubuntu is our baseImage ]
+
+MAINTAINER Nitin
+	[ even if MAINTAINER is deprecated, for the time being it's ok]
+
+RUN apt update
+	[ in order to update "ubuntu" ]
+
+CMD ["echo","this is my first Ubuntu image"]
+
+	[ CMD , command to execute. we can give only one command ]
+
+that's it in Dockerfile
+
+now let's build our image
+
+	
+		D:\MyDocker\ubuntu_image>
+
+give following command
+
+	docker build -t myubuntuimage .
+
+[ -t for tag, tag must be in lowercase
+. means current working directory ]
+
+after giving above command make sure it builds your image successfully.
+
+while building the image, you will see the commands you've given inside Dockerfile.
+
+once your image is built, you can check on the same terminal by giving following command:
+
+docker images
+
+now let's run the same image
+
+docker run --name myubuntucontainer myubuntuimage
+
+	[ you can use "-it" or "-d" options here, but not exactly required ]
+
+make sure you get the following output:
+
+	This is my first ubuntu image
+
+check the container by giving following command
+
+	docker ps -a
+
+you will get following output:
+
+CONTAINER ID   IMAGE                             COMMAND                  CREATED              STATUS                          PORTS                 NAMES
+cf0ff3e39d26   myubuntuimage                     "echo 'This is my fi…"   About a minute ago   Exited (0) About a minute ago                         myubuntucontainer
+
+
+So what have we done so far?
+	we created Dockerfile and using it , we built our image and also created the container.
+
+
+
+
+
+
+
+

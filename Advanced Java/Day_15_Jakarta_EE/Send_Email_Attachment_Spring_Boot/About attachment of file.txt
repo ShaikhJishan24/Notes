@@ -1,0 +1,1 @@
+if you want to attach file from some different source (path), just change the value of "file.path" inside "application.properties" file.

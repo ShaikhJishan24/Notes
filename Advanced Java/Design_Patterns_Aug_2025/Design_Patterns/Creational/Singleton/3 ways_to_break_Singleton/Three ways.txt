@@ -1,0 +1,13 @@
+1) Cloning
+        problem - cloning the objects breaks singleton
+	Solution - do not implement Cloneable in Singleton or override "clone()" and raise exception
+
+2) Serialization
+        problem - when we deserialize then new object is created hence singleton can break 
+	Solution - do not implement Serializable in Singleton or if you want to implement serializable then override "private 
+                   readResolve()" and return the same object.
+
+
+3) Reflection
+        problem - through reflection API we can create the any object at run time breaks singleton 
+	Solution - raise exception inside the constructor

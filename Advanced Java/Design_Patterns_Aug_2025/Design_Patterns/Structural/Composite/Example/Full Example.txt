@@ -1,0 +1,75 @@
+public interface Employee
+{
+    void showHappiness();
+}
+
+
+
+
+public class Worker implements Employee
+{
+    private String name;
+    private int happiness;
+
+    public Worker(String name, int happiness)
+    {
+        this.name = name;
+        this.happiness = happiness;
+    }
+
+    public void showHappiness()
+    {
+        System.out.println(name + " showed happiness level of " + happiness);
+    }
+}
+
+
+
+import java.util.*;
+
+public class Supervisor implements Employee {
+    private String name;
+    private int happiness;
+
+    private List<Employee> subordinate = new ArrayList<Employee>();
+
+    public Supervisor(String name, int happiness) {
+        this.name = name;
+        this.happiness = happiness;
+    }
+
+    public void showHappiness() {
+        System.out.println(name + " showed happiness level of " + happiness);
+        Iterator<Employee> itr = subordinate.iterator();
+        while (itr.hasNext()) {
+            Employee ref = itr.next();
+            ref.showHappiness();
+        }
+    }
+
+    public void addSubordinate(Employee employee) {
+        subordinate.add(employee);
+    }
+}
+
+
+
+public class App
+{
+    public static void main(String[] args)
+    {
+        Worker a = new Worker("Worker Tom", 5);
+        Supervisor b = new Supervisor("Supervisor Mary", 6);
+        Supervisor c = new Supervisor("Supervisor Jerry", 7);
+        Supervisor d = new Supervisor("Supervisor Bob", 9);
+        Worker e = new Worker("Worker Jimmy", 8);
+
+        //set up the relationships
+        b.addSubordinate(a); //Tom works for Mary
+        c.addSubordinate(b); //Mary works for Jerry
+        c.addSubordinate(d); //Bob works for Jerry
+        d.addSubordinate(e); //Jimmy works for Bob
+
+      	c.showHappiness();
+    }
+}

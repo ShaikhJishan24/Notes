@@ -1,0 +1,4 @@
+Spring Web
+Spring Boot Devtools
+IO
+	Java Mail Sender

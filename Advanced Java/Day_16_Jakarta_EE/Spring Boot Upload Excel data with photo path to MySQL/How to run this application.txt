@@ -1,0 +1,41 @@
+This application can be run for two tasks:
+
+a)  upload excel data to MySQL table
+
+
+Select POST method
+
+Enter URL:
+
+http://localhost:8080/api/students/upload
+
+
+Click on Body
+
+Select form-data
+
+In the key-value table:
+
+Under Key, type: file
+
+In that row, under Type, change from Text to File
+
+In the Value column, attach your file: students.xlsx
+
+Postman will now automatically send:
+
+Content-Type: multipart/form-data
+
+
+
+b)  to view a particular image file in postman
+
+go to postman
+
+Select :  GET
+
+url path  -   http://localhost:8080/photos/Babita.jpg
+
+click on "send"
+
+make sure u can view that image inside the postman

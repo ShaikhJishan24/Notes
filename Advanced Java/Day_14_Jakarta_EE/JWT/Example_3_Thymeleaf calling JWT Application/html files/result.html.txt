@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Validation Result</h2>
+
+<h3 th:text="${response}"></h3>
+
+<a href="/login">Go Back</a>
+
+</body>
+</html>

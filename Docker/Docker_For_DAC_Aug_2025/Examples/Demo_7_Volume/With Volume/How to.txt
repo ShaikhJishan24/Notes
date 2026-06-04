@@ -1,0 +1,204 @@
+start  Docker Desktop
+
+go to "d:\for_docker_volume" folder
+	create a folder "with_volume"
+
+go inside "with_volume"
+
+
+cd  d:\for_docker_volume\with_volume>
+
+give following command
+
+		docker pull nginx
+
+make sure you get the following output:
+
+Using default tag: latest
+latest: Pulling from library/nginx
+2f44b7a888fa: Pull complete
+8b7dd3ed1dc3: Pull complete
+35497dd96569: Pull complete
+36664b6ce66b: Pull complete
+2d455521f76c: Pull complete
+dc9c4fdb83d6: Pull complete
+8056d2bcf3b6: Pull complete
+Digest: sha256:4c0fdaa8b6341bfdeca5f18f7837462c80cff90527ee35ef185571e1c327beac
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+
+
+now create a container
+
+		docker run --name myngnx -d -p1000:80 nginx
+
+make sure it creates the container successfully.
+
+
+now go to browser and type
+	http://localhost:1000
+
+make sure u get the following output
+	
+	Welcome to nginx!
+
+
+now on the terminal , give following command:
+
+	 docker exec -it myngnx bash  [ interactive mode ]
+
+give following command
+	cd /usr/share/nginx/html
+inside 
+	/usr/share/nginx/html
+
+give following command
+	ls
+you will find "50x.html"  "index.html" files
+
+
+now let's remove "50x.html" and "index.html" 
+	rm 50x.html
+	rm index.html
+
+	ls
+you won't find the files now
+	let's create two files:
+		touch index.html
+		touch contact.html
+
+	ls
+you'll find two files
+
+let's come out of the bash
+	exit
+
+now the thing is that whatever you've done inside the container (first removed "index.html" and then created "index.html" and "contact.html") , is limited to this container only. Once you remove the container , files you created also will be removed.
+
+ let's remove the container
+
+	go to 
+d:\MyDocker\without_volume> docker rm -f myngnx
+
+make sure container gets removed successfully.
+
+
+
+
+The purpose of using Docker volumes is to persist data outside the container so it can be backed up or shared.
+	i.e. host machine files can be shared inside the container and you can share the files inside the host machine filesystem through the container.
+
+let's see how we can do it.
+
+
+now go to "d:\\trialvolume" and create a file
+	index.html
+		content of "index.html" is
+				Welcome to Index html file created inside "d:\\trialvolume"
+
+	let's create the container again
+
+
+docker run --name myngnx -v d:\trialvolume:/usr/share/nginx/html -d -p1000:80 nginx
+
+here what we have created is 
+	while creating container for "ngnix" i.e. myngnx
+
+	we have created volume i.e. we have linked "d:\trialvolume" with container's "/usr/share/nginx/html" folder.
+
+
+now go to the browser and type
+	http://localhost:1000/
+
+make sure you get 
+	Welcome to Index html file created inside "d:\trialvolume"
+   as the output
+
+what it means is that "index.html" which is a part of host machine, we've placed it in container's path (  /usr/share/nginx/html )
+
+now we'll go inside the container and make some changes inside "index.html"  and also we'll check whether it reflects in the host machine path i.e. "d:\trialvolume"
+
+	go to the command prompt and go to container's path
+
+D:\MyDocker\without_volume> docker exec -it myngnx bash
+
+
+make sure bash opens
+	cd /usr/share/nginx/html
+
+ls
+	make sure u can see all the files inside "d:\trialvolume" inside the container's directory.
+
+if you want to check the content of "index.html", give following command:
+	cat index.html
+
+make sure you can see the content of "index.html" file
+
+Welcome to Index html file created inside "d:\trialvolume"
+   as the output
+
+
+now let's change the content of "index.html" through container
+
+	echo "Good Morning!" | cat > index.html  [ to change the content of index.html inside the container path ]
+
+now go to the browser and type
+	http://localhost:1000/
+
+make sure you get 
+	Good Morning
+	 
+		 as the output
+
+that means we've changed the content of "index.html" inside the container. Now whether it has reflected the local file system also or not , how will you check?
+	go to "d:\trialvolume"
+	and open "index.html"
+and to your surprise , you will find that the content of "index.html" now is
+		Good Morning
+
+so that means through container you changed the content of the file which is a part of local file system [ d:\trialvolume ]
+
+
+
+
+now let's once again go to the container's file structure
+
+	 docker exec -it myngnx bash
+
+make sure bash opens
+	cd /usr/share/nginx/html
+
+ls
+	make sure u can see all the files inside "d:\trialvolume" inside the container's directory.
+
+now let's create a new file "contact.html" inside container directory and make sure that also will be reflected in the host machine directory ( d:\trialvolume )
+
+inside the bash give following command
+
+	touch contact.html
+contact.html will be created
+
+now let's write a message inside "contact.html"
+	 echo "Welcome to contact html file" | cat > contact.html
+
+check using 
+	cat contact.html
+
+exit from the bash
+	exit
+
+remove the container
+	docker rm -f myngnx
+
+here -f is to force
+	we are purposely removing the docker container , just to check that even if we remove it, we can still get "contact.html" inside "d:\trialvolume"
+ 
+
+now go to "d:\trialvolume" and make sure "contact.html" is created with "Welcome to contact html file" message inside it. So what we did is, we created a new file inside host machine's file system ( d:\trialvolume ) through the Docker container.
+	
+
+	
+
+	
+
+

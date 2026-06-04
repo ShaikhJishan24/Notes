@@ -1,0 +1,260 @@
+go to hub.docker.com and create your repository
+
+for that you must register with "hub.docker.com"
+
+click on "create repository"
+
+in the "namespace" section you will find "your username"
+
+since in my case my user name on docker hub is "nitinlearnsdocker",
+	I can see the namespace as "nitinlearnsdocker"
+
+
+inside "Repository Name" field,
+	type your repository name e.g.  "repository_1"
+
+notice on the right hand side "Pro tip"
+
+	You can push a new image to this repository using the CLI
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+Make sure to change tagname with your desired image repository tag.
+
+inside "Visibility" section
+	select "private"
+
+click on "create"
+
+once repository gets created on the right hand side you will notice following message:
+
+Docker commands
+
+To push a new tag to this repository,
+
+docker push nitinlearnsdocker/repository_1:tagname
+
+
+now start the "Docker Desktop"
+
+let's create an image with the name "repository_1"
+	[ repository name and image name must be same ]
+
+[ inside one repository you can have same image with different tags ]
+
+
+go to the folder "d:\MyDocker"
+	and create a folder "repository_1_project" inside it.
+
+open "repository_1_project" folder 
+
+	
+inside this folder create a file
+Dockerfile
+
+now go inside "Dockerfile"
+
+first we have to specify "parent image"
+
+FROM ubuntu
+	[ ubuntu is our baseImage ]
+
+MAINTAINER Nitin
+	[ even if MAINTAINER is deprecated, for the time being it's ok]
+
+RUN apt update
+	[ in order to update "ubuntu" ]
+
+CMD ["echo","this is my first Ubuntu image"]
+
+	[ CMD , command to execute. we can give only one command ]
+
+that's it in Dockerfile
+
+now let's build our image
+
+for that open the terminal from VS code editor 
+	Terminal
+		new Terminal
+
+make sure terminal will be opened in the VS Code
+
+
+you have to first login to docker hub
+
+PS D:\MyDocker\repository_1_project>   docker login --username=nitinlearnsdocker
+
+password: <enter your docker hub password>
+
+after entering the password, make sure you get the following message:
+
+
+Login Succeeded
+
+Logging in with your password grants your terminal complete access to your account.
+
+For better security, log in with a limited-privilege personal access token. 
+Learn more at https://docs.docker.com/go/access-tokens/
+
+
+PS D:\MyDocker\repository_1_project>
+
+give following command
+
+	docker build -t repository_1:0.1  .
+
+now type the following command to check the existing image/s 
+
+	docker images
+
+you will find your existing image/s
+
+e.g. in my case
+
+
+REPOSITORY                 TAG       IMAGE ID       CREATED        SIZE
+repository_1            0.1       3a7f95bd52d4   3 days ago     119MB
+
+
+
+now suppose I want to push "repository_1" on docker hub
+
+for this purpose we need to "tag" our image
+
+type the following command 
+
+docker tag repository_1:0.1 nitinlearnsdocker
+/repository_1:0.1
+
+since we can tag image multiple times, we can additionally say
+
+docker tag repository_1:0.1 nitinlearnsdocker/repository_1:latest
+
+after giving both the above commands check the images
+
+		docker images
+
+you'll see following output:
+
+nitinlearnsdocker/repository_1   0.1       3a7f95bd52d4   3 days ago     119MB
+nitinlearnsdocker/repository_1   latest    3a7f95bd52d4   3 days ago     119MB
+repository_1                     0.1       3a7f95bd52d4   3 days ago     119MB
+
+now we can push our image to docker hub
+
+docker push nitinlearnsdocker/repository_1:0.1
+
+	make sure above command pushes the image on hub
+
+now type
+
+docker push nitinlearnsdocker/repository_1:latest
+
+	make sure above command pushes the image on hub
+this time you'll get a message "Layer already exists" , which means that even if the tag name is different ( repository_1:latest ) ,the image is same.
+
+now go to "hub.docker.com" and check whether you can see pushed images.
+
+refresh the repository (repository_1) page on the browser and you'll get this output:
+
+Tags
+This repository contains 2 tag(s).
+
+Tag	OS	Type	Pulled	Pushed
+latest	
+Image	---	3 minutes ago
+0.1	
+Image	---	4 minutes ago
+
+
+this proves that you've successfully uploaded your image to the private repository ( repository_1 )
+
+
+now let's remove the image from local drive
+
+PS D:\MyDocker\repository_1_project> docker rmi nitinlearnsdocker/repository_1:0.1
+
+you'll get a message
+	Untagged: nitinlearnsdocker/repository_1:0.1
+
+this will not remove the image as we have one more tag for the image is still available. Now give following command
+
+PS D:\MyDocker\repository_1_project> docker rmi nitinlearnsdocker/repository_1:latest
+
+you'll get following message:
+
+Untagged: nitinlearnsdocker/repository_1:latest
+Untagged: nitinlearnsdocker/repository_1@sha256:dc30ef6dad13594cd0e48b1c66e2e2e3f7ee49ad04354ac4a2ba869012bae20a
+
+now check with
+	docker images
+
+you'll find
+	repository_1            0.1       3a7f95bd52d4   3 days ago     119MB
+
+give following command
+
+	docker rmi repository_1:0.1
+
+you'll get a message
+
+	Untagged: repository_1:0.1
+Deleted: sha256:3a7f95bd52d48bb8a624a6c04e2203476b0b8c3652003497fd89565b086b3639
+
+
+now check with 
+	docker images
+
+and make sure you don't see "repository_1"
+
+
+let's log out from docker
+	docker logout
+
+you'll get a message:
+	Removing login credentials for https://index.docker.io/v1/
+
+	now let's pretend that we are on different machine
+
+
+now give a command
+
+	docker pull nitinlearnsdocker/repository_1:latest
+
+
+you'll get a message
+
+Error response from daemon: pull access denied for nitinlearnsdocker/repository_1, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+it's because your repository is "private"
+
+only after login to the docker hub , you will be able to pull the image/s from the repository.
+
+so, let's login again
+
+PS D:\MyDocker\repository_1_project> docker login --username=nitinlearnsdocker
+
+password:  < your password >
+
+make sure login is successfull
+
+now let's try to pull the image again from "nitinlearnsdocker/repository_1"
+
+docker pull nitinlearnsdocker/repository_1:latest
+
+to check whether we've successfully pulled the image give following command:
+
+	docker images
+
+make sure u get the following output:
+
+nitinlearnsdocker/repository_1   latest    3a7f95bd52d4   3 days ago     119MB
+
+
+note:
+	in the above command (pull command) if you don't provide the tagname , it will pull the "latest" image
+
+
+
+

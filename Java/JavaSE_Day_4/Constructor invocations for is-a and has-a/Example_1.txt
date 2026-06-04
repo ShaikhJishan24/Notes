@@ -1,0 +1,39 @@
+class A
+{
+	public A() // 4
+	{
+		System.out.println("inside A constructor");
+	}
+}
+class B
+{
+	public B() // 3
+	{
+		System.out.println("inside B constructor");
+	}
+}
+class Parent
+{
+	public Parent() // 2
+	{
+		System.out.println("inside Parent constructor");
+	}
+}
+class Child extends Parent   // is-a
+{
+	private B ob1=new B(); // 3    // has-a
+	private A ob2=new A(); // 4  // has-a
+	public Child() // 1 but not print
+	{
+		System.out.println("inside Child constructor");
+	}
+}
+public class Example_1 {
+
+	public static void main(String args[])
+	{
+		new Child();
+	}
+
+
+}

@@ -1,0 +1,43 @@
+For containers to communicate using "names" e.g. inside container1 shell we can say "ping container2" , you need to use a custom bridge network:
+
+Create a Custom Bridge Network
+
+	docker network create DAC-DBDA-network
+
+Run Containers on the Custom Network
+
+	docker run -dit --name container1 --network DAC-DBDA-network alpine sh
+
+	docker run -dit --name container2 --network DAC-DBDA-network alpine sh
+
+Test Name-Based Communication
+	docker exec -it container1 sh
+		[ docker exec is used to interact with or run commands in an already running container. ]
+
+
+Ping container2 using its name
+	ping  -c  5   container2 
+		[ here we are trying to connect to "container2" without using its IP address and trying to send 5 packets ]
+
+on successful communication you will get follwing message:
+
+PING container2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=1.341 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.133 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.129 ms
+64 bytes from 172.18.0.3: seq=3 ttl=64 time=0.116 ms
+64 bytes from 172.18.0.3: seq=4 ttl=64 time=0.115 ms
+
+--- container2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 0.115/0.366/1.341 ms
+
+
+This will succeed because the custom bridge network provides DNS-based name resolution.
+
+
+Default Bridge Network: Containers communicate using IP addresses only, not names.
+
+Custom Bridge Network: Containers can communicate using both IP addresses and container names.
+
+	

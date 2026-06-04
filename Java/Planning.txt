@@ -1,0 +1,161 @@
+- Opearting System and Software Development
+  - start doing the thoery
+
+- C++ 
+  - last C++ part is pending 
+ 
+  
+- Database Technologies
+  - SQL  - Normalization is pending
+  - MongoDB (NoSQL) - pending 
+ 
+
+- Java OOP
+  - Collection
+  
+
+- DSA
+  - Theory is pending  
+
+- Web Development
+  - Express js is pending
+
+* Advanced Java (Web-based Java programming)
+  - do it side by side before this 
+    do the basic revision of JDBC then 
+
+- Asp.net
+  - c#
+   
+  Pending
+  - Adio
+  - LInQ
+  - Rest API
+  - delegate   
+
+- Aptitude And communication
+  - full module pending
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✔️ Day 1      (only reads just before the day)
+- full day1
+
+✔️ Day 2
+- full day2 
+
+
+✔️ Day 3
+- Array Demos
+- Inheritance 1
+- Lazy and Eagar resolution
+- Singleton
+- Client and developer Relationship
+
+
+✔️ Day 4
+- Constructor invocation in is-a and has-a
+- Inheritance Folder 2
+- Inheritance folder 3 and About overloading (Aggregation, Composition)
+- UpCasting DownCasting And instanceOf operator
+- UpCasting DownCasting in polymorphism
+- OverRidding Rules
+
+
+✔️ Day 5 
+- Enum class
+- garbage Collector full pending
+- Imp_info (protected Accessibility)
+- Inner class
+- overloading(widening and boxing)
+- String folder and String Builder and buffer  (only revised it)
+- varargs
+- Wrapper Classes
+- Bridge method
+- Command Line Demo
+ 
+
+Day 6
+✔️ - Exception Handling 
+
+Day 7
+✔️ - Clone pro
+✔️ - Immutablity
+✔️ - Reflection API
+
+Day 8
+✔️ - Multithreading   -------------------------------- 
+✔️ - Advanced Multithreading -----------------------------
+
+Day 9
+✔️ - File handling -----------------------
+✔️ - Serialization -----------------------
+
+
+Day 10
+✔️ - Generics 
+     ✔️ Polymorphism in generics
+
+✔️ - Collection API
+- Socket Programming ----------------------- (Last Topics) if Time Permits
+
+Day 11
+ - Interface new features ---------------------
+✔️ - Lambda
+✔️ - Method reference
+
+Day 12
+- I18N (Reads Only theory for CCEE)
+✔️ - Stream API
+✔️ - Optional class
+- NIO (Reads only Theory for CCEE)
+
+
+
+
+
+
+Association, Aggregation, Composition (Day 4)
+
+Multithreading (Normal + Advanced) (Day 8)
+
+File Handling (Day 9)
+Serialization
+
+Socket Programming (Day 10)
+
+Interface mew Features (Day 11)   (Why default methods Where Introduce)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

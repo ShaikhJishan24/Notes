@@ -1,0 +1,21 @@
+mysql> select * from product;
++----+-----------+-------+-----+
+| id | name      | price | qty |
++----+-----------+-------+-----+
+|  1 | Body Oil  |   400 | 120 |
+|  2 | Soap      |   100 |  40 |
+|  3 | Pen       |    87 |  63 |
+|  5 | Long Book |   200 |  50 |
++----+-----------+-------+-----+
+4 rows in set (0.56 sec)
+
+mysql> desc product;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(255) | YES  |     | NULL    |                |
+| price | int          | NO   |     | NULL    |                |
+| qty   | int          | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+4 rows in set (0.26 sec)

@@ -1,0 +1,40 @@
+Day1
+Day2
+Day3
+Day4
+Day5
+
+Day10
+Day11
+Day12
+
+
+
+
+-- All basic concept with JVM, JDK, JRE
+-- Garbage Collection
+-- inheritance 
+   constrictor invocation is-a has-a
+   static and non static block invocation in case of inheritance
+-- method Overloading
+-- overriding rules and its explanation for each
+-- protected accessibility demo
+
+
+
+
+--------- Most Important ------------ 
+- Generics And Collection API From basic To Advance 
+
+
+
+
+
+
+
+
+
+
+
+
+

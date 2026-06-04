@@ -1,0 +1,17 @@
+Refresh token concept:
+
+we will get two tokens
+	a) access token - normal JWT token
+	b) refresh token
+
+access token's expiry time will less than refresh token's expiry time
+
+e.g.
+access token's expiry time is 10 minutes and refresh token's expiry time is 30 minutes
+
+now normally what happens is when access token's expiry time gets over, we cannot use it. And then u have to recreate it by passing the credentials again. 
+
+with refresh token the concept is slightly different.
+
+here when access token gets expired ( say after 10 minutes )
+you don't have to send the credentials again , rather you can send the refresh token based on what you will get a new access token along with the same refresh token. This will go on till refresh token does not get expired. Once refresh token gets expired, you have to send credentials again based on what you will be once again given access token and refresh token.

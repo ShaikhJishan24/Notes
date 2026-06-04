@@ -1,0 +1,82 @@
+public class Generic1<T>
+{
+	private T first;
+
+	void setVal(T first)
+	{
+		this.first=first;
+	}
+
+	T getVal()
+	{
+		return first;
+	}
+}
+
+when u compile above class, compiler will remove all the generic information because JVM can't understand Generics. This is known as "Type Erasure". So after compilation the above class will be as follows:
+
+public class Generic1
+{
+	private Object first;
+	void setVal(Object first)
+	{
+		this.first=first;
+	}
+	Object getVal()
+	{
+		return first;
+	}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+class shape {}
+class rect extends shape {}
+class circle extends shape {}
+
+public class Generic1<T extends Shape>
+{
+	private T first;
+	void setVal(T first)
+	{
+		this.first=first;
+	}
+	T getVal()
+	{
+		return first;
+	}
+}
+
+Generic1<rect> g1 = new Generic1<>();
+g1.setVal(new rect());
+
+when u compile above class, compiler will remove all the generic information because JVM can't understand Generics. This is known as "Type Erasure". So after compilation the above class will be as follows:
+
+public class Generic1<T extends Shape>
+{
+	private shape first;
+	void setVal(shape first)
+	{
+		this.first=first;
+	}
+	shape getVal()
+	{
+		return first;
+	}
+}
+
+Generic1 g1 = new Generic1();
+g1.setVal(new shape()); 
+g1.getVal() // compiler does the downcasting automatically 
+g1.setVal(new rect());
+g1.setVal(new circle());
+
+Note - After type eraser jvm does not care aboyt type 
+
+
+
+
+
+
+
+
+
+

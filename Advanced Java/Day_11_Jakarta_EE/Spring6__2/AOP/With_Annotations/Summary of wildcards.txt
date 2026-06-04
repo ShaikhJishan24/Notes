@@ -1,0 +1,33 @@
+Before advice for all the methods of Sample class
+
+		 @Pointcut("execution(* Sample.*(..))")
+
+Before advice for all public methods 
+
+		@Pointcut("execution(public * *(..))")
+
+Before advice for all methods of all the classes
+
+		@Pointcut("execution(* *(..))") 
+
+Before advice for public methods of only "Sample" class
+
+		 @Pointcut("execution(public * Sample.*(..))")
+
+Before advice for setter methods of only "Sample" class
+
+		@Pointcut("execution(* Sample.set*(..))")  
+
+Before advice for setter methods of all classes
+
+		 @Pointcut("execution(* set*(..))")
+
+After advice for getter methods of all the classes.
+		
+		@Pointcut("execution(* get*(..))")  
+
+Around advice for toString methods of all the classes.
+		
+		@Pointcut("execution(* to*(..))")  
+
+

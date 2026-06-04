@@ -1,0 +1,51 @@
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+
+
+class UpiPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid using UPI");
+    }
+}
+
+
+
+class CardPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid using Card");
+    }
+}
+
+
+
+class PaymentContext {
+
+    private PaymentStrategy strategy;
+
+    public PaymentContext(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void pay(int amount) {
+        strategy.pay(amount);
+    }
+}
+
+
+
+public class Demo {
+
+    public static void main(String[] args) {
+
+        PaymentContext p1 = new PaymentContext(new UpiPayment());
+        p1.pay(500);
+
+        PaymentContext p2 = new PaymentContext(new CardPayment());
+        p2.pay(1000);
+    }
+}
+
+
+

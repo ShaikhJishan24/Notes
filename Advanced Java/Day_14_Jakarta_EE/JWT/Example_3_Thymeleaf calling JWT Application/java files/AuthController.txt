@@ -1,0 +1,35 @@
+package com.example.demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class AuthController {
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @PostMapping("/generate")
+    public String generate(
+            @RequestParam String username,
+            @RequestParam String role,
+            Model model) {
+
+        String token = jwtUtil.generateToken(username, role);
+
+        model.addAttribute("jwt", token);
+        return "token";     // show token.html
+    }
+
+    @PostMapping("/validate")
+    public String validate(@RequestParam String token, Model model) {
+
+        boolean isValid = jwtUtil.validateToken(token);
+
+        model.addAttribute("response", isValid ? "It's a VALID TOKEN" : "It's not a INVALID TOKEN");
+
+        return "result";    // show result.html
+    }
+}
+

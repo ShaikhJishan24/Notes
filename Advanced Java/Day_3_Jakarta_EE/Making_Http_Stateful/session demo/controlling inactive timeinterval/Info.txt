@@ -1,0 +1,13 @@
+// we can overrite for any particular Servlets
+setMaxInactiveInterval(300);
+
+	here 300 are seconds.
+
+
+// it is for all the servlets of that context(project)
+<session-config>
+	<session-timeout>8</session-timeout>
+</session-config>
+
+
+		here 8 are minutes.

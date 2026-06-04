@@ -1,0 +1,5 @@
+"application.properties"  file must be inside "resources" folder.
+
+
+"application-dev.properties","application-prod.properties" and "application-test.properties" files must be inside "resources/config" folder.  [ So for that first create a folder "config" inside "resources" folder. ]
+

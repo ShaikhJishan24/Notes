@@ -1,0 +1,11 @@
+go to ARC and type
+
+http://localhost:<port no. depends which one is the active profile>/helloprofile
+
+
+method 			GET
+
+click on "send"
+
+make sure you get the proper message based on the active profile.
+

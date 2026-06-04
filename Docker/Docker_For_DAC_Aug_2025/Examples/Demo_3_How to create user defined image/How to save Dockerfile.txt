@@ -1,0 +1,17 @@
+Steps to Save a Dockerfile in Notepad:
+Write the Content:
+
+Write your Dockerfile content in Notepad.
+Go to Save As:
+
+Click on File > Save As.
+Set the File Name:
+
+In the "File name" field, type:
+
+Dockerfile
+
+Include quotes around the name ("Dockerfile") to ensure Notepad doesn’t add a .txt extension automatically.
+Set the Save as Type:
+
+In the "Save as type" dropdown, select All Files instead of the default Text Documents (*.txt).

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>JWT Generator</h2>
+
+<form action="/generate" method="post">
+    Username: <input type="text" name="username"><br><br>
+    Role: <input type="text" name="role"><br><br>
+
+    <button type="submit">Generate JWT</button>
+</form>
+
+</body>
+</html>

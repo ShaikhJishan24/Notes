@@ -1,0 +1,9 @@
+Locale class represents Language and Country.
+
+Structure of Locale Class:
+
+A Locale object is typically constructed using two main components:
+
+Language: A two-letter code that represents the language (e.g., "en" for English, "fr" for French, "de" for German).
+
+Country: A two-letter code representing the country or region (e.g., "US" for the United States, "FR" for France, "DE" for Germany).

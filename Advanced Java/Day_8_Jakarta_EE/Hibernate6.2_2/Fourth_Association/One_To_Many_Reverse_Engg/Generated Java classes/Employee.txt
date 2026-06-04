@@ -1,0 +1,55 @@
+package mypack;
+
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+
+@Entity
+@Table(name = "employee")
+public class Employee {
+    @Id
+    @Column(name = "empid", nullable = false)
+    private Integer id;
+
+    @Column(name = "name", length = 20)
+    private String name;
+
+    @Column(name = "salary", precision = 9, scale = 2)
+    private BigDecimal salary;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cid")
+    private Company cid;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    public Company getCid() {
+        return cid;
+    }
+
+    public void setCid(Company cid) {
+        this.cid = cid;
+    }
+
+}

@@ -1,0 +1,652 @@
+- webcontainer == tomcat server
+
+- standalone Application
+ - program which have the main method
+ -  don't have life cycle
+
+
+- serverSide web application 
+
+  - which don't have any main methods
+  - life cycle is managed by webserver(web Container)
+
+
+- Java-Enable Web Server
+  - server -> web Container(tomcat) has -> servlet/JSP(it is managed by web container) -> 
+
+- Deployment Descriptor (web.xml)
+
+
+- PrintWriter() 
+  - it is the stream class of (UTF) which is used to show the response
+  - PrintWriter out = response.getWriter(); 
+       - is used to write text into the HTTP response body. or (on browser)
+  - out.println() - to display data on the web browser (ln means no newline)
+  - res.setContentType("text/html)
+  - Servlet → response → PrintWriter → browser
+  - out.println("<h1>") -> to write the html tag  
+
+- ServletOutputStream() 
+  - for writing the byte-oriented information
+  - is used to show the image or file data on web browser
+
+-- Servlet execution flow (it is very important for interview also)
+
+-- for using JDBC with servlet you need to must load the driver class with class.forName() method
+
+------------------------- maven ----------------------------
+-- C:\Users\Jishan shaikh\.m2\repository => it is the local repository path where all jar are downloaded for maven
+
+
+------------------------------------- 
+how to configure the Datasouce implementation to the tomcat
+   
+   first removes the tomcat server from server tab
+
+1) change the tomcat config folder -> context.xml file as 
+
+   this changes 
+   <Resource name="mypool" auth="Container"
+          type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
+          url="jdbc:mysql://127.0.0.1:3306/mydb"
+          username="root" password="Jishan@9136"/>
+
+   to this in context.xml
+   before the 
+   <context> end tag
+  
+   - Now re-configure(add) the tomcat server
+
+
+  Now only create the servlet and then create the JDBC using the Datasocurce (Not with the DriverManager)
+  (refer the sir provided servlet)
+
+
+----------------------------------------- 
+-- Day3 flow
+-- Factory method ✔️
+-- JNDI and datasource ✔️
+-- Parameters and its types ✔️
+-- init method info ✔️
+-- Redirect Folder ✔️
+
+- parameters
+   - it is used to send the some kind of information to the servlet
+   - types
+          1. request - particular (parameters are different for different request) to that servlet
+                       one per request
+
+          2. init or config - shared by all the request to a particular servlet (different request for the same servlet)
+                       it is one per servlet
+
+          3. context(web project (project))  - these parameters are shared by all the servlets in that particular context (project)
+             - one per context(project)
+
+
+ set init parameter in the dialog box or in web.xml that opens when we create the servlet and
+ context parameter in DD(web.xml)
+
+
+- Redirecting
+  1. redirect (we are using Httpservletresponse instance)
+    - SendRedirect() this method is used to redirect
+      - No statement after this line coz control goes to the redirected(servlet2) servlet
+      - it can go beyond the webContainer(tomcat)
+
+  - servlet2 resonse
+
+-- RequestDispacher interface  (we are using Httpservletrequest instance)
+
+  - can be created using the request or context
+    request.getRequestDispatcher("redirected servlet name")  or context.getRequestDispatcher("/redirected servlet name")
+    
+    request.getRequestDispatcher()
+		does not go beyond context(other web project).
+
+    context.getRequestDispatcher(other web project)
+		can go beyond context(other web project). path must start with "/".
+  
+   It has two methods
+   
+  1. forward
+    - request -> servlet1 ----->(forward)--> servlet2(it sends response to servlet1)
+    - No statement after this line coz control goes to the redirected(servlet2) servlet and then response comes in 
+      redirectingservlet
+   
+   - servlet 1 response (which gets response from servlet2 internally)
+
+  2. include
+    - include the response of servlet2 in servlet1 response
+  - servlet1 response with including the servlet2 response in it 
+
+
+Note- we can run the both the project by selcecting both of them
+
+
+
+-----------------------------------------------------------------------------------------
+Day 4
+
+How to debug the project
+login.jsp
+Loginservlet.java
+	
+
+
+
+
+// Threads and servlets
+Servlet config - one per servlet
+servlet Context - one per project(context)
+
+init(Sevletconfig) which calls one time only and hence Sevletconfig instance is same for all the threads hence they are not thread safe multiple threads can access it 
+ 
+httpservletrequest and response are service() or doget and dopost method arguments which call every time for new request and they are local hence they are thread safe because it creates and destroy on every resuest
+
+- for that 
+try to avoid  member variables inside servlet. because they associated with each instance(object)
+
+
+
+- Bean class 
+public class User {
+    private String name;
+    private int age;
+
+    public User() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+
+22/12/2025
+- Accessing the business logic ✔️
+- Attributes in jsp ✔️
+- Standard Action 
+
+
+
+
+- POJO class must have :
+
+  private fields
+  public getters & setters
+  constructors (No or parametrized constructor)(optional)
+  methods (optional)
+
+
+-- Differnece between Bean and pojo class
+
+A JavaBean is a special type of POJO that follows strict conventions.
+
+Rules of JavaBean
+
+	Private fields
+	Public getters & setters
+	Public no-argument constructor
+	Implements Serializable
+
+pojo class may or may not have any Rules 
+
+Note - but when you write any parametized constructor then it is not the bean class
+
+
+- jsp Directive
+	directives are the special messages which jsp developer can convey to the web container
+
+
+- Standard Action
+	they are used to perform some java action behind the tag
+
+- Expression language
+	used to get the values from the various Attributes as well as parameters
+	they are null friendly
+	All El Implicit objects are internally maps
+
+- jstl 
+	JSP standard tag library
+	JSTL is a standard tag library used to perform common tasks like looping and condition handling using tags 
+        instead of Java code.
+	
+- Taglib Directive
+	it is used to access in-built or user-defined tag
+
+
+23/12/2025
+Proxy pattern 
+jstl (jstlDemo) 
+user defined tag
+MVC
+
+
+
+24/12/2025
+flyweight design patten (Used in wrapper classes) 
+Hibernate
+Reverse Engineering
+Kind of objects
+merge(), refresh(), dirty object
+
+
+
+
+
+
+
+
+
+
+-------------------------------------- Thymleaf ------------------------------
+
+1) Variable Expression
+	
+	<h1 th:text="${ }" > <h1>
+
+
+   1. Access Object Properties
+	
+	model.addAttribute("student", new Student("Amit", 25));
+
+	In html :
+		<span th:text="${student.name}"></span>
+		<span th:text="${student.age}"></span>
+
+		or
+
+	<div th:object="${student}">
+    		<span th:text="*{name}"></span>
+    		<span th:text="*{age}"></span>
+	</div>
+
+
+   2. Access List of Objects (list contains objects of the Student class.)
+	
+	model.addAttribute("students", list);
+
+	In Html :
+		<ul>
+  			<li th:each="s : ${students}">
+      				<span th:text="${s.name}"></span>
+  			</li>
+		</ul>
+
+
+2) Link Expression
+
+	1. Simple URL
+		<a th:href="@{/about}">About</a>
+
+	2. URL with Query Parameters
+		<a th:href="@{/search(id=10, name='John')}">Search</a>
+	
+		Result:
+			/search?id=10&name=John
+		
+	3. URL with Path Variables
+		<a th:href="@{/user/{id}(id=${user.id})}">View</a>
+
+		where 
+			(id=${user.id}) is value Replacement
+		Result:
+			/user/5
+
+	4. Form Action URL
+		<form th:action="@{/save}" method="post">
+
+
+3) Fragment Expressions
+	- a fragment is a reusable piece of HTML (like header, footer, navbar, sidebar, etc.) that you can include in multiple pages	
+
+
+
+
+
+
+------------------------------------- JWT -------------------------------------
+
+JSON Web Token
+
+
+
+------------------------------- Logging (log4j) ------------------------------
+
+-- Logging means recording information about what your application is doing while it runs. These records are called logs.
+   - it has three parts 
+	1. logger
+	2. appender
+	3. laylout
+
+-- logging levels (form top to bottom level)
+
+	fatal
+		Application cannot continue
+	error 
+		Something failed
+	warn
+		Something is not right, but app still works
+	info
+		Normal flow of the application
+	Debug
+		What is happening inside the code?
+
+	
+   When a logger is created, generally you assign a level. The logger outputs all those messages equal to that level and also to all greater levels than it. 
+
+
+-- Steps 
+	create 
+		java class
+			Logger
+		
+		in properties file for normal Log4j for Spring boot used the logback-spring.xml
+			appenders 
+			layout 
+
+
+- java file configuration always override the DD and properties configuration
+
+
+-- log4j.properties vs logback-spring.xml
+
+	Both are logging configuration files, but they belong to different logging frameworks.
+	
+	log4j.properties
+	
+		- Used with Log4j (old logging framework).
+
+	logback-spring.xml (used with spring boot)
+
+		- it is used with the application.propertes file 
+
+		- Used with Logback (modern & default in Spring Boot).
+
+		- logback-spring.xml contains logging configuration rules, such as:
+
+			Where logs should go (Appenders)(console, file, etc.)
+
+			How logs should look (format, layout)
+
+			Which logs should appear (log level, )
+
+			Different behavior for different environments (dev / prod)
+
+			Which package should log what (logger)
+
+                  - ex
+
+			<configuration>
+
+    				<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        				<encoder>
+            					<pattern>%d %-5level %logger - %msg%n</pattern>
+        				</encoder>
+    				</appender>
+
+    				<root level="INFO">
+        				<appender-ref ref="CONSOLE"/>
+   				 </root>
+
+			</configuration>
+
+
+		- How to read from application.properties
+	
+			- Use ${} from application.properties to read the key
+			
+			- ex     @value("${ }")
+				 public String name;
+		
+		- How to read all keys from application.properties at one 
+			
+			- use @ConfigurationProperties(prefix = "app")
+
+				It reads grouped properties and binds them to a POJO.
+
+			- ex  application.properties
+				app.name=FlightBooking
+				app.version=1.0
+				app.owner=Jishan
+
+
+			    	@Component
+			      	@ConfigurationProperties(prefix = "app")
+				public class AppConfig {
+
+    					private String name;
+    					private String version;
+    					private String owner;
+
+    					// getters and setters
+				}
+
+
+------------------------------- SSO ---------------------
+
+-- SSO 
+
+	- allows a user to log in once and access multiple applications without logging in again.
+	  Example: Login with Google / Facebook.
+  	
+	- User logs in once and can access multiple features/links within the same application without logging in again
+
+	- Spring Boot uses OAuth 2.0 / OpenID Connect (OIDC) for SSO.
+
+
+	- SSO Flow (Very Important)
+	 	User → Spring Boot App
+     		       → Redirect to Identity Provider (Google/Keycloak)
+     		       → User logs in
+    		       → Identity Provider sends token
+     		       → Spring Boot validates token
+     		       → User logged in
+
+
+Client ID
+1096651639244-9aasd4h9e5okb0rlooenjghe1sgqalnb.apps.googleusercontent.com
+
+
+secret key
+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
+
+
+
+
+----------------- JUnit ------------------------------
+3/01/2026
+
+-- 
+	@Test - it indicates this the TestMethod for Sample class sqrt method
+	public void testSqr() {
+		System.out.println("Enter input");
+		int input=sc.nextInt();
+		System.out.println("Enter expected Result");
+		int result=sc.nextInt();
+		assertEquals(result,s.sqr(input));
+	}
+	
+- assertEquals(result,s.sqr(input)); 
+
+- SampleTestRunner  
+	
+	- it is a class that Going to test the Sample class using sampleTest  
+	
+- JUnitCore class
+	
+	JUnitCore.runClasses(SampleTest.class); // it allows you to run the More than one Test classes that you Specify here 
+
+
+- IndexOutOfBoundsException
+	
+	collection Exception occurred when Collection does not have any element and you are trying to get the element
+
+
+- @RunWith(Suite.class)       // get class 
+  @Suite.SuiteClasses({ TestTarget1.class, TestTarget2.class })
+  public class JUnitTestSuite {
+  }
+
+
+- Mockito
+	
+	Mockito is a mocking framework, JAVA-based library that is used for effective unit testing of JAVA applications. Mockito is used to mock interfaces   	so that a dummy functionality can be added to a mock interface that can be used in unit testing.
+
+	- Isolation testing (unit testing)  
+	  Use mock
+	  Testing one unit of code in isolation, without involving real
+			Database
+			Network
+			File system
+			Other classes/services
+
+
+        - To give the Dummy implementation
+	  Mockito.mock(Interface reference)
+		
+	  @Mock   
+	  Interface refrence
+
+	- @BeforeEach // runs before Each Test method
+		void setUp() {
+	 	}
+
+ 	- 
+
+My examples
+-- one To one 
+Table
+mysql> select * from company;
++----+-------------+--------+
+| id | name        | acc_id |
++----+-------------+--------+
+|  1 | capgemini   |      1 |
+|  2 | smartstream |      2 |
++----+-------------+--------+
+2 rows in set (0.61 sec)
+
+mysql> select * from account;
++----+---------+
+| id | balance |
++----+---------+
+|  1 |   20000 |
+|  2 |   40000 |
++----+---------+
+
+
+
+-- one To one Bidirectional
+mysql> select * from company;
++----+-----------+--------+
+| id | name      | acc_id |
++----+-----------+--------+
+|  1 | capgemini |      1 |
++----+-----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+---------+
+| id | balance |
++----+---------+
+|  1 |   20000 |
++----+---------+
+
+
+
+
+
+---- one To many
+
++-----------+-------------+
+| studentId | studentName |
++-----------+-------------+
+|         1 | abc         |
++-----------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from phone;
++---------+-------------+------+
+| phoneId | phoneNumber | sid  |
++---------+-------------+------+
+|       1 | 2654321     |    1 |
+|       2 | 923456789   |    1 |
++---------+-------------+------+
+
+
+
+
+---- one To many many to one
+mysql> select * from question;
++-----+-----------------+
+| qid | quest           |
++-----+-----------------+
+|   1 | What is Cricket |
++-----+-----------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> select * from answer;
++-------+------------------------------------+--------------+
+| ansid | reply                              | question_qid |
++-------+------------------------------------+--------------+
+|     1 | Cricket is one of the sports types |            1 |
+|     2 | Cricket is very interesting        |            1 |
+|     3 | Cricket is a religion in India     |            1 |
++-------+------------------------------------+--------------+
+3 rows in set (0.00 sec)
+
+
+
+----------- many to many
+mysql> select * from employee;
++-----+-------+
+| eid | ename |
++-----+-------+
+|   1 | Harry |
+|   2 | Javed |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from project;
++-----+-------+
+| pid | pname |
++-----+-------+
+|   1 | Emart |
+|   2 | Etour |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee_project;
++---------------+--------------+
+| employees_eid | projects_pid |
++---------------+--------------+
+|             1 |            1 |
+|             1 |            2 |
+|             2 |            2 |
++---------------+--------------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+

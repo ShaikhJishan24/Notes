@@ -1,0 +1,39 @@
+in java as soon as u define a class with "abstract" keyword, class becomes abstract.
+
+abstract class can not be instantiated. It is because abstract class is incomplete class ( it has got atleast one contract i.e. abstract method )
+
+abstract class can contain abstract(contract) as well as non-abstract(concreate) methods.
+
+abstract method is a method which is declared with "abstract" keyword. ( it can not be private coz then child class don't able to override that method) 
+
+a child class of an abstract class must to provide implementation to the method which is declared "abstract" in parent class or else make child class also "abstract".
+
+if you don't wont to override the single abstract method then you also become the abstract
+
+a class can not be "abstract" and "final" both. It is because "abstract" encourages inheritance and "final" stops inheritance.
+
+abstract method can not be a abstract or static both.
+
+can abstract class have a constructor?
+	yes.
+but we cannot instantiate abstract class , so what's the use of that constructor?
+	yes we cannot instantiate abstract class but when we instantiate child class of that abstract class, child class constructor needs to invoke parent class constructor. 
+	We can also write the parametrized constructor 
+        it can not have abstract constructors
+
+Abstract class can have instance variable, abstract method, concreate methods , Static block, non-static block, static methods  
+
+it can implement the interface, can also extends the another abstract or concreate class
+
+Late binding is possible in Abstract class
+
+
+
+When to use abstract class in java?
+
+
+while designing Parent class, if u realize that there is some functionality compulsorily required in child classes but Parent class is not able to define it. This functionality is a contract or abstract function. Since abstract function can not be declared inside non-abstract class, u have to make class as abstract.
+
+
+
+

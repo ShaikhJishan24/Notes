@@ -1,0 +1,8 @@
+LocaleResolver is responsible for determining and setting the current locale based on the incoming request (using headers like Accept-Language, cookies, or session data).
+It creates an instance of Locale and passes it to your REST controller method.
+
+In the code, you don't need to directly interact with the LocaleResolver in your controller; it’s handled automatically by Spring. The locale is available for use, and Spring uses it to resolve messages from the MessageSource automatically.
+
+
+The MessageSource is used to resolve and retrieve messages based on the locale that was set by the LocaleResolver.
+

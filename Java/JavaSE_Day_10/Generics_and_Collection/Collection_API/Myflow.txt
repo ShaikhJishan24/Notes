@@ -1,0 +1,23 @@
+- ALL Theory ✔️
+
+- ArrayList Serialization ✔️
+
+- Copy on Arraylist ✔️
+
+- Map and HashMap ✔️
+  concurrent HashMap ✔️
+ 
+- put and get implementation ✔️
+
+- Iterator ✔️
+
+- fail safe and fail fast iterator ✔️
+
+- child class of hashtable  ✔️
+  (properties)
+
+- TreeMap ✔️
+
+- set ✔️
+
+- Collections class  ✔️
