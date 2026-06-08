@@ -1,0 +1,17 @@
+// Access Modifires 
+
+Type                    Public      Private    Protected      Default 
+
+1)Same Class             Y           Y            Y            Y 
+
+2)Same Package           Y           No           Y            Y 
+  Subclass 
+
+3)Same Package           Y           No           Y            Y 
+  Non-Subclass  
+
+4)Different Package      Y           No           Y            No 
+  Subclass
+
+5)Different Package      Y           No           No           No 
+  Non-Subclass
