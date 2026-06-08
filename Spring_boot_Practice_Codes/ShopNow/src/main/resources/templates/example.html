@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/common :: headsection}">
+</head>
+<body>
+                <!-- electronic section start -->
+      <div class="fashion_section">
+         <div id="electronic_main_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner ">
+               <div class="carousel-item active">
+                  <div class="container ">
+                     <h1 class="fashion_taital mt-4">Electronic</h1>
+                     <div class="fashion_section_2 border border-primary" >
+                     
+                        
+                        
+                           
+                             
+                             <!-- <div class="box_main" th:each="product : ${ProductList}" >
+							    <h4 class="shirt_text" th:text="${product.title}"></h4>
+							    <p class="price_text">Start price  <span style="color: #262626;" th:text="${product.price}"> $ 100</span></p>
+							    <div class="electronic_img"><img th:src="@{'/images/'+${product.picture}+'.png'}" alt="Product Image"></div>
+    						
+    						    </div> -->
+    						<div th:each="product : ${ProductList}">
+    						<div class="card card-product card-featured " >
+					            <div class="card-body">
+					              <a th:href="@{#}"><img th:src="@{'/images/'+${product.picture}+'.png'}" alt="Product Image"></a>
+					              <a th:href="@{#}" class="card-title" ></a>
+					              <div class="price"><span th:text="${product.price}"></span></div>
+					            </div>              
+                               </div>
+			                 </div>
+                           
+                         
+                        
+                     </div>
+                  </div>
+               </div>           
+            </div>        
+         </div>
+      </div>
+      <!-- electronic section end -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+        <div th:each="product : ${ProductList}">
+            <h3 th:text="${product.id}"></h3>
+            <h3 th:text="${product.title}"></h3>
+            <h3 th:text="${product.stock}"></h3>
+            <h3 th:text="${product.price}"></h3>
+            <h3 th:text="${product.picture}"></h3>
+            <img th:src="@{'/images/'+${product.picture}+'.png'}" alt="Product Image">
+        </div>
+        
+
+</body>
+</html>

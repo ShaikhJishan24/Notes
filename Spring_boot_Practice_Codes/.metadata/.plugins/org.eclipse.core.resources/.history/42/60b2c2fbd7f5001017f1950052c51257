@@ -1,0 +1,9 @@
+package com.jwt.jwtDemo.entity;
+
+public class AuthProvider {
+
+	 LOCAL,     // normal JWT login
+	 GOOGLE,
+	 GITHUB,
+	    FACEBOOK
+}

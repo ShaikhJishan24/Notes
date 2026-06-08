@@ -1,0 +1,93 @@
+package com.example.services.impl;
+
+import com.example.dto.InvoiceDTO;
+import com.example.services.InvoicePdfService;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.example.entities.BookingHeader;
+import com.example.entities.PaymentMaster;
+import com.example.repositories.PaymentRepository;
+//import com.example.repository.PaymentMasterRepository;
+//import com.example.service.InvoiceService;
+import com.lowagie.text.*;
+import com.lowagie.text.pdf.PdfWriter;
+
+import jakarta.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import java.io.ByteArrayOutputStream;
+
+@Service
+@Transactional
+public class InvoiceServiceImpl implements InvoicePdfService {
+
+    private final PaymentRepository paymentRepo;
+
+    public InvoiceServiceImpl(PaymentRepository paymentRepo) {
+        this.paymentRepo = paymentRepo;
+    }
+
+    @Override
+    public byte[] generateInvoice(Integer paymentId) {
+
+        PaymentMaster payment = paymentRepo.findById(paymentId)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+
+        if (!"SUCCESS".equalsIgnoreCase(payment.getPaymentStatus())) {
+            throw new RuntimeException("Payment not successful");
+        }
+
+        BookingHeader booking = payment.getBooking();
+
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Document document = new Document(PageSize.A4);
+            PdfWriter.getInstance(document, out);
+            document.open();
+
+            Font titleFont = new Font(Font.HELVETICA, 18, Font.BOLD);
+            Paragraph title = new Paragraph("E-Tour Invoice", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+            document.add(new Paragraph(" "));
+
+            String customerName =
+                    booking.getCustomer().getFirstName() + " " +
+                    booking.getCustomer().getLastName();
+
+            String tourName =
+                    booking.getTour().getCategory().getCategoryName()
+                    + " | " + booking.getTour().getDeparture().getNoOfDays() + " Days"
+                    + " | " + booking.getTour().getDeparture().getDepartDate()
+                    + " to " + booking.getTour().getDeparture().getEndDate();
+
+            document.add(new Paragraph("Invoice No: INV-" + payment.getId()));
+            document.add(new Paragraph("Booking ID: " + booking.getId()));
+            document.add(new Paragraph("Booking Date: " + booking.getBookingDate()));
+            document.add(new Paragraph("Customer Name: " + customerName));
+            document.add(new Paragraph("Tour Details: " + tourName));
+            document.add(new Paragraph("No of Passengers: " + booking.getNoOfPax()));
+
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph("Payment Status: " + payment.getPaymentStatus()));
+            document.add(new Paragraph("Payment Mode: " + payment.getPaymentMode()));
+            document.add(new Paragraph("Transaction Ref: " + payment.getTransactionRef()));
+            document.add(new Paragraph("Payment Date: " + payment.getPaymentDate()));
+
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph("Tour Amount: ₹" + booking.getTourAmount()));
+            document.add(new Paragraph("Taxes: ₹" + booking.getTaxes()));
+            document.add(new Paragraph("Total Amount: ₹" + booking.getTotalAmount()));
+
+            document.close();
+            return out.toByteArray();
+
+        } catch (Exception e) {
+            throw new RuntimeException("Invoice PDF generation failed", e);
+        }
+    }
+}

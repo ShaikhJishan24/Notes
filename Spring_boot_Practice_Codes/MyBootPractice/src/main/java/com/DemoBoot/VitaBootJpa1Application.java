@@ -1,0 +1,15 @@
+package com.DemoBoot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan(basePackages = "com.DemoBoot")
+public class VitaBootJpa1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(VitaBootJpa1Application.class, args);
+	}
+
+}

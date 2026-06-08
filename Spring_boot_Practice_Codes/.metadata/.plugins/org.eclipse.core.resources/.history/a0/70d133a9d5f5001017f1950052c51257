@@ -1,0 +1,17 @@
+package com.jwt.jwtDemo.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
+
+@Getter
+@Setter
+public class userModel {
+    /**
+     * 
+     */
+    private int id;
+    private String name;
+    private String pwd;
+}

@@ -1,0 +1,23 @@
+package com.jwt.jwtDemo.service;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
+
+@service
+public class googleAuthService {
+
+    private static final String GOOGLE_TOKEN_INFO =
+            "https://oauth2.googleapis.com/tokeninfo?id_token=";
+
+    public Map<String, Object> verifyToken(String idToken) {
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Map> response =
+                restTemplate.getForEntity(GOOGLE_TOKEN_INFO + idToken, Map.class);
+
+        return response.getBody();
+    }
+}

@@ -1,0 +1,37 @@
+package com.AuthAndAuthDb;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    @Autowired
+    private JwtUtil jwtUtil;  // useful for JWT token Generation
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+
+        if (request.getUsername().equals("Abc") &&
+            request.getPassword().equals("123")) {
+
+            return jwtUtil.generateToken(request.getUsername());
+        }
+
+        return "Invalid username or password";
+    }
+}
+
+class LoginRequest {
+    private String username;
+    private String password;
+
+    // getters & setters
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
+

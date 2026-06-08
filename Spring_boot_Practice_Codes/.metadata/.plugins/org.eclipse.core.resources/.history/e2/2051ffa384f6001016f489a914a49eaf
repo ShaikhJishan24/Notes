@@ -1,0 +1,37 @@
+package com.example.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dto.CategoryDTO;
+import com.example.entities.CategoryMaster;
+import com.example.repositories.CategoryRepository;
+import com.example.services.CategoryService;
+
+@Service
+public class CategoryServiceImpl implements CategoryService {
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    public CategoryMaster getCategoryById(int id) {
+    	
+        return categoryRepository.findById(id)
+                                 .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
+    }
+
+	@Override
+	public List<CategoryDTO> getHomeCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CategoryDTO> onCategoryClick(String catCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+

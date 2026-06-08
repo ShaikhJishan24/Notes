@@ -1,0 +1,59 @@
+package com.jwt.jwtDemo.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
+import java.security.AuthProvider;
+
+@Entity
+@Table(name = "users")
+@Setter
+@Getter
+public class user {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private String pwd;
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+    
+    
+    
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public AuthProvider getProvider() {
+		return provider;
+	}
+	public void setProvider(AuthProvider provider) {
+		this.provider = provider;
+	}
+    
+    
+}

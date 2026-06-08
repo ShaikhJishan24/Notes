@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{CSS/style.css}" rel="stylesheet">    
+</head>
+<body>    
+         <h1>Link Expression Example</h1>
+         
+         <p>1 st way --></p>
+         <h3>External CSS</h3>
+         
+         <p>2 nd way --></p>
+         <h3>Anchor Tag</h3>
+         <a th:href="@{profile}">Profile Page</a>
+         
+         <p>3 rd way --></p>
+         <h3>URL Rewriting</h3>
+         <a th:href="@{'profile/' + ${id}}">Profile Page</a>
+</body>
+</html>

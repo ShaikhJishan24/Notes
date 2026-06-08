@@ -1,0 +1,5 @@
+package com.jwt.jwtDemo.entity;
+
+public class AuthProvider {
+
+}

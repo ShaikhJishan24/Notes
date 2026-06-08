@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+          <h1>Variable Expression Example</h1>
+          
+          <h1 th:text= "'Todays Date = ' + *{Date}"></h1>
+          <h2 th:text="${JJshan}"></h2>
+</body>
+</html>

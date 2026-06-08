@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head th:fragment="headsection" >
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>ShopNow</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+      <!-- Responsive-->
+      <link rel="stylesheet" th:href="@{css/responsive.css}">
+      <!-- fevicon -->
+      <link rel="icon" th:href="@{images/fevicon.png}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" th:href="@{css/jquery.mCustomScrollbar.min.css}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" th:href="@{https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css}">
+      <!-- fonts -->
+      <link th:href="@{https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap}" rel="stylesheet">
+      <!-- font awesome -->
+      <link rel="stylesheet" type="text/css" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+      <!--  -->
+      <!-- owl stylesheets -->
+      <link th:href="@{https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext}" rel="stylesheet">
+      <link rel="stylesheet" th:href="@{css/owl.carousel.min.css}">
+      <link rel="stylesoeet" th:href="@{css/owl.theme.default.min.css}">
+      <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen">
+      <script
+      th:src="@{https://kit.fontawesome.com/0e53af926d.js}"
+      crossorigin="anonymous"
+    ></script>
+   </head>
+   <body>
+      <!-- banner bg main start -->
+      <div class="banner_bg_main" th:fragment="bannerbgmain">
+         <!-- header top section start -->
+         <div class="container" >
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul>
+                           <li><a th:href="@{#}">Best Sellers</a></li>
+                           <li><a th:href="@{#}">Gift Ideas</a></li>
+                           <li><a th:href="@{#}">New Releases</a></li>
+                           <li><a th:href="@{#}">Today's Deals</a></li>
+                           <li><a th:href="@{#}">Customer Service</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- header top section end -->
+         <!-- logo section start -->
+         <div class="logo_section">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="logo">
+                        <a th:href="@{home}"><img th:src="@{images/Logo4.png}"></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- logo section end -->
+         <!-- header section start -->
+         <div class="header_section">
+            <div class="container">
+               <div class="containt_main">
+                  <div id="mySidenav" class="sidenav">
+                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                     <a th:href="@{home}">Home</a>
+                     <a th:href="@{fashion}">Fashion</a>
+                     <a th:href="@{electronic}">Electronic</a>
+                     <a th:href="@{jewellery}">Jewellery</a>
+                  </div>
+                  <span class="toggle_icon" onclick="openNav()"><img th:src="@{images/toggle-icon.png}"></span>
+                  <div class="dropdown">
+                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" th:href="@{#}">Action</a>
+                        <a class="dropdown-item" th:href="@{#}">Another action</a>
+                        <a class="dropdown-item" th:href="@{#}">Something else here</a>
+                     </div>
+                  </div>
+                  <div class="main">
+                     <!-- Another variation with a button -->
+                     <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <div class="input-group-append">
+                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                           <i class="fa fa-search"></i>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="header_box">
+                     <div class="lang_box ">
+                        <a th:href="@{#}" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                        English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu ">
+                           <a th:href="@{#}" class="dropdown-item">
+                           <!-- <img src="images/flag-france.png" class="mr-2" alt="flag"> -->
+                           Hindi
+                           </a>
+                        </div>
+                     </div>
+                     <div class="login_menu">
+                        <ul>
+                           <li><a th:href="@{#}">
+                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                              <span class="padding_10">Cart</span></a>
+                           </li>
+                           <li><a th:href="@{#}">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Profile</span></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- header section end -->
+         
+         <!-- banner section start -->
+         <div class="banner_section layout_padding">
+            <div class="container">
+               <div id="my_slider" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your Favourite shopping</h1>
+                              <div class="buynow_bt"><a th:href="@{#}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your Favourite shopping</h1>
+                              <div class="buynow_bt"><a th:href="@{#}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Get Start <br>Your Favourite shopping</h1>
+                              <div class="buynow_bt"><a th:href="@{#}">Buy Now</a></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                  </a>
+                  <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <!-- banner section end -->
+      </div>
+      <hr><hr>
+      <!-- banner bg main end -->
+      
+      <!-- footer section start --> 
+       <footer th:fragment="footer">
+         <div id="footer">
+         <div class="container-fluid ">
+           <div class="row ">
+             <div class="col-md-4 col-sm-6 ">
+               <div class="contact">
+                 <a th:href="@{home}"><img src="images/Logo4.png" alt="" /></a>
+                 <br><br>
+                 <h3>Contact</h3>
+                 <address>
+                   <p><b>Address:</b> Lorem ipsum dolor sit amet.</p>
+                   <p><b>Phone:</b> Lorem ipsum dolor sit amet.</p>
+                   <p><b>Hours</b> 10:00 - 18:00. Mon - Sat</p>
+                 </address>
+                 <h3>Follow Us</h3>
+                 <div class="socials">
+                   <a th:href="@{#}"><i class="fa-brands fa-facebook-square"></i></a>
+                   <a th:href="@{#}"><i class="fa-brands fa-youtube"></i></a>
+                   <a th:href="@{#}"><i class="fa-brands fa-telegram"></i></a>
+                   <a th:href="@{#}"><i class="fa-brands fa-instagram"></i></a>
+                   <a th:href="@{#}"><i class="fa-brands fa-twitter"></i></a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-2 col-sm-6">
+               <div class="about">
+                 <h3>About</h3>
+                 <a th:href="@{#}">About Us</a>
+                 <a th:href="@{#}">Delivery Information</a>
+                 <a th:href="@{#}">Privacy Policy</a>
+                 <a th:href="@{#}">Terms & Conditions</a>
+                 <a th:href="@{#}">Contact Us</a>
+               </div>
+             </div>
+             <div class="col-md-2 col-sm-6">
+               <div class="myaccount">
+                 <h3>My account</h3>
+                 <a th:href="@{#}">Sign In</a>
+                 <a th:href="@{#}">View Cart</a>
+                 <a th:href="@{#}">My Wishlist</a>
+                 <a th:href="@{#}">Track My Order</a>
+                 <a th:href="@{#}">Help</a>
+               </div>
+             </div>
+             <div class="col-md-4 col-sm-6">
+               <div class="install">
+                 <h3>Install App</h3>
+                 <p>From App Store or Google Play</p>
+                 <div class="download">
+                   <a th:href="@{#}"><img th:src="@{images/app.jpg}" alt=""></a>
+                   <a th:href="@{#}"><img th:src="@{images/play.jpg}" alt=""></a>
+                 </div>
+                 <p>Secured Payment Gateways</p>
+                 <img th:src="@{images/pay.png}" alt="">
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+       </footer> 
+      <!-- footer section end -->
+       
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidenav").style.width = "250px";
+         }
+         
+         function closeNav() {
+           document.getElementById("mySidenav").style.width = "0";
+         }
+      </script>
+   </body>
+</html>
